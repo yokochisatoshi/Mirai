@@ -69,6 +69,7 @@ public class human : MonoBehaviour
             Debug.Log("store");
             Destroy(this.gameObject);
             playerData.AddMoney(150);
+
         }
     }
 }
