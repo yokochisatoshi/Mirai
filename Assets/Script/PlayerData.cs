@@ -6,7 +6,7 @@ public class PlayerData : MonoBehaviour
 {
     public static PlayerData Instance;
 
-    public int money = 0;  // ‰Šú‚Ì‚¨‹à
+    public int money = 777;  // ‰Šú‚Ì‚¨‹à
 
     void Awake()
     {

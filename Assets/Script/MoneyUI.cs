@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class MoneyUI : MonoBehaviour
 {
-    public Text moneyText;
+    public TextMeshProUGUI moneyText2;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +16,6 @@ public class MoneyUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        moneyText.text = "Money: " + PlayerData.Instance.money;
+        moneyText2.text = "Money: " + PlayerData.Instance.money;
     }
 }

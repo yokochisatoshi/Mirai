@@ -5,7 +5,9 @@ using UnityEngine;
 public class human : MonoBehaviour
 {
     public float speed;
+    public PlayerData playerData;
 
+    bool bCanStore = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +36,7 @@ public class human : MonoBehaviour
         if (collision.gameObject.tag == "wall")
         {
             this.gameObject.transform.eulerAngles = new Vector3(0, 90, 0);
+            bCanStore = false;
         }
     }
     void OnTriggerEnter(Collider other)
@@ -42,19 +45,30 @@ public class human : MonoBehaviour
         if (other.gameObject.tag == "backMarker")
         {
             this.gameObject.transform.eulerAngles = new Vector3(0, 270, 0);
+            bCanStore = true;
         }
         if (other.gameObject.tag == "leftMarker")
         {
             this.gameObject.transform.eulerAngles = new Vector3(0, 0, 0);
+            bCanStore = true;
         }
         if (other.gameObject.tag == "rightMarker")
         {
             this.gameObject.transform.eulerAngles = new Vector3(0, 180, 0);
+            bCanStore = true;
         }
         if (other.gameObject.tag == "frontMarker")
         {
             this.gameObject.transform.eulerAngles = new Vector3(0, 90, 0);
+            bCanStore = true;
             Debug.Log("hitfront");
+        }
+
+        if (other.gameObject.tag == "Store" && bCanStore==true)
+        {
+            Debug.Log("store");
+            Destroy(this.gameObject);
+            playerData.AddMoney(150);
         }
     }
 }

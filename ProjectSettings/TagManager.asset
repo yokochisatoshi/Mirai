@@ -10,6 +10,7 @@ TagManager:
   - leftMarker
   - rightMarker
   - frontMarker
+  - Store
   layers:
   - Default
   - TransparentFX
