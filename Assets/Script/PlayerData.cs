@@ -6,7 +6,12 @@ public class PlayerData : MonoBehaviour
 {
     public static PlayerData Instance;
 
-    public int money = 777;  // 初期のお金
+    public int nMoney = 777;  // 初期のお金
+    public int nScore = 0;  // 初期のScore
+    public int nTime = 0;    //時間管理  時計とか表示する時用
+    //ステージ管理用   ステージ→発展度のこと
+    public int nCurrentStage = 0;  
+    public int nMaxStage = 3;
 
     void Awake()
     {
@@ -22,10 +27,21 @@ public class PlayerData : MonoBehaviour
         }
     }
 
+    void FixedUpdate()
+    {
+        nTime++;
+    }
+
+
     // お金を増やすメソッド
     public void AddMoney(int amount)
     {
-        money += amount;
-        Debug.Log("Current Money: " + money);  
+        nMoney += amount;
+       
+    }
+
+    public void AddScore(int amount)
+    {
+        nScore += amount;
     }
 }
