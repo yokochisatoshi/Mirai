@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerData : MonoBehaviour
 {
     public static PlayerData Instance;
+<<<<<<< Updated upstream
 
     public int nMoney = 777;  // 初期のお金
     public int nScore = 0;  // 初期のScore
@@ -12,6 +13,9 @@ public class PlayerData : MonoBehaviour
     //ステージ管理用   ステージ→発展度のこと
     public int nCurrentStage = 0;  
     public int nMaxStage = 3;
+=======
+    public int money = 777;  // 初期のお金
+>>>>>>> Stashed changes
 
     void Awake()
     {
