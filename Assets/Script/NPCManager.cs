@@ -37,8 +37,6 @@ public class NPCManager : MonoBehaviour
                     Instantiate(NPC_00, new Vector3(StartPos, 0, Random.Range(0.0f, 10.0f)), Quaternion.Euler(0, 90, 0));
                   //  Debug.Log("tt");
                 }
-
-
                 break;
 
         }
