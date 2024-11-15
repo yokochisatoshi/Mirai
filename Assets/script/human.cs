@@ -6,12 +6,11 @@ public class human : MonoBehaviour
 {
     public enum human_state // l‚Ìó‘Ô
     {
-        normal,     // ƒm[ƒ}ƒ‹ó‘Ô
-        eat,        // H–ó‘Ô
-        Destroy,    // ‘Ş“X
+        normal,         // ƒm[ƒ}ƒ‹ó‘Ô
+        eat,            // H–ó‘Ô
+        brainwashing,   // ô”](“G•KE)
+        Destroy,        // ‘Ş“X
     }
-
-
 
     public float speed;
     GameObject ManageData;
@@ -26,6 +25,7 @@ public class human : MonoBehaviour
 
     MeshRenderer mr;          // “§–¾‰»—p
 
+    GameObject EnemyTarget;
 
     // Start is called before the first frame update
     void Start()
@@ -74,13 +74,14 @@ public class human : MonoBehaviour
                 mr.material.color = mr.material.color - new Color32(0, 0, 0, (byte)(mr.material.color.a + 5));  // “§–¾‚É‚µ‚Ä‚¢‚­
                 Destroy(this.gameObject, DestroyTime);                                                           // ˆê’èŠÔŒo‚Á‚½‚çE‚·
                 break;
+            case (int)human_state.brainwashing: // ô”]ó‘Ô
+                this.transform.LookAt(EnemyTarget.transform);   // –Ú“I‚Ì“X‚Ì•ûŒü‚ğŒü‚­
+                // ³–Ê‚ÉˆÚ“®
+                pos += transform.forward * speed;
+                transform.position = pos;
+                break;
         }
-
-
-
     }
-
-
 
 
     // ƒvƒŒƒCƒ„[‘¤‚Ì“–‚½‚è”»’è
@@ -126,13 +127,38 @@ public class human : MonoBehaviour
             }
 
             if (other.gameObject.tag == "Store" && bCanStore == true)
-            {
-                Debug.Log("store");
-                // Destroy(this.gameObject);
+            { // “X‚É“–‚½‚Á‚½‚ç
                 state = (int)human_state.eat;       // H–ó‘Ô‚É‘JˆÚ
-                script.AddMoney(150);
-
+                script.AddMoney(150);               // ‚¨‹à‰ÁZ
+            }
+            else if(other.gameObject.tag == "EnemyStore" && bCanStore == true)
+            { // “G‚Ì“X“–‚½‚Á‚½‚ç
+                    state = (int)human_state.eat;       // H–ó‘Ô‚É‘JˆÚ
             }
         }
+
+        if (state == (int)human_state.brainwashing && other.gameObject.name == EnemyTarget.name)
+        { // ô”]ó‘Ô‚©‚Â–Ú“I‚Ì“G‚Ì“X‚É“–‚½‚Á‚½‚ç
+            Debug.Log("e store");
+            state = (int)human_state.eat;       // H–ó‘Ô‚É‘JˆÚ
+        }
+    }
+
+    // ó‘Ô‘JˆÚŠÖ”
+    public void SetState(human_state _state)
+    {
+        state = (int)_state;
+    }
+
+    // ó‘Ôæ“¾ŠÖ”
+    public int GetState()
+    {
+        return state;
+    }
+
+    // “G‚ÌŒü‚©‚¤“XƒZƒbƒgŠÖ”
+    public void SetTargetEnemyStore(GameObject _target)
+    {
+        EnemyTarget = _target;
     }
 }

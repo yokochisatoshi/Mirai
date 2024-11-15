@@ -11,6 +11,7 @@ TagManager:
   - rightMarker
   - frontMarker
   - Store
+  - EnemyStore
   layers:
   - Default
   - TransparentFX
