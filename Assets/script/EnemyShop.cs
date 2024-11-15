@@ -21,11 +21,11 @@ public class EnemyShop : MonoBehaviour
             GameObject[] humanObjects = GameObject.FindGameObjectsWithTag("Human");     // 存在するHumanタグを持っているオブジェクトを配列に格納
             for(int i = 0;i < humanObjects.Length; i++)
             { // humanObjectsの要素分ループ
-                human humanScript = humanObjects[i].GetComponent<human>();         // humanスクリプト取得
+                human humanScript = humanObjects[i].GetComponent<human>();              // humanスクリプト取得
                 if (humanScript.GetState() == (int)human.human_state.normal)
                 { // 取得したhumanScriptの状態がnormalなら
-                    humanScript.SetTargetEnemyStore(this.gameObject);           // 取得したhumanスクリプトの向かう敵の店をこのオブジェクトにする
-                    humanScript.SetState(human.human_state.brainwashing);       // 取得したhumanスクリプトの状態をbrainwashingに状態遷移
+                    humanScript.SetTargetEnemyStore(this.gameObject);                   // 取得したhumanスクリプトの向かう敵の店をこのオブジェクトにする
+                    humanScript.SetState(human.human_state.brainwashing);               // 取得したhumanスクリプトの状態をbrainwashingに状態遷移
                 }
             }
         }
