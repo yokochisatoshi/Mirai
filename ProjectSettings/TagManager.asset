@@ -11,6 +11,7 @@ TagManager:
   - rightMarker
   - frontMarker
   - Store
+  - Grand
   layers:
   - Default
   - TransparentFX

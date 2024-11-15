@@ -60,7 +60,6 @@ public class human : MonoBehaviour
                 eatCunt++;
                 if (eatCunt > eatTime)
                 { // 一定時間食事したら
-                    Debug.Log("unnti");
                     eatCunt = 0;
                     state = (int)human_state.Destroy;                               // 退店状態に遷移
                     this.gameObject.transform.eulerAngles = new Vector3(0, 180, 0); // プレイヤーを出口に向ける
@@ -76,11 +75,7 @@ public class human : MonoBehaviour
                 break;
         }
 
-
-
     }
-
-
 
 
     // プレイヤー側の当たり判定
@@ -122,7 +117,7 @@ public class human : MonoBehaviour
             {
                 this.gameObject.transform.eulerAngles = new Vector3(0, 90, 0);
                 bCanStore = true;
-                Debug.Log("hitfront");
+               // Debug.Log("hitfront");
             }
 
             if (other.gameObject.tag == "Store" && bCanStore == true)
