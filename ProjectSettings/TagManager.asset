@@ -12,6 +12,7 @@ TagManager:
   - frontMarker
   - Store
   - Grand
+  - EnemyStore
   layers:
   - Default
   - TransparentFX
