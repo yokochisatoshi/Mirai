@@ -60,7 +60,7 @@ public class human : MonoBehaviour
                 eatCunt++;
                 if (eatCunt > eatTime)
                 { // ˆê’èŠÔH–‚µ‚½‚ç
-                    Debug.Log("unnti");
+                    //Debug.Log("unnti");
                     eatCunt = 0;
                     state = (int)human_state.Destroy;                               // ‘Ş“Xó‘Ô‚É‘JˆÚ
                     this.gameObject.transform.eulerAngles = new Vector3(0, 180, 0); // ƒvƒŒƒCƒ„[‚ğoŒû‚ÉŒü‚¯‚é
@@ -123,7 +123,7 @@ public class human : MonoBehaviour
             {
                 this.gameObject.transform.eulerAngles = new Vector3(0, 90, 0);
                 bCanStore = true;
-                Debug.Log("hitfront");
+               // Debug.Log("hitfront");
             }
 
             if (other.gameObject.tag == "Store" && bCanStore == true)
@@ -139,7 +139,7 @@ public class human : MonoBehaviour
 
         if (state == (int)human_state.brainwashing && other.gameObject.name == EnemyTarget.name)
         { // ô”]ó‘Ô‚©‚Â–Ú“I‚Ì“G‚Ì“X‚É“–‚½‚Á‚½‚ç
-            Debug.Log("e store");
+            //Debug.Log("e store");
             state = (int)human_state.eat;       // H–ó‘Ô‚É‘JˆÚ
         }
     }

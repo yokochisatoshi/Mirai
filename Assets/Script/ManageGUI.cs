@@ -49,11 +49,13 @@ public class ManageGUI : MonoBehaviour
                     bHitGrand = true;
                     PreViewObject.transform.position = currentPosition;
                 }
+
             }
 
             //Ý’u‚ª‰Â”\‚Ìó‘Ô if
             if (Input.GetMouseButtonDown(0) && nCntInterval > nInterval)
             {
+                Debug.Log("Click");
                 nCntInterval = 0;
                 bCanSet = false;
 
@@ -65,7 +67,6 @@ public class ManageGUI : MonoBehaviour
                 {
 
                 }
-
             }
         }
     }
@@ -73,7 +74,7 @@ public class ManageGUI : MonoBehaviour
 
     public void LeftClickKanban00()
     {
-       
+        if (bCanSet) return;
         if (nCntInterval > nInterval)
         {
           
@@ -86,7 +87,7 @@ public class ManageGUI : MonoBehaviour
 
     public void RightClickKanban00()
     {
-        
+        if (bCanSet) return;
         if (nCntInterval > nInterval)
         {
             nCntInterval = 0;
