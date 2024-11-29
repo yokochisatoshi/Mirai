@@ -1146,7 +1146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6224008e6c736cc498f63748859db321, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Kanban00_Left: {fileID: 7881244551263562648, guid: 6f63b7b38c82c3c44b9ad80ce1554a01, type: 3}
+  Kanban00_Left: {fileID: 6685962595165166843, guid: 6e59dd544ee9e134e8e6a5ea64fa2c1a, type: 3}
   Kanban00_Right: {fileID: 3235323455796589649, guid: a25f6e46d55ec0f489cc909e0ea643a6, type: 3}
 --- !u!1001 &1129656158
 PrefabInstance:

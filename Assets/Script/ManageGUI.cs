@@ -14,11 +14,15 @@ public class ManageGUI : MonoBehaviour
     private bool bHitGrand = false;
     private int nInterval = 5;
     private int nCntInterval = 0;
+    //看板系のObjectまとめ
 
     public GameObject Kanban00_Left;
     public GameObject Kanban00_Right;
-
+    //代入されるプレビューの入れ物
     private GameObject PreViewObject;
+    private BoxCollider PreViewColider;
+    private Color PreViewColor;
+
 
     // Start is called before the first frame update
     void Start()
@@ -51,47 +55,54 @@ public class ManageGUI : MonoBehaviour
                 }
             }
 
-            //設置が可能の状態 if
+            //設置が可能な状態で左クリックを押した if
             if ((Input.GetMouseButtonDown(0) || Input.GetMouseButton(0)) && nCntInterval > nInterval)
             {
                 if (bHitGrand == false)
                 {
                     Destroy(PreViewObject);
-                    Debug.Log("Destroy_Click");
                 }
                 else
                 {
-
+                    PreViewColider.enabled = true;
+                    PreViewColor.a = 1.0f;
+                    PreViewColor.r = 1.0f;
+                    PreViewColor.g = 1.0f;
+                    PreViewObject.GetComponent<Renderer>().material.color = PreViewColor;
                 }
                 nCntInterval = 0;
                 bCanSet = false;
-                Debug.Log("Leave");
-
             }
+            //設置前か後かで当たり判定と半透明のif
+            
+
         }
     }
-
-
-    public void LeftClickKanban00()
+    public void ClickKanban00()
     {
         if (bCanSet == true) { return; }
 
         bCanSet = true;
-
+        //プレビューたちに代入
         PreViewObject = Instantiate(Kanban00_Left, new Vector3(-10, 0, 0), Quaternion.Euler(0, 0, 0));
+        PreViewColider=PreViewObject.GetComponent<BoxCollider>();
+        PreViewColor=PreViewObject.GetComponent<Renderer>().material.color;
 
+        //
+        PreViewColider.enabled = false;
+        PreViewColor.a = 0.5f;
+        PreViewColor.r = 0.5f;
+        PreViewColor.g = 0.5f;
+        PreViewObject.GetComponent<Renderer>().material.color = PreViewColor;
     }
 
-    public void RightClickKanban00()
+    public void ClickKanban01()
     {
-
         if (bCanSet == true) { return; }
-
 
         bCanSet = true;
 
         PreViewObject = Instantiate(Kanban00_Right, new Vector3(-10, 0, 0), Quaternion.Euler(0, 0, 0));
-
     }
 
 }
