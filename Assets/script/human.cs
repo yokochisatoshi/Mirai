@@ -13,11 +13,12 @@ public class human : MonoBehaviour
     }
 
     // 好物は出店している店の中からランダムで設定される
-    public Store.food_type favorite;
+    private Store.food_type favorite;
 
     public float speed;
     GameObject ManageData;
     PlayerData script;
+    GameObject child;
 
     bool bCanStore = false;
 
@@ -37,6 +38,20 @@ public class human : MonoBehaviour
         script = ManageData.GetComponent<PlayerData>();
 
         mr = GetComponent<MeshRenderer>();      // 透明化用(マテリアル情報取得？)
+
+
+        // 出現している店をすべて取得
+        GameObject[] StoreObjects = GameObject.FindGameObjectsWithTag("Store");     // 存在するStoreタグを持っているオブジェクトを配列に格納
+
+        // 候補のなかからランダムに設定
+        if (StoreObjects.Length != 0)
+        {
+            int num = Random.Range(0, StoreObjects.Length);
+            Store storeCs = StoreObjects[num].GetComponent<Store>();
+            favorite = storeCs.GetFoodType();
+        }
+
+        child = transform.Find("favorite").gameObject;
     }
 
     // Update is called once per frame
@@ -151,6 +166,7 @@ public class human : MonoBehaviour
     public void SetState(human_state _state)
     {
         state = (int)_state;
+        if(_state == human_state.brainwashing)child.GetComponent<favorite>().SetBrainwashingTex();
     }
 
     // 状態取得関数
@@ -163,5 +179,10 @@ public class human : MonoBehaviour
     public void SetTargetEnemyStore(GameObject _target)
     {
         EnemyTarget = _target;
+    }
+
+    public Store.food_type GetFavoriteFood()
+    {
+        return favorite;
     }
 }
