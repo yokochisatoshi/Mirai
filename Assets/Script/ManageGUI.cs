@@ -12,7 +12,7 @@ public class ManageGUI : MonoBehaviour
 
     private bool bCanSet = false;
     private bool bHitGrand = false;
-    private int nInterval = 3;
+    private int nInterval = 5;
     private int nCntInterval = 0;
 
     public GameObject Kanban00_Left;
@@ -49,24 +49,24 @@ public class ManageGUI : MonoBehaviour
                     bHitGrand = true;
                     PreViewObject.transform.position = currentPosition;
                 }
-
             }
 
             //Ý’u‚ª‰Â”\‚Ìó‘Ô if
-            if (Input.GetMouseButtonDown(0) && nCntInterval > nInterval)
+            if ((Input.GetMouseButtonDown(0) || Input.GetMouseButton(0)) && nCntInterval > nInterval)
             {
-                Debug.Log("Click");
-                nCntInterval = 0;
-                bCanSet = false;
-
                 if (bHitGrand == false)
                 {
-                   Destroy(PreViewObject);
+                    Destroy(PreViewObject);
+                    Debug.Log("Destroy_Click");
                 }
                 else
                 {
 
                 }
+                nCntInterval = 0;
+                bCanSet = false;
+                Debug.Log("Leave");
+
             }
         }
     }
@@ -74,27 +74,24 @@ public class ManageGUI : MonoBehaviour
 
     public void LeftClickKanban00()
     {
-        if (bCanSet) return;
-        if (nCntInterval > nInterval)
-        {
-          
-            nCntInterval = 0;
-            bCanSet = true;
+        if (bCanSet == true) { return; }
 
-            PreViewObject= Instantiate(Kanban00_Left, new Vector3(-10,0,0), Quaternion.Euler(0, 0, 0));
-        }
+        bCanSet = true;
+
+        PreViewObject = Instantiate(Kanban00_Left, new Vector3(-10, 0, 0), Quaternion.Euler(0, 0, 0));
+
     }
 
     public void RightClickKanban00()
     {
-        if (bCanSet) return;
-        if (nCntInterval > nInterval)
-        {
-            nCntInterval = 0;
-            bCanSet = true;
 
-            PreViewObject = Instantiate(Kanban00_Right, new Vector3(-10, 0, 0), Quaternion.Euler(0, 0, 0));
-        }
+        if (bCanSet == true) { return; }
+
+
+        bCanSet = true;
+
+        PreViewObject = Instantiate(Kanban00_Right, new Vector3(-10, 0, 0), Quaternion.Euler(0, 0, 0));
+
     }
 
 }
