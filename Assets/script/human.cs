@@ -12,6 +12,9 @@ public class human : MonoBehaviour
         Destroy,        // ‘Ş“X
     }
 
+    // D•¨‚Ío“X‚µ‚Ä‚¢‚é“X‚Ì’†‚©‚çƒ‰ƒ“ƒ_ƒ€‚Åİ’è‚³‚ê‚é
+    public Store.food_type favorite;
+
     public float speed;
     GameObject ManageData;
     PlayerData script;
