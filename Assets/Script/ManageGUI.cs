@@ -12,13 +12,17 @@ public class ManageGUI : MonoBehaviour
 
     private bool bCanSet = false;
     private bool bHitGrand = false;
-    private int nInterval = 3;
+    private int nInterval = 5;
     private int nCntInterval = 0;
+    //看板系のObjectまとめ
 
     public GameObject Kanban00_Left;
     public GameObject Kanban00_Right;
-
+    //代入されるプレビューの入れ物
     private GameObject PreViewObject;
+    private BoxCollider PreViewColider;
+    private Color PreViewColor;
+
 
     // Start is called before the first frame update
     void Start()
@@ -49,52 +53,56 @@ public class ManageGUI : MonoBehaviour
                     bHitGrand = true;
                     PreViewObject.transform.position = currentPosition;
                 }
-
             }
 
-            //設置が可能の状態 if
-            if (Input.GetMouseButtonDown(0) && nCntInterval > nInterval)
+            //設置が可能な状態で左クリックを押した if
+            if ((Input.GetMouseButtonDown(0) || Input.GetMouseButton(0)) && nCntInterval > nInterval)
             {
-                Debug.Log("Click");
-                nCntInterval = 0;
-                bCanSet = false;
-
                 if (bHitGrand == false)
                 {
-                   Destroy(PreViewObject);
+                    Destroy(PreViewObject);
                 }
                 else
                 {
-
+                    PreViewColider.enabled = true;
+                    PreViewColor.a = 1.0f;
+                    PreViewColor.r = 1.0f;
+                    PreViewColor.g = 1.0f;
+                    PreViewObject.GetComponent<Renderer>().material.color = PreViewColor;
                 }
+                nCntInterval = 0;
+                bCanSet = false;
             }
+            //設置前か後かで当たり判定と半透明のif
+            
+
         }
     }
-
-
-    public void LeftClickKanban00()
+    public void ClickKanban00()
     {
-        if (bCanSet) return;
-        if (nCntInterval > nInterval)
-        {
-          
-            nCntInterval = 0;
-            bCanSet = true;
+        if (bCanSet == true) { return; }
 
-            PreViewObject= Instantiate(Kanban00_Left, new Vector3(-10,0,0), Quaternion.Euler(0, 0, 0));
-        }
+        bCanSet = true;
+        //プレビューたちに代入
+        PreViewObject = Instantiate(Kanban00_Left, new Vector3(-10, 0, 0), Quaternion.Euler(0, 0, 0));
+        PreViewColider=PreViewObject.GetComponent<BoxCollider>();
+        PreViewColor=PreViewObject.GetComponent<Renderer>().material.color;
+
+        //
+        PreViewColider.enabled = false;
+        PreViewColor.a = 0.5f;
+        PreViewColor.r = 0.5f;
+        PreViewColor.g = 0.5f;
+        PreViewObject.GetComponent<Renderer>().material.color = PreViewColor;
     }
 
-    public void RightClickKanban00()
+    public void ClickKanban01()
     {
-        if (bCanSet) return;
-        if (nCntInterval > nInterval)
-        {
-            nCntInterval = 0;
-            bCanSet = true;
+        if (bCanSet == true) { return; }
 
-            PreViewObject = Instantiate(Kanban00_Right, new Vector3(-10, 0, 0), Quaternion.Euler(0, 0, 0));
-        }
+        bCanSet = true;
+
+        PreViewObject = Instantiate(Kanban00_Right, new Vector3(-10, 0, 0), Quaternion.Euler(0, 0, 0));
     }
 
 }

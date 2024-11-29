@@ -18,7 +18,7 @@ public class Kanban00 : MonoBehaviour
 
     public void MouseClick()
     {
-        Managescript.LeftClickKanban00();
+        Managescript.ClickKanban00();
     }
 
 }
