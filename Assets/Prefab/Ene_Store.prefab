@@ -110,5 +110,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ca77ce52090655429de6b5438ba59a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooltime: 1000
+  cooltime: 600
   count: 0
