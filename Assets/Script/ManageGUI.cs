@@ -74,7 +74,6 @@ public class ManageGUI : MonoBehaviour
                 bCanSet = false;
             }
             //İ’u‘O‚©Œã‚©‚Å“–‚½‚è”»’è‚Æ”¼“§–¾‚Ìif
-            
 
         }
     }

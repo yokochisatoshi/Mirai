@@ -1801,7 +1801,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dec02a0ba9d8544588aa1d816126092, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NPC_00: {fileID: 6510840933718410978, guid: 5071fe0770df3784a99e1178e36cb485, type: 3}
+  NPC_00: {fileID: 9221091467366769088, guid: 85530c39160f1cb4986ee08f8b991e50, type: 3}
 --- !u!4 &1865328942
 Transform:
   m_ObjectHideFlags: 0
