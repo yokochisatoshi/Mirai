@@ -938,10 +938,10 @@ GameObject:
   - component: {fileID: 528892561}
   - component: {fileID: 528892563}
   - component: {fileID: 528892562}
-  - component: {fileID: 528892565}
   - component: {fileID: 528892566}
+  - component: {fileID: 528892567}
   m_Layer: 5
-  m_Name: Kanban00
+  m_Name: UI_Kanban00
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -956,7 +956,7 @@ RectTransform:
   m_GameObject: {fileID: 528892560}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.3388, y: 1, z: 1}
+  m_LocalScale: {x: 1.2530445, y: 1.0984, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 38221873}
@@ -987,7 +987,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: dd727446f3f548b48805ef540e836bc0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 25114598b554363428d19c14e704ee1b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1005,18 +1005,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 528892560}
   m_CullTransparentMesh: 1
---- !u!114 &528892565
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 528892560}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55a056b96bf4dcc40bbfdb304613c449, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &528892566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1034,8 +1022,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 528892565}
-          m_TargetAssemblyTypeName: Kanban00, Assembly-CSharp
+        - m_Target: {fileID: 528892567}
+          m_TargetAssemblyTypeName: UI_Kanban00, Assembly-CSharp
           m_MethodName: MouseClick
           m_Mode: 1
           m_Arguments:
@@ -1046,6 +1034,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &528892567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 528892560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4dd7da5d86e6924d87d3bfe7a50dba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &651881583
 GameObject:
   m_ObjectHideFlags: 0
@@ -1271,8 +1271,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6224008e6c736cc498f63748859db321, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Kanban00_Left: {fileID: 6685962595165166843, guid: 6e59dd544ee9e134e8e6a5ea64fa2c1a, type: 3}
-  Kanban00_Right: {fileID: 3235323455796589649, guid: a25f6e46d55ec0f489cc909e0ea643a6, type: 3}
+  Kanban00_Left: {fileID: 7667441942462077705, guid: a8f3f71a97e54924784a4736a453e71d, type: 3}
+  Kanban00_Right: {fileID: 1402807441815937715, guid: bc03e23996f5fd84494b6fda009cf43e, type: 3}
+  Kanban00_Preview: {fileID: 8365931387087758774, guid: 4965132a97b036643a479dc9ac129239, type: 3}
 --- !u!1001 &1129656158
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1423,9 +1424,9 @@ GameObject:
   - component: {fileID: 1459745850}
   - component: {fileID: 1459745849}
   - component: {fileID: 1459745852}
-  - component: {fileID: 1459745851}
+  - component: {fileID: 1459745853}
   m_Layer: 5
-  m_Name: Kanban01
+  m_Name: UI_Kanban01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1438,14 +1439,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1459745847}
-  m_LocalRotation: {x: -0.02006598, y: 0.014353922, z: -0.99954176, w: -0.017539691}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.00000030401816}
   m_LocalScale: {x: 1.3388, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 38221873}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 1.685, y: 2.271, z: -181.977}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 500, y: -449}
@@ -1471,7 +1472,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: dd727446f3f548b48805ef540e836bc0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c517076beaa4086449178e6871fb6ecb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1489,18 +1490,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1459745847}
   m_CullTransparentMesh: 1
---- !u!114 &1459745851
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1459745847}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c56215a26cf310b47a351112f69339d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1459745852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1518,8 +1507,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1459745851}
-          m_TargetAssemblyTypeName: Kanban01, Assembly-CSharp
+        - m_Target: {fileID: 1459745853}
+          m_TargetAssemblyTypeName: UI_Kanban01, Assembly-CSharp
           m_MethodName: MouseClick
           m_Mode: 1
           m_Arguments:
@@ -1530,6 +1519,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &1459745853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1459745847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0c1f1eab28238f4582df3e1a8fbd968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1482617812
 GameObject:
   m_ObjectHideFlags: 0
