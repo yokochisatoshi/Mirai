@@ -194,6 +194,7 @@ public class human : MonoBehaviour
         return favorite;
     }
 
+    // 子マテリアル取得関数
     public void GetAllChildMr()
     {
         List<GameObject> childbjects = new List<GameObject>();
