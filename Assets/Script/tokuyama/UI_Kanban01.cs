@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class Kanban00 : MonoBehaviour
+public class UI_Kanban01 : MonoBehaviour
 {
     GameObject GUIManager;
     ManageGUI Managescript;
@@ -18,7 +17,6 @@ public class Kanban00 : MonoBehaviour
 
     public void MouseClick()
     {
-        Managescript.ClickKanban00();
+        Managescript.ClickKanban01();
     }
-
 }
