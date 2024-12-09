@@ -28,6 +28,9 @@ public class FadeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+
+
         if (Input.GetKeyDown(KeyCode.Return)) fadeout = true;
 
         if (fadeout == true)
