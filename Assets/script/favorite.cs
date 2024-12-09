@@ -23,7 +23,7 @@ public class favorite : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        this.gameObject.transform.eulerAngles = new Vector3(0, 90, 0);
     }
 
     public void SetFavoriteTex()
