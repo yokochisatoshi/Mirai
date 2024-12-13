@@ -8,10 +8,12 @@ public class PlayerData : MonoBehaviour
 
     public int nMoney = 777;  // 初期のお金
     public int nScore = 0;  // 初期のScore
-    public int nTime = 0;    //時間管理  時計とか表示する時用
+    public float nTime = 0;    //時間管理  時計とか表示する時用
     //ステージ管理用   ステージ→発展度のこと
     public int nCurrentStage = 0;  
     public int nMaxStage = 3;
+
+
 
     void Awake()
     {
@@ -29,7 +31,7 @@ public class PlayerData : MonoBehaviour
 
     void FixedUpdate()
     {
-        nTime++;
+        nTime+=0.1f;
     }
 
 
