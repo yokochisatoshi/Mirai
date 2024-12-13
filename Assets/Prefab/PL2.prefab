@@ -1078,9 +1078,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fffb6367a77b82b4eb4b43183b5ef968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UirouTex: {fileID: 2800000, guid: b699625ebc94e5a49af2c0c19b3bd7da, type: 3}
-  MisokatuTex: {fileID: 2800000, guid: 952048546b1814f4480519f6d11e8c3c, type: 3}
-  BigEyeTex: {fileID: 2800000, guid: f09eae8c0ea04254b90c5386a034a225, type: 3}
+  UirouTex: {fileID: 2800000, guid: 62e9ac9cb4ec50541b774d89721b19d8, type: 3}
+  MisokatuTex: {fileID: 2800000, guid: a2c4fd27dc593254cb6ac95f3a4b060c, type: 3}
+  BigEyeTex: {fileID: 2800000, guid: 2f3e2c96e87c60b418c1701e33128a94, type: 3}
   BrainwashingTex: {fileID: 2800000, guid: cdb88fdb0cf46b244a667edaff21c7df, type: 3}
 --- !u!1 &8827705519827818757
 GameObject:
