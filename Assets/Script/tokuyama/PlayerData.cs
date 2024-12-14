@@ -13,8 +13,12 @@ public class PlayerData : MonoBehaviour
     public int nCurrentStage = 0;  
     public int nMaxStage = 3;
 
-
-
+    //透明にしてとか言われた処理(キレそう)のために用意するもの
+    //汚くなるのでここからで分ける
+    public int nSumMoney = 0;
+    public float nCountFade = 0;    //透明度   
+    private float nFadeSpeed = 0.004f;
+    public bool bAppear=false;
     void Awake()
     {
         // シングルトン
@@ -32,14 +36,31 @@ public class PlayerData : MonoBehaviour
     void FixedUpdate()
     {
         nTime+=0.1f;
+
+
+        if (bAppear)
+        {
+            nCountFade-=nFadeSpeed;
+
+            if (nCountFade <= 0)
+            {
+                nMoney += nSumMoney;
+                nSumMoney = 0;
+                bAppear = false;
+                nCountFade = 0; //いらんけど一応
+            }
+        }
+       
+        
     }
 
 
     // お金を増やすメソッド
     public void AddMoney(int amount)
     {
-        nMoney += amount;
-       
+        nSumMoney += amount;
+        bAppear = true;
+        nCountFade = 1;   //透明度   
     }
 
     public void AddScore(int amount)
