@@ -17,7 +17,7 @@ public class PlayerData : MonoBehaviour
     //‰˜‚­‚È‚é‚Ì‚Å‚±‚±‚©‚ç‚Å•ª‚¯‚é
     public int nSumMoney = 0;
     public float nCountFade = 0;    //“§–¾“x   
-    private float nFadeSpeed = 0.004f;
+    private float nFadeSpeed = 0.006f;
     public bool bAppear=false;
     void Awake()
     {

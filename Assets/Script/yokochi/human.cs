@@ -237,4 +237,9 @@ public class human : MonoBehaviour
         }
     }
 
+    public void HitLv3()
+    {
+
+    }
+
 }
