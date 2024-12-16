@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DayTimer : MonoBehaviour
+public class syachihoko : MonoBehaviour
 {
+    public float destroyCount = 0.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +15,6 @@ public class DayTimer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Destroy(this.gameObject, destroyCount);
     }
 }
