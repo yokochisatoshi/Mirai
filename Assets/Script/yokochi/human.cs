@@ -237,8 +237,10 @@ public class human : MonoBehaviour
         }
     }
 
-    public void HitLv3()
+    public void HitLv3(Store.food_type food)
     {
+        favorite= food;
+        child.GetComponent<favorite>().SetFavoriteTex();
 
     }
 

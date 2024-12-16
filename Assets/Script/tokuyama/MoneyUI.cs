@@ -12,8 +12,6 @@ public class MoneyUI : MonoBehaviour
     private float text2G;
     private float text2B;
 
-    private float Fade = 255;
-  
 
     // Start is called before the first frame update
     void Start()

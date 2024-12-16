@@ -7,13 +7,39 @@ using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCou
 public class Kanban02 : MonoBehaviour
 {
 
-    int nCounter = 2;
-   
+    int nCounter = 1;
+
+    private Store.food_type sidefood;
+    private bool bHit = false;
     
     // Start is called before the first frame update
     void Start()
     {
+        LayerMask layerMask = 1 << LayerMask.NameToLayer("MyStore");
+        RaycastHit hitOb;
+        Vector3 vector3= Vector3.zero;
+
+        if (this.gameObject.tag=="leftMarker")
+        {
+            vector3 = new Vector3(0.0f, 0.0f, 1.0f);
+        }
+        else if(this.gameObject.tag == "rightMarker")
+        {
+            vector3 = new Vector3(0.0f, 0.0f, -1.0f);
+        }
+
         
+
+
+
+        if(Physics.Raycast(this.transform.position, vector3, out hitOb, 100.0f, layerMask))
+        {
+            if(hitOb.collider.gameObject.tag == "Store")
+            {
+                sidefood = hitOb.collider.gameObject.GetComponent<Store>().food;
+                bHit = true;
+            }
+        }
     }
 
     // Update is called once per frame
@@ -32,11 +58,10 @@ public class Kanban02 : MonoBehaviour
                 Destroy(this.gameObject);
             }
             //D‚İ‚ÌH‚×•¨‚ğ•ÏX‚·‚éˆ—
-            collider.gameObject.GetComponent<human>().HitLv3();
-
-
+            if(bHit)
+            {
+                collider.gameObject.GetComponent<human>().HitLv3(sidefood);
+            }
         }
     }
-
-
 }
