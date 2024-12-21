@@ -232,4 +232,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1f8c9ac72276984b939dfeb66331f46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cooltime: 1000
+  count: 0
   food: 0

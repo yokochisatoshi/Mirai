@@ -11,7 +11,7 @@ public class ScaleOnScore : MonoBehaviour
     private void Update()
     {
         // スコアが一定値に達したらスケールを増加
-        if (PlayerData.Instance.nScore >= targetScore && Level < 3)
+        if (PlayerData.Instance.nMoney >= targetScore && Level < 3)
         {
             // 現在のスケールに加算
             transform.localScale += scaleIncrease;
@@ -24,7 +24,7 @@ public class ScaleOnScore : MonoBehaviour
             if (Level == 3)
             {
                 // 位置の変更
-                transform.position = new Vector3(transform.position.x, transform.position.y + 70f, transform.position.z);
+                transform.position = new Vector3(transform.position.x, transform.position.y + 60f, transform.position.z);
             }
 
         }

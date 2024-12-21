@@ -156,6 +156,7 @@ public class human : MonoBehaviour
             { // “X‚É“–‚½‚Á‚½‚ç
                 state = (int)human_state.eat;       // H–ó‘Ô‚É‘JˆÚ
                 script.AddMoney(150);               // ‚¨‹à‰ÁZ
+                script.AddScore(150);               // ƒXƒRƒA‰ÁZ
             }
             else if (other.gameObject.tag == "EnemyStore" && bCanStore == true)
             { // “G‚Ì“X“–‚½‚Á‚½‚ç

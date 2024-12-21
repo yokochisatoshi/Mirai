@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Store : MonoBehaviour
 {
+    public int cooltime = 100;      // 必殺技のクールタイム
+    public int count = 0;           // クールタイムのカウンタ
     public enum food_type
     {
         misokatu,
@@ -19,9 +21,13 @@ public class Store : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        count++;
+        if (count > cooltime)
+        { // cooltime分時間が経ったら
+            count = 0;
+        }
     }
 
     public food_type GetFoodType()

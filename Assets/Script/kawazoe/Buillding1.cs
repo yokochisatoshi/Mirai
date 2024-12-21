@@ -6,14 +6,16 @@ using TMPro;
 public class Buillding1 : MonoBehaviour
 {
     public GameObject buildingPrefab;       // 建設する建物のPrefab
-    public GameObject displayObject;        // 建築後に表示するオブジェクト（子オブジェクト）
+    //public GameObject gaugeObject;        　// 建築後に表示するゲージオブジェクト
+    public GameObject rangeObject;          // 建築後に表示する範囲オブジェクト
     private bool isConstructed = false;     // 建物が建設済みかどうか
 
     void Start()
     {
-        if (displayObject != null)
+        if (/*gaugeObject != null &&*/ rangeObject != null)
         {
-            displayObject.SetActive(false);
+            //gaugeObject.SetActive(false);
+            rangeObject.SetActive(false);
         }
     }
 
@@ -30,9 +32,10 @@ public class Buillding1 : MonoBehaviour
             Instantiate(buildingPrefab, transform.position, Quaternion.Euler(0, rotationY, 0));
 
             // 表示オブジェクトを有効化
-            if (displayObject != null)
+            if (/*gaugeObject != null &&*/ rangeObject != null)
             {
-                displayObject.SetActive(true);
+                //gaugeObject.SetActive(true);
+                rangeObject.SetActive(true);
             }
 
             //Destroy(gameObject);
