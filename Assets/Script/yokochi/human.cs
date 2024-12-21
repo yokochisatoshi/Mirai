@@ -65,7 +65,7 @@ public class human : MonoBehaviour
 
 
         // ‚Æ‚è‚ ‚¦‚¸YÀ•W‚ªˆê’èˆÈ‰º‚È‚çÁ‚·
-        if (this.transform.position.y < -1.0f)
+        if (this.transform.position.y < -2.0f)
         {
             Destroy(this.gameObject);
         }
