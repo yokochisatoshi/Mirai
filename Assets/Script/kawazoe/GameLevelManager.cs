@@ -20,7 +20,7 @@ public class GameLevelManager : MonoBehaviour
     void Update()
     {
         // スコアのテスト用: キーを押すとスコアが増える
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.A))
         {
             AddScore(100);
         }
