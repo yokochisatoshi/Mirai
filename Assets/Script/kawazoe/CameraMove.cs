@@ -21,6 +21,20 @@ public class CameraMove : MonoBehaviour
             Vector3 pos = transform.position;
             float val = Input.GetAxis("Mouse ScrollWheel");
             pos.x += val * moveVal;
+
+            // xç¿ïWÇ™-5ñ¢ñûÇ…Ç»ÇÁÇ»Ç¢ÇÊÇ§Ç…êßå¿
+            if (pos.x < -5)
+            {
+                pos.x = -5;
+            }
+
+            // xç¿ïWÇ™130à»è„Ç…Ç»ÇÁÇ»Ç¢ÇÊÇ§Ç…êßå¿
+            if (pos.x > 130)
+            {
+                pos.x = 130;
+            }
+
+
             transform.position = pos;
         }
     }
