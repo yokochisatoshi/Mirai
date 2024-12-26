@@ -23,6 +23,7 @@ public class ManageGUI : MonoBehaviour
     public GameObject Kanban01_Right;
     public GameObject Kanban02_Left;
     public GameObject Kanban02_Right;
+    public GameObject Shatihoko;
 
     //代入されるプレビューの入れ物
     private GameObject PreViewObject;
@@ -151,6 +152,35 @@ public class ManageGUI : MonoBehaviour
                 }
 
             }
+            else if (nChoiceOb == 3)
+            {
+                //設置が可能な状態で [左] クリックを押した
+                if ((Input.GetMouseButtonDown(0) || Input.GetMouseButton(0)) && nCntInterval > nInterval)
+                {
+                    Destroy(PreViewObject);
+                    if (bHitGrand == true)
+                    {
+                        Instantiate(Shatihoko, currentPosition, Quaternion.Euler(0, 0, 0));
+                    }
+                    nCntInterval = 0;
+                    bCanSet = false;
+                    nChoiceOb = -1;
+                }
+
+                //設置が可能な状態で [右] クリックを押した
+                if ((Input.GetMouseButtonDown(1) || Input.GetMouseButton(1)) && nCntInterval > nInterval)
+                {
+                    Destroy(PreViewObject);
+                    if (bHitGrand == true)
+                    {
+                        Instantiate(Shatihoko, currentPosition, Quaternion.Euler(0, 0, 0));
+                    }
+                    nCntInterval = 0;
+                    bCanSet = false;
+                    nChoiceOb = -1;
+                }
+
+            }
 
 
 
@@ -185,5 +215,15 @@ public class ManageGUI : MonoBehaviour
         //プレビューたちに代入
         PreViewObject = Instantiate(Kanban00_Preview, new Vector3(-10, 0, 0), Quaternion.Euler(0, 0, 0));
     }
+
+    public void ClickShati()
+    {
+        if (bCanSet == true) { return; }
+        nChoiceOb = 3;
+        bCanSet = true;
+        //プレビューたちに代入
+        PreViewObject = Instantiate(Kanban00_Preview, new Vector3(-10, 0, 0), Quaternion.Euler(0, 0, 0));
+    }
+
 
 }
