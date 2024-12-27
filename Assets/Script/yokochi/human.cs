@@ -96,7 +96,7 @@ public class human : MonoBehaviour
                 {
                     childMr[i].color = mr.material.color - new Color32(0, 0, 0, (byte)(mr.material.color.a + 5));
                 }
-
+                Debug.Log(childMr.Count);
                 mr.material.color = mr.material.color - new Color32(0, 0, 0, (byte)(mr.material.color.a + 5));  // 透明にしていく
                 Destroy(this.gameObject, DestroyTime);                                                           // 一定時間経ったら殺す
                 break;
@@ -215,8 +215,15 @@ public class human : MonoBehaviour
 
                 if (childRenderer != null)
                 {
+                    var mat = Resources.Load<Material>("Materials/mat");
+                    var mats = childbjects[i].GetComponent<SkinnedMeshRenderer>().materials;
+                    for (int j = 0; j < childbjects[i].GetComponent<SkinnedMeshRenderer>().materials.Length; j++)
+                    {
+                        childMr.Add(mats[j]);
+                    }
+
                     // 子オブジェクトのMaterialを格納
-                    childMr.Add(childRenderer.material);
+                    //childMr.Add(childRenderer.material);
                 }
             }
         }
