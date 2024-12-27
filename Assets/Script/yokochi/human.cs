@@ -215,8 +215,22 @@ public class human : MonoBehaviour
 
                 if (childRenderer != null)
                 {
+                    if (childbjects[i].GetComponent<SkinnedMeshRenderer>() != null)   // 適当
+                    {
+                        var mat = Resources.Load<Material>("Materials/mat");
+                        var mats = childbjects[i].GetComponent<SkinnedMeshRenderer>().materials;
+                        for (int j = 0; j < childbjects[i].GetComponent<SkinnedMeshRenderer>().materials.Length; j++)
+                        {
+                            childMr.Add(mats[j]);
+                        }
+                    }
+                    else
+                    {
+                        childMr.Add(childRenderer.material);
+                    }
+
                     // 子オブジェクトのMaterialを格納
-                    childMr.Add(childRenderer.material);
+                    //childMr.Add(childRenderer.material);
                 }
             }
         }
