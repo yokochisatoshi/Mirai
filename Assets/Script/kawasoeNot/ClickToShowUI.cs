@@ -23,7 +23,7 @@ public class ClickToShowUI : MonoBehaviour
 
         if (uiPanel == null)
         {
-            Debug.LogError("UIPanel が見つかりません。スクリプトで自動設定するか、Inspector で設定してください。");
+            //Debug.LogError("UIPanel が見つかりません。スクリプトで自動設定するか、Inspector で設定してください。");
         }
     }
 
@@ -41,7 +41,7 @@ public class ClickToShowUI : MonoBehaviour
                 if (hit.transform == transform)
                 {
                     builldingData.selectedModel = hit.transform.gameObject;
-                    uiPanel.GetComponent<CanvasGroup>().alpha = 1.0f; // UIを表示する
+                    //uiPanel.GetComponent<CanvasGroup>().alpha = 1.0f; // UIを表示する
                     Debug.Log("モデルに当たっています！");
                 }
             }
@@ -49,7 +49,7 @@ public class ClickToShowUI : MonoBehaviour
 
         if (builldingData.selectedModel == null || Input.GetMouseButtonDown(1))
         {
-            uiPanel.GetComponent<CanvasGroup>().alpha = 0f;
+            //uiPanel.GetComponent<CanvasGroup>().alpha = 0f;
             builldingData.selectedModel = null;
             //Debug.Log("alhpa値を変更しました！");
         }

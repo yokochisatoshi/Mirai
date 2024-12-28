@@ -9,13 +9,13 @@ public class NPCManager : MonoBehaviour
     private int nInterval = 60;  //ステージなどによってPopのインターバルは変わるのでそれ用
     private int nCntInterval = 0;  //インターバルカウント用
 
-    
+
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -26,7 +26,7 @@ public class NPCManager : MonoBehaviour
         //int EndPos = 100;
 
 
-        if ( (PlayerData.Instance.nTime >= 60.0f  && PlayerData.Instance.nTime <= 120.0f) ||        //モーニング
+        if ((PlayerData.Instance.nTime >= 60.0f && PlayerData.Instance.nTime <= 120.0f) ||        //モーニング
              (PlayerData.Instance.nTime >= 360.0f && PlayerData.Instance.nTime <= 420.0f) ||        //昼
              (PlayerData.Instance.nTime >= 720.0f && PlayerData.Instance.nTime <= 780.0f))          //夜
         {
@@ -38,23 +38,23 @@ public class NPCManager : MonoBehaviour
         }
 
 
-            nCntInterval++;
+        nCntInterval++;
         //ステージによって場合分け
         switch (PlayerData.Instance.nCurrentStage)
         {
             case 0:
 
-               
-                
-                if(nCntInterval>nInterval)
+
+
+                if (nCntInterval > nInterval)
                 {
                     nCntInterval = 0;
                     Instantiate(NPC_00, new Vector3(StartPos, 0, Random.Range(-1.0f, 11.0f)), Quaternion.Euler(0, 90, 0));
-                 
+
                 }
                 break;
 
         }
-        
+
     }
 }
