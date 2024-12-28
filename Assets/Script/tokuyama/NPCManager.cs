@@ -22,20 +22,35 @@ public class NPCManager : MonoBehaviour
     void FixedUpdate()
     {
         //地面の手前の端と奥の端の座標 X座標です
-    int StartPos = 0;
-    //int EndPos = 100;
+        int StartPos = 0;
+        //int EndPos = 100;
 
-    nCntInterval++;
+
+        if ( (PlayerData.Instance.nTime >= 60.0f  && PlayerData.Instance.nTime <= 120.0f) ||        //モーニング
+             (PlayerData.Instance.nTime >= 360.0f && PlayerData.Instance.nTime <= 420.0f) ||        //昼
+             (PlayerData.Instance.nTime >= 720.0f && PlayerData.Instance.nTime <= 780.0f))          //夜
+        {
+            nInterval = 15;
+        }
+        else
+        {
+            nInterval = 60;
+        }
+
+
+            nCntInterval++;
         //ステージによって場合分け
         switch (PlayerData.Instance.nCurrentStage)
         {
             case 0:
+
+               
                 
                 if(nCntInterval>nInterval)
                 {
                     nCntInterval = 0;
-                    Instantiate(NPC_00, new Vector3(StartPos, 0, Random.Range(0.0f, 10.0f)), Quaternion.Euler(0, 90, 0));
-                  //  Debug.Log("tt");
+                    Instantiate(NPC_00, new Vector3(StartPos, 0, Random.Range(-1.0f, 11.0f)), Quaternion.Euler(0, 90, 0));
+                 
                 }
                 break;
 
