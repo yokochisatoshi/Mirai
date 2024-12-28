@@ -8,11 +8,7 @@ public class TriggerWall : MonoBehaviour
         // ヒューマンタグのオブジェクトに反応する
         if (other.CompareTag("Human"))
         {
-            // ヒューマンオブジェクトを非アクティブにする（見えなくする）
-            other.gameObject.SetActive(false);
-
-            // もしくは完全に破壊する場合
-            // Destroy(other.gameObject);
+            Destroy(other.gameObject);
         }
     }
 }
