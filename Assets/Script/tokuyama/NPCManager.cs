@@ -44,14 +44,14 @@ public class NPCManager : MonoBehaviour
         {
             case 0:
 
+                // 川添いじった（human処理が重くデバックが思ったようにできないためコメントアウトして、生成をやめた）
 
+                //if (nCntInterval > nInterval)
+                //{
+                //    nCntInterval = 0;
+                //    Instantiate(NPC_00, new Vector3(StartPos, 0, Random.Range(-1.0f, 11.0f)), Quaternion.Euler(0, 90, 0));
 
-                if (nCntInterval > nInterval)
-                {
-                    nCntInterval = 0;
-                    Instantiate(NPC_00, new Vector3(StartPos, 0, Random.Range(-1.0f, 11.0f)), Quaternion.Euler(0, 90, 0));
-
-                }
+                //}
                 break;
 
         }
