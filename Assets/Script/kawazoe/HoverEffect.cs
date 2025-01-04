@@ -12,17 +12,16 @@ public class HoverEffect : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public Vector2 moveOffset;               // 移動量
     public GameObject ScaleIncreaseButton;   // 表示するボタン
     public GameObject SpecialButton;
-    //public RectTransform levelUI;            // レベルUIのRectTransform
-    //public Vector2 levelUIOffset;            // レベルUIの移動量
     public float animationSpeed = 20f;       // アニメーション速度
 
     private Vector3 ImageOriginalScale;
     private Vector2 ImageOriginalPosition;
 
-    //public float hoverScale; // ホバー時のスケール
-    //public Vector2 hoverPositionOffset; // ホバー時の位置オフセット
+    public RectTransform levelUI;            // レベルUIのRectTransform
+    public float hoverScale; // ホバー時のスケール
+    public Vector2 hoverPositionOffset; // ホバー時の位置オフセット
 
-    //private Vector3 originalScale; // 初期スケール
+    private Vector3 originalScale; // 初期スケール
     private Vector2 originalPosition; // 初期位置
 
     void Start()
@@ -30,6 +29,9 @@ public class HoverEffect : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         // 初期値を記録
         ImageOriginalScale = targetTransform.localScale;
         ImageOriginalPosition = targetTransform.anchoredPosition;
+
+        originalScale = levelUI.localScale;
+        originalPosition = levelUI.localPosition;
 
         // 初期状態でボタンを非表示
         ScaleIncreaseButton.SetActive(false);
@@ -40,6 +42,9 @@ public class HoverEffect : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         StopAllCoroutines(); // アニメーションをリセット
         StartCoroutine(AnimateToState(ImageOriginalScale * scaleFactor, ImageOriginalPosition + moveOffset, hoverSprite, true));
+
+        StopAllCoroutines(); // アニメーションをリセット
+        StartCoroutine(AnimateToState(originalScale * hoverScale, originalPosition + hoverPositionOffset));
 
         targetTransform.transform.SetAsLastSibling();
 
