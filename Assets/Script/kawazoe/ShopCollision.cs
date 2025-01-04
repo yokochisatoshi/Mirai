@@ -18,18 +18,22 @@ public class ShopCollision : MonoBehaviour
     // 衝突時に呼び出される
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("入りました");
+
         // Playerタグのオブジェクトと衝突した場合
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Human"))
         {
             audioSource.PlayOneShot(collisionSound);
+            Debug.Log("呼ばれました");
         }
     }
 
     // トリガーを使用する場合
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Human"))
         {
+            Debug.Log("呼ばれました");
             audioSource.PlayOneShot(collisionSound);
         }
     }

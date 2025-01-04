@@ -23650,6 +23650,19 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2833241262106491747, guid: 391368fa9a7413443b79dd27ba5c5a6b, type: 3}
   m_PrefabInstance: {fileID: 5364932598087963607}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1797483749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797483743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d5b4a089d2746a41bd00596e86c12bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionSound: {fileID: 8300000, guid: 20c6ecc24e8850747ba203457981f02f, type: 3}
 --- !u!1 &1799603814
 GameObject:
   m_ObjectHideFlags: 0
@@ -25042,6 +25055,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundEffects:
   - {fileID: 8300000, guid: 20c6ecc24e8850747ba203457981f02f, type: 3}
+  - {fileID: 8300000, guid: 55f45caa45ff43a4db501b7432b9f013, type: 3}
 --- !u!4 &1905876973
 Transform:
   m_ObjectHideFlags: 0
