@@ -12,16 +12,24 @@ public class HoverEffect : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public Vector2 moveOffset;               // 移動量
     public GameObject ScaleIncreaseButton;   // 表示するボタン
     public GameObject SpecialButton;
-    public float animationSpeed = 10f;       // アニメーション速度
+    //public RectTransform levelUI;            // レベルUIのRectTransform
+    //public Vector2 levelUIOffset;            // レベルUIの移動量
+    public float animationSpeed = 20f;       // アニメーション速度
 
-    private Vector3 originalScale;
-    private Vector2 originalPosition;
+    private Vector3 ImageOriginalScale;
+    private Vector2 ImageOriginalPosition;
+
+    //public float hoverScale; // ホバー時のスケール
+    //public Vector2 hoverPositionOffset; // ホバー時の位置オフセット
+
+    //private Vector3 originalScale; // 初期スケール
+    private Vector2 originalPosition; // 初期位置
 
     void Start()
     {
         // 初期値を記録
-        originalScale = targetTransform.localScale;
-        originalPosition = targetTransform.anchoredPosition;
+        ImageOriginalScale = targetTransform.localScale;
+        ImageOriginalPosition = targetTransform.anchoredPosition;
 
         // 初期状態でボタンを非表示
         ScaleIncreaseButton.SetActive(false);
@@ -31,7 +39,7 @@ public class HoverEffect : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public void OnPointerEnter(PointerEventData eventData)
     {
         StopAllCoroutines(); // アニメーションをリセット
-        StartCoroutine(AnimateToState(originalScale * scaleFactor, originalPosition + moveOffset, hoverSprite, true));
+        StartCoroutine(AnimateToState(ImageOriginalScale * scaleFactor, ImageOriginalPosition + moveOffset, hoverSprite, true));
 
         targetTransform.transform.SetAsLastSibling();
 
@@ -42,7 +50,7 @@ public class HoverEffect : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public void OnPointerExit(PointerEventData eventData)
     {
         StopAllCoroutines(); // アニメーションをリセット
-        StartCoroutine(AnimateToState(originalScale, originalPosition, defaultSprite, false));
+        StartCoroutine(AnimateToState(ImageOriginalScale, ImageOriginalPosition, defaultSprite, false));
 
         ScaleIncreaseButton.SetActive(false);
         SpecialButton.SetActive(false);
@@ -66,5 +74,10 @@ public class HoverEffect : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         // 画像変更
         targetImage.sprite = targetSprite;
 
+        //// レベルUIの位置を変更
+        //if (levelUI != null)
+        //{
+        //    levelUI.anchoredPosition = targetPosition + levelUIOffset;
+        //}
     }
 }
