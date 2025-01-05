@@ -10,12 +10,14 @@ public class NPCManager : MonoBehaviour
     private int nCntInterval = 0;  //インターバルカウント用
 
     public GameObject Wall;
-
+    private Vector3 Lv2WallPos;
+    private Vector3 Lv3WallPos;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        Lv2WallPos = new Vector3(Wall.transform.position.x+35, Wall.transform.position.y, Wall.transform.position.z);
+        Lv3WallPos = new Vector3(Wall.transform.position.x+70, Wall.transform.position.y, Wall.transform.position.z);
     }
 
     // Update is called once per frame
@@ -44,6 +46,16 @@ public class NPCManager : MonoBehaviour
         {
 
         }
+        //一時的
+        if(PlayerData.Instance.nMoney>=1000)
+        {
+            Wall.transform.position =Lv2WallPos;
+        }
+
+
+
+
+        //一時的
 
         if (nCntInterval > nInterval)
         {
