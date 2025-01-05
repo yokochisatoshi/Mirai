@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//壁もあつかうぞおおおおおおおおおおおおおおおおおおおおおおおおおおお
 
 public class NPCManager : MonoBehaviour
 {
@@ -9,7 +9,7 @@ public class NPCManager : MonoBehaviour
     private int nInterval = 60;  //ステージなどによってPopのインターバルは変わるのでそれ用
     private int nCntInterval = 0;  //インターバルカウント用
 
-
+    public GameObject Wall;
 
 
     // Start is called before the first frame update
@@ -19,22 +19,22 @@ public class NPCManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         //地面の手前の端と奥の端の座標 X座標です
         int StartPos = 0;
-        //int EndPos = 100;
+        float EndPos = Wall.transform.position.x - 1.0f;
 
 
         if ((PlayerData.Instance.nTime >= 60.0f && PlayerData.Instance.nTime <= 120.0f) ||        //モーニング
              (PlayerData.Instance.nTime >= 360.0f && PlayerData.Instance.nTime <= 420.0f) ||        //昼
              (PlayerData.Instance.nTime >= 720.0f && PlayerData.Instance.nTime <= 780.0f))          //夜
         {
-            nInterval = 15;
+            nInterval = 90;
         }
         else
         {
-            nInterval = 60;
+            nInterval = 180;
         }
 
 
@@ -42,17 +42,23 @@ public class NPCManager : MonoBehaviour
         //ステージによって場合分け
         switch (PlayerData.Instance.nCurrentStage)
         {
-            case 0:
 
+        }
 
+        if (nCntInterval > nInterval)
+        {
+            nCntInterval = 0;
+            int nRandom = Random.Range(0, 2);
 
-                if (nCntInterval > nInterval)
-                {
-                    nCntInterval = 0;
-                    Instantiate(NPC_00, new Vector3(StartPos, 0, Random.Range(-1.0f, 11.0f)), Quaternion.Euler(0, 90, 0));
-
-                }
-                break;
+            if(nRandom == 0)
+            {
+                Instantiate(NPC_00, new Vector3(StartPos, -1, Random.Range(-1.0f, 11.0f)), Quaternion.Euler(0, 90, 0));
+            }
+            else
+            {
+                Instantiate(NPC_00, new Vector3(EndPos, -1, Random.Range(-1.0f, 11.0f)), Quaternion.Euler(0, -90, 0));
+            }
+            
 
         }
 
