@@ -24,7 +24,7 @@ public class StoreManager : MonoBehaviour
     public void OperateMisokatuSpecial()
     {
         Debug.Log("Misokatu‚ª•KE‹Z‚ğg‚¢‚Ü‚·");
-
+        MisokatuModel.GetComponent<Store>().UseSkill();
     }
 
     // ‚¤‚¢‚ë‚¤“X‘‘

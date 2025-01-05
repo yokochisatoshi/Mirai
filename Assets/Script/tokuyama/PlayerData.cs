@@ -19,6 +19,7 @@ public class PlayerData : MonoBehaviour
     public float nCountFade = 0;    //透明度   
     private float nFadeSpeed = 0.006f;
     public bool bAppear=false;
+
     void Awake()
     {
         // シングルトン
