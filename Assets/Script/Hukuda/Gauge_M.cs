@@ -37,7 +37,7 @@ public class Gauge_M : MonoBehaviour
         texture = material.GetTexture("_MainTex");
     }
 
-    void Update()
+    void FixedUpdate()
     {
         float GaugePoint = 0;
 
@@ -91,7 +91,7 @@ public class Gauge_M : MonoBehaviour
         }
         else if (GaugePoint >= 100)
         {
-            material.SetTexture("_MsinTex", UpGauge11);
+            material.SetTexture("_MainTex", UpGauge11);
         }
     }
 }

@@ -95,7 +95,7 @@ public class Gauge : MonoBehaviour
         }
         else if(GaugePoint >= 100)
         {
-            material.SetTexture("_MsinTex", UpGauge11);
+            material.SetTexture("_MainTex", UpGauge11);
         }
     }
 }
