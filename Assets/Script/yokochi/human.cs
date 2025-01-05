@@ -41,6 +41,9 @@ public class human : MonoBehaviour
     public bool speedUp = false;
     public bool speedDown = false;
     float speedBuf = 1.0f;
+
+    //徳山
+    private Vector3 HozonVec;
     // Start is called before the first frame update
     void Start()
     {
@@ -130,21 +133,19 @@ public class human : MonoBehaviour
     // プレイヤー側の当たり判定
     void OnCollisionEnter(Collision collision)
     {
-        if (state == (int)human_state.normal)
-        {
-
-            // 壁
-            if (collision.gameObject.tag == "wall")
-            {
-                this.gameObject.transform.eulerAngles = new Vector3(0, 90, 0);
-                bCanStore = false;
-            }
-        }
+        
     }
     void OnTriggerEnter(Collider other)
     {
         if (state == (int)human_state.normal)
         {
+
+            // 壁
+            if (other.gameObject.tag == "wall")
+            {
+                this.gameObject.transform.eulerAngles = HozonVec;
+                bCanStore = false;
+            }
 
             // 標識？
             if (other.gameObject.tag == "backMarker")
@@ -154,11 +155,20 @@ public class human : MonoBehaviour
             }
             if (other.gameObject.tag == "leftMarker")
             {
+                //徳山追加
+                HozonVec = this.gameObject.transform.eulerAngles;
+                //徳山追加分終わり
+
                 this.gameObject.transform.eulerAngles = new Vector3(0, 0, 0);
                 bCanStore = true;
+                
             }
             if (other.gameObject.tag == "rightMarker")
             {
+                //徳山追加
+                HozonVec = this.gameObject.transform.eulerAngles;
+                //徳山追加分終わり
+
                 this.gameObject.transform.eulerAngles = new Vector3(0, 180, 0);
                 bCanStore = true;
             }
