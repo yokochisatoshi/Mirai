@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class ShopCollision : MonoBehaviour
 {
-    public AudioClip collisionSound; // 効果音を指定
+    public AudioClip collisionSound1; // 効果音を指定
+    public AudioClip collisionSound2; // 効果音を指定
     private AudioSource audioSource;
 
     void Start()
@@ -15,22 +16,26 @@ public class ShopCollision : MonoBehaviour
         }
     }
 
-    // 衝突時に呼び出される
+    private void PlayCollisionSounds()
+    {
+        // 効果音をランダムに再生する
+        AudioClip clipToPlay = Random.value > 0.5f ? collisionSound1 : collisionSound2;
+        audioSource.PlayOneShot(clipToPlay);
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
-        // Playerタグのオブジェクトと衝突した場合
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Human"))
         {
-            audioSource.PlayOneShot(collisionSound);
+            PlayCollisionSounds();
         }
     }
 
-    // トリガーを使用する場合
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Human"))
         {
-            audioSource.PlayOneShot(collisionSound);
+            PlayCollisionSounds();
         }
     }
 }

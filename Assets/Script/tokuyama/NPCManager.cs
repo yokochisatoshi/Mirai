@@ -52,7 +52,7 @@ public class NPCManager : MonoBehaviour
             Wall.transform.position =Lv2WallPos;
         }
 
-
+                // 川添いじった（human処理が重くデバックが思ったようにできないためコメントアウトして、生成をやめた）
 
 
         //一時的
