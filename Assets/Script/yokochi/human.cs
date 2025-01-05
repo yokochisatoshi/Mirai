@@ -11,12 +11,13 @@ public class human : MonoBehaviour
         normal,         // ノーマル状態
         eat,            // 食事状態
         brainwashing,   // 洗脳(敵必殺)
+        allyBrainwashing,   // 洗脳(味方必殺)
         Destroy,        // 退店
     }
 
     // 好物は出店している店の中からランダムで設定される
     private Store.food_type favorite;
-
+    Vector3 pos;
     public float speed;
     GameObject ManageData;
     PlayerData script;
@@ -28,14 +29,22 @@ public class human : MonoBehaviour
     int eatCunt = 0;                            // 食事時間カウンタ
     public int eatTime;                         // 食事にかかる時間
     public int DestroyTime;                     // 消滅するまでの時間         
+    public float speedUpBuf;                         // 食事にかかる時間
+    public float speedDownDeBuf;                     // 消滅するまでの時間     
+    public int addMoneyVal = 200;
 
     MeshRenderer mr;          // 透明化用
 
     GameObject EnemyTarget;
+    GameObject AllyTarget;
 
+    public bool speedUp = false;
+    public bool speedDown = false;
+    float speedBuf = 1.0f;
     // Start is called before the first frame update
     void Start()
     {
+
         ManageData = GameObject.Find("ManageData");
         script = ManageData.GetComponent<PlayerData>();
 
@@ -44,7 +53,7 @@ public class human : MonoBehaviour
         // 出現している店をすべて取得
         GameObject[] StoreObjects = GameObject.FindGameObjectsWithTag("Store");     // 存在するStoreタグを持っているオブジェクトを配列に格納
 
-        // 候補のなかからランダムに設定
+        // 候補のなかから好物をランダムに設定
         if (StoreObjects.Length != 0)
         {
             int num = Random.Range(0, StoreObjects.Length);
@@ -60,9 +69,7 @@ public class human : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        // 移動処理(正面に移動)
-        Vector3 pos = transform.position;
-
+        pos = transform.position;
 
         // とりあえずY座標が一定以下なら消す
         if (this.transform.position.y < -1.0f)
@@ -74,8 +81,7 @@ public class human : MonoBehaviour
         {
             case (int)human_state.normal:
                 // 移動処理(正面に移動)
-                pos += transform.forward * speed;
-                transform.position = pos;
+                Moveforward();
                 break;
             case (int)human_state.eat:          // 食事中
                 eatCunt++;
@@ -84,13 +90,20 @@ public class human : MonoBehaviour
                     //Debug.Log("unnti");
                     eatCunt = 0;
                     state = (int)human_state.Destroy;                               // 退店状態に遷移
-                    this.gameObject.transform.eulerAngles = new Vector3(0, 180, 0); // プレイヤーを出口に向ける
+                    if(this.gameObject.transform.position.z > 0)
+                    {
+                        this.gameObject.transform.eulerAngles = new Vector3(0, 180, 0); // プレイヤーを出口に向ける
+                    }
+                    else
+                    {
+                        this.gameObject.transform.eulerAngles = new Vector3(0, 0, 0); // プレイヤーを出口に向ける
+                    }
+                    
                 }
                 break;
             case (int)human_state.Destroy:      // 退店状態
                 // 移動処理(正面に移動)
-                pos += transform.forward * speed;
-                transform.position = pos;
+                Moveforward();
 
                 for (int i = 0; i < childMr.Count; i++)
                 {
@@ -103,8 +116,12 @@ public class human : MonoBehaviour
             case (int)human_state.brainwashing: // 洗脳状態
                 this.transform.LookAt(EnemyTarget.transform);   // 目的の店の方向を向く
                 // 正面に移動
-                pos += transform.forward * speed;
-                transform.position = pos;
+                Moveforward();
+                break;
+            case (int)human_state.allyBrainwashing: // 洗脳状態
+                this.transform.LookAt(AllyTarget.transform);   // 目的の店の方向を向く
+                // 正面に移動
+                Moveforward();
                 break;
         }
     }
@@ -155,7 +172,7 @@ public class human : MonoBehaviour
             if (other.gameObject.tag == "Store" && bCanStore == true)
             { // 店に当たったら
                 state = (int)human_state.eat;       // 食事状態に遷移
-                script.AddMoney(150);               // お金加算
+                script.AddMoney(addMoneyVal);       // お金加算
                 script.AddScore(150);               // スコア加算
             }
             else if (other.gameObject.tag == "EnemyStore" && bCanStore == true)
@@ -169,6 +186,14 @@ public class human : MonoBehaviour
             //Debug.Log("e store");
             state = (int)human_state.eat;       // 食事状態に遷移
         }
+
+        if (state == (int)human_state.allyBrainwashing && other.gameObject.name == AllyTarget.name)
+        { // 洗脳状態かつ目的の味方の店に当たったら
+            //Debug.Log("e store");
+            script.AddMoney(addMoneyVal);       // お金加算
+            script.AddScore(150);               // スコア加算
+            state = (int)human_state.eat;       // 食事状態に遷移
+        }
     }
 
     // 状態遷移関数
@@ -176,6 +201,7 @@ public class human : MonoBehaviour
     {
         state = (int)_state;
         if (_state == human_state.brainwashing) child.GetComponent<favorite>().SetBrainwashingTex();
+        if (_state == human_state.allyBrainwashing) child.GetComponent<favorite>().SetFavoriteTex();
     }
 
     // 状態取得関数
@@ -189,10 +215,18 @@ public class human : MonoBehaviour
     {
         EnemyTarget = _target;
     }
+    public void SetTargetAllyStore(GameObject _target)
+    {
+        AllyTarget = _target;
+    }
 
     public Store.food_type GetFavoriteFood()
     {
         return favorite;
+    }
+    public void SetFavoriteFood(Store.food_type _food)
+    {
+        favorite = _food;
     }
 
     // 子マテリアル取得関数
@@ -259,4 +293,26 @@ public class human : MonoBehaviour
 
     }
 
+    void Moveforward()
+    {
+        if(speedUp == true && speedDown == false)
+        {
+            speedBuf = speedUpBuf;
+        }
+        else if(speedUp == false && speedDown == true)
+        {
+            speedBuf = speedDownDeBuf;
+        }
+        else if (speedUp == true && speedDown == true)
+        {
+            speedBuf = speedDownDeBuf + speedUpBuf;
+        }
+        else
+        {
+            speedBuf = 1.0f;
+        }
+
+        pos += transform.forward * speed * speedBuf;
+        transform.position = pos;
+    }
 }

@@ -37,18 +37,18 @@ public class Gauge_M : MonoBehaviour
         texture = material.GetTexture("_MainTex");
     }
 
-    void Update()
+    void FixedUpdate()
     {
         float GaugePoint = 0;
 
         //Hissatu.value = enemyShop.count;
-        if (dashPoint < store.count)
+        if (dashPoint < store.cooltimeCount)
         {
             dashPoint++;
         }
 
         material = this.GetComponent<MeshRenderer>().material;
-        GaugePoint = (float)(store.count) / (float)(store.cooltime) * 100;
+        GaugePoint = (float)(store.cooltimeCount) / (float)(store.cooltime) * 100;
         if (GaugePoint >= 0 && GaugePoint <= 9)
         {
             material.SetTexture("_MainTex", UpGauge1);
@@ -89,9 +89,9 @@ public class Gauge_M : MonoBehaviour
         {
             material.SetTexture("_MainTex", UpGauge10);
         }
-        else if (GaugePoint == 100)
+        else if (GaugePoint >= 100)
         {
-            material.SetTexture("_MsinTex", UpGauge11);
+            material.SetTexture("_MainTex", UpGauge11);
         }
     }
 }

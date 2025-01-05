@@ -5,8 +5,20 @@ using UnityEngine;
 
 public class EnemyShop : MonoBehaviour
 {
+    public enum EnemyStorState
+    {
+        nomal,
+        BrainwashingSkill,
+        SpeedDownSkill
+    }
+
     public int cooltime = 100;      // 必殺技のクールタイム
-    public int count = 0;           // クールタイムのカウンタ
+    public int cooltimeCount = 0;   // クールタイムのカウンタ
+
+    public int speedDownSkillTime = 100;      // スピードダウンの効果時間
+    public int skillTimeCount = 0;           // クールタイムのカウンタ
+    public EnemyStorState state = EnemyStorState.nomal;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,29 +28,83 @@ public class EnemyShop : MonoBehaviour
     void FixedUpdate()
     {
         // 川添いじった　スペースキーを押したらcountをcooltime以上にする
-        //count++;
 
-        if (count > cooltime)
+        if (cooltimeCount > cooltime)
         { // cooltime分時間が経ったら
-            count = 0;
-            GameObject[] humanObjects = GameObject.FindGameObjectsWithTag("Human");     // 存在するHumanタグを持っているオブジェクトを配列に格納
-            for (int i = 0; i < humanObjects.Length; i++)
-            { // humanObjectsの要素分ループ
-                human humanScript = humanObjects[i].GetComponent<human>();              // humanスクリプト取得
-                if (humanScript.GetState() == (int)human.human_state.normal)
-                { // 取得したhumanScriptの状態がnormalなら
-                    humanScript.SetTargetEnemyStore(this.gameObject);                   // 取得したhumanスクリプトの向かう敵の店をこのオブジェクトにする
-                    humanScript.SetState(human.human_state.brainwashing);               // 取得したhumanスクリプトの状態をbrainwashingに状態遷移
-                }
-            }
+            //BrainwashingSkill();
+            
+            // SpeedDownSkill();
         }
+
+        switch (state)
+        {
+            case EnemyStorState.nomal:
+                cooltimeCount++;
+                if (cooltimeCount > cooltime)
+                { // cooltime分時間が経ったら
+                    cooltimeCount = 0;
+                    int num = Random.Range(0, 100);
+                    if(num >= 0 && num < 50)
+                    {
+                        state = EnemyStorState.BrainwashingSkill;
+                    }
+                    else if (num >= 50 && num <100)
+                    {
+                        state = EnemyStorState.SpeedDownSkill;
+                    }
+                }
+                break;
+            case EnemyStorState.SpeedDownSkill:
+                SpeedDownSkill();
+                break;
+            case EnemyStorState.BrainwashingSkill:
+                BrainwashingSkill();
+                break;
+        }
+
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            count = cooltime + 10;
+            //cooltimeCount = cooltime + 10;
         }
+    }
+
+    void BrainwashingSkill()
+    {
+        GameObject[] humanObjects = GameObject.FindGameObjectsWithTag("Human");     // 存在するHumanタグを持っているオブジェクトを配列に格納
+        for (int i = 0; i < humanObjects.Length; i++)
+        { // humanObjectsの要素分ループ
+            human humanScript = humanObjects[i].GetComponent<human>();              // humanスクリプト取得
+            if (humanScript.GetState() == (int)human.human_state.normal)
+            { // 取得したhumanScriptの状態がnormalなら
+                humanScript.SetTargetEnemyStore(this.gameObject);                   // 取得したhumanスクリプトの向かう敵の店をこのオブジェクトにする
+                humanScript.SetState(human.human_state.brainwashing);               // 取得したhumanスクリプトの状態をbrainwashingに状態遷移
+            }
+        }
+
+        state = EnemyStorState.nomal;
+    }
+
+    void SpeedDownSkill()
+    {
+        GameObject[] humanObjects = GameObject.FindGameObjectsWithTag("Human");     // 存在するHumanタグを持っているオブジェクトを配列に格納
+        human humanScript = null;
+        for (int i = 0; i < humanObjects.Length; i++)
+        { // humanObjectsの要素分ループ
+            humanScript = humanObjects[i].GetComponent<human>();              // humanスクリプト取得
+            humanScript.speedDown = true;
+        }
+
+        skillTimeCount++;
+        if (skillTimeCount > speedDownSkillTime)
+        {
+            if(humanScript != null) humanScript.speedDown = false;
+            skillTimeCount = 0;
+            state = EnemyStorState.nomal;
+        }
+
     }
 }
