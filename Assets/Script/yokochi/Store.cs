@@ -6,9 +6,12 @@ public class Store : MonoBehaviour
 { 
     public enum food_type
     {
-        misokatu,
-        uirou,
-        BigEye,
+        Misokatu,
+        Uirou,
+        Hitsumabushi,
+        Tebasaki,
+        TaiwanRamen,
+        Kishimen,
     }
 
     public food_type food;

@@ -40,7 +40,7 @@ public class StoreManager : MonoBehaviour
     public void OperateUirouSpecial()
     {
         Debug.Log("Uirou‚ª•KE‹Z‚ğg‚¢‚Ü‚·");
-
+        UirouModel.GetComponent<Store>().UseSkill();
     }
 
     // ‚Ğ‚Â‚Ü‚Ô‚µ“X‘‘
@@ -56,7 +56,7 @@ public class StoreManager : MonoBehaviour
     public void OperateHitshmabushiSpecial()
     {
         Debug.Log("Hitsumabushi‚ª•KE‹Z‚ğg‚¢‚Ü‚·");
-
+        HitsumabushiModel.GetComponent<Store>().UseSkill();
     }
 
     // è‰Hæ“X‘‘
@@ -72,7 +72,7 @@ public class StoreManager : MonoBehaviour
     public void OperateTebasakiSpecial()
     {
         Debug.Log("TebasakiModel‚ª•KE‹Z‚ğg‚¢‚Ü‚·");
-
+        TebasakiModel.GetComponent<Store>().UseSkill();
     }
 
     // ‘ä˜pƒ‰[ƒƒ““X‘‘
@@ -88,7 +88,7 @@ public class StoreManager : MonoBehaviour
     public void OperateTaiwanRamenSpecial()
     {
         Debug.Log("TaiwanRamen‚ª•KE‹Z‚ğg‚¢‚Ü‚·");
-
+        TaiwanRamenModel.GetComponent<Store>().UseSkill();
     }
 
     // ‚«‚µ‚ß‚ñ“X‘‘
@@ -104,6 +104,6 @@ public class StoreManager : MonoBehaviour
     public void OperateKishimenSpecial()
     {
         Debug.Log("Kishimen‚ª•KE‹Z‚ğg‚¢‚Ü‚·");
-
+        KishimenModel.GetComponent<Store>().UseSkill();
     }
 }
