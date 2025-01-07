@@ -16,7 +16,7 @@ public class NPCManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Lv2WallPos = new Vector3(Wall.transform.position.x+35, Wall.transform.position.y, Wall.transform.position.z);
+        Lv2WallPos = new Vector3(Wall.transform.position.x+52, Wall.transform.position.y, Wall.transform.position.z);
         Lv3WallPos = new Vector3(Wall.transform.position.x+70, Wall.transform.position.y, Wall.transform.position.z);
     }
 

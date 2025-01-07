@@ -11,7 +11,10 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/game_kanematsu.unity
     guid: 4b6b2f3e501064345b3c6377aabb2cae
+  - enabled: 1
+    path: Assets/Scenes/Toku_0105.unity
+    guid: 128e5c3976266644e8b349ceb0e9277e
   m_configObjects: {}
