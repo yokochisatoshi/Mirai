@@ -21,7 +21,6 @@ public class CloudMovement : MonoBehaviour
         // ‰_‚ªŽw’è‚³‚ê‚½XÀ•W‚ð’´‚¦‚½‚ç¶‚©‚çÄoŒ»
         if (transform.position.x > limitPositionX)
         {
-            Debug.Log("‚«‚Ü‚µ‚½");
             transform.position = new Vector3(resetPositionX, initialPosition.y, initialPosition.z);
         }
     }
