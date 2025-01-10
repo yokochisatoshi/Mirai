@@ -4,8 +4,8 @@ public class CloudMovement : MonoBehaviour
 {
     public float speed = 5f;      // 雲の移動速度
     private Vector3 initialPosition; // 雲の初期位置
-    public float resetPositionX = -960f; // 再出現するX座標
-    public float limitPositionX = 960f;  // 消える基準となるX座標
+    public float resetPositionX = -540f; // 再出現するX座標
+    public float limitPositionX = 540f;  // 消える基準となるX座標
 
     void Start()
     {
@@ -21,6 +21,7 @@ public class CloudMovement : MonoBehaviour
         // 雲が指定されたX座標を超えたら左から再出現
         if (transform.position.x > limitPositionX)
         {
+            Debug.Log("きました");
             transform.position = new Vector3(resetPositionX, initialPosition.y, initialPosition.z);
         }
     }
