@@ -20,6 +20,12 @@ public class PlayerData : MonoBehaviour
     private float nFadeSpeed = 0.006f;
     public bool bAppear=false;
 
+    //とりあえずで世界のSTOP系のやつ
+    public bool bShowResult = false;
+    public bool bNextLevel = false;
+    public bool bUseEneULT = false;
+    public bool bUseMyULT = false;
+
     void Awake()
     {
         // シングルトン
@@ -51,9 +57,26 @@ public class PlayerData : MonoBehaviour
                 nCountFade = 0; //いらんけど一応
             }
         }
-       
-       
-        
+
+       //Scoreに応じてステージレベルが変化する処理
+
+        if(nCurrentStage == 0 && nScore>=300) 
+        {
+            nCurrentStage = 1;
+            bNextLevel = true;
+        }
+
+        if (nCurrentStage == 1 && nScore >= 600)
+        {
+            nCurrentStage = 2;
+            bNextLevel = true;
+        }
+        //時間が来てResultの表示
+        if(nTime >= 180) 
+        {
+            bShowResult = true;
+        }
+        Debug.Log(nCurrentStage);
     }
 
 

@@ -40,152 +40,152 @@ public class ManageGUI : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        nCntInterval++;
-        if (bCanSet)
+        if (PlayerData.Instance.bShowResult == false)
         {
-            var ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-            var raycastHitList = Physics.RaycastAll(ray);
-
-            bHitGrand = false;
-            //マウスから地形のPosを計算
-            for (int i = 0; i < raycastHitList.Length; i++)
+            nCntInterval++;
+            if (bCanSet)
             {
-                if (raycastHitList[i].collider.tag == "Grand")
+                var ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+                var raycastHitList = Physics.RaycastAll(ray);
+
+                bHitGrand = false;
+                //マウスから地形のPosを計算
+                for (int i = 0; i < raycastHitList.Length; i++)
                 {
-                    var distance = Vector3.Distance(mainCamera.transform.position, raycastHitList[i].point);
-                    var mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, distance);
-                    currentPosition = mainCamera.ScreenToWorldPoint(mousePosition);
-                    currentPosition.y = 0;
-                    //マウスが地面上にあったかどうか
-                    bHitGrand = true;
-                    PreViewObject.transform.position = currentPosition;
+                    if (raycastHitList[i].collider.tag == "Grand")
+                    {
+                        var distance = Vector3.Distance(mainCamera.transform.position, raycastHitList[i].point);
+                        var mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, distance);
+                        currentPosition = mainCamera.ScreenToWorldPoint(mousePosition);
+                        currentPosition.y = 0;
+                        //マウスが地面上にあったかどうか
+                        bHitGrand = true;
+                        PreViewObject.transform.position = currentPosition;
+                    }
                 }
+
+
+
+
+                if (nChoiceOb == 0)
+                {
+                    //設置が可能な状態で [左] クリックを押した
+                    if ((Input.GetMouseButtonDown(0) || Input.GetMouseButton(0)) && nCntInterval > nInterval)
+                    {
+                        Destroy(PreViewObject);
+                        if (bHitGrand == true)
+                        {
+                            Instantiate(Kanban00_Left, currentPosition, Quaternion.Euler(0, 0, 0));
+                        }
+                        nCntInterval = 0;
+                        bCanSet = false;
+                        nChoiceOb = -1;
+                    }
+
+                    //設置が可能な状態で [右] クリックを押した
+                    if ((Input.GetMouseButtonDown(1) || Input.GetMouseButton(1)) && nCntInterval > nInterval)
+                    {
+                        Destroy(PreViewObject);
+                        if (bHitGrand == true)
+                        {
+                            Instantiate(Kanban00_Right, currentPosition, Quaternion.Euler(0, 0, 0));
+                        }
+                        nCntInterval = 0;
+                        bCanSet = false;
+                        nChoiceOb = -1;
+                    }
+
+                }
+                else if (nChoiceOb == 1)
+                {
+                    //設置が可能な状態で [左] クリックを押した
+                    if ((Input.GetMouseButtonDown(0) || Input.GetMouseButton(0)) && nCntInterval > nInterval)
+                    {
+                        Destroy(PreViewObject);
+                        if (bHitGrand == true)
+                        {
+                            Instantiate(Kanban01_Left, currentPosition, Quaternion.Euler(0, 0, 0));
+                        }
+                        nCntInterval = 0;
+                        bCanSet = false;
+                        nChoiceOb = -1;
+                    }
+
+                    //設置が可能な状態で [右] クリックを押した
+                    if ((Input.GetMouseButtonDown(1) || Input.GetMouseButton(1)) && nCntInterval > nInterval)
+                    {
+                        Destroy(PreViewObject);
+                        if (bHitGrand == true)
+                        {
+                            Instantiate(Kanban01_Right, currentPosition, Quaternion.Euler(0, 0, 0));
+                        }
+                        nCntInterval = 0;
+                        bCanSet = false;
+                        nChoiceOb = -1;
+                    }
+
+                }
+                else if (nChoiceOb == 2)
+                {
+                    //設置が可能な状態で [左] クリックを押した
+                    if ((Input.GetMouseButtonDown(0) || Input.GetMouseButton(0)) && nCntInterval > nInterval)
+                    {
+                        Destroy(PreViewObject);
+                        if (bHitGrand == true)
+                        {
+                            Instantiate(Kanban02_Left, currentPosition, Quaternion.Euler(0, 0, 0));
+                        }
+                        nCntInterval = 0;
+                        bCanSet = false;
+                        nChoiceOb = -1;
+                    }
+
+                    //設置が可能な状態で [右] クリックを押した
+                    if ((Input.GetMouseButtonDown(1) || Input.GetMouseButton(1)) && nCntInterval > nInterval)
+                    {
+                        Destroy(PreViewObject);
+                        if (bHitGrand == true)
+                        {
+                            Instantiate(Kanban02_Right, currentPosition, Quaternion.Euler(0, 0, 0));
+                        }
+                        nCntInterval = 0;
+                        bCanSet = false;
+                        nChoiceOb = -1;
+                    }
+
+                }
+                else if (nChoiceOb == 3)
+                {
+                    //設置が可能な状態で [左] クリックを押した
+                    if ((Input.GetMouseButtonDown(0) || Input.GetMouseButton(0)) && nCntInterval > nInterval)
+                    {
+                        Destroy(PreViewObject);
+                        if (bHitGrand == true)
+                        {
+                            Instantiate(Shatihoko, currentPosition, Quaternion.Euler(0, 0, 0));
+                        }
+                        nCntInterval = 0;
+                        bCanSet = false;
+                        nChoiceOb = -1;
+                    }
+
+                    //設置が可能な状態で [右] クリックを押した
+                    if ((Input.GetMouseButtonDown(1) || Input.GetMouseButton(1)) && nCntInterval > nInterval)
+                    {
+                        Destroy(PreViewObject);
+                        if (bHitGrand == true)
+                        {
+                            Instantiate(Shatihoko, currentPosition, Quaternion.Euler(0, 0, 0));
+                        }
+                        nCntInterval = 0;
+                        bCanSet = false;
+                        nChoiceOb = -1;
+                    }
+
+                }
+
+                //設置前か後かで当たり判定と半透明のif
             }
-
-
-
-
-            if(nChoiceOb==0)
-            {
-                //設置が可能な状態で [左] クリックを押した
-                if ((Input.GetMouseButtonDown(0) || Input.GetMouseButton(0)) && nCntInterval > nInterval)
-                {
-                    Destroy(PreViewObject);
-                    if (bHitGrand == true)
-                    {
-                        Instantiate(Kanban00_Left, currentPosition, Quaternion.Euler(0, 0, 0));
-                    }
-                    nCntInterval = 0;
-                    bCanSet = false;
-                    nChoiceOb = -1;
-                }
-
-                //設置が可能な状態で [右] クリックを押した
-                if ((Input.GetMouseButtonDown(1) || Input.GetMouseButton(1)) && nCntInterval > nInterval)
-                {
-                    Destroy(PreViewObject);
-                    if (bHitGrand == true)
-                    {
-                        Instantiate(Kanban00_Right, currentPosition, Quaternion.Euler(0, 0, 0));
-                    }
-                    nCntInterval = 0;
-                    bCanSet = false;
-                    nChoiceOb = -1;
-                }
-
-            }
-            else if(nChoiceOb==1)
-            {
-                //設置が可能な状態で [左] クリックを押した
-                if ((Input.GetMouseButtonDown(0) || Input.GetMouseButton(0)) && nCntInterval > nInterval)
-                {
-                    Destroy(PreViewObject);
-                    if (bHitGrand == true)
-                    {
-                        Instantiate(Kanban01_Left, currentPosition, Quaternion.Euler(0, 0, 0));
-                    }
-                    nCntInterval = 0;
-                    bCanSet = false;
-                    nChoiceOb = -1;
-                }
-
-                //設置が可能な状態で [右] クリックを押した
-                if ((Input.GetMouseButtonDown(1) || Input.GetMouseButton(1)) && nCntInterval > nInterval)
-                {
-                    Destroy(PreViewObject);
-                    if (bHitGrand == true)
-                    {
-                        Instantiate(Kanban01_Right, currentPosition, Quaternion.Euler(0, 0, 0));
-                    }
-                    nCntInterval = 0;
-                    bCanSet = false;
-                    nChoiceOb = -1;
-                }
-
-            }
-            else if (nChoiceOb == 2)
-            {
-                //設置が可能な状態で [左] クリックを押した
-                if ((Input.GetMouseButtonDown(0) || Input.GetMouseButton(0)) && nCntInterval > nInterval)
-                {
-                    Destroy(PreViewObject);
-                    if (bHitGrand == true)
-                    {
-                        Instantiate(Kanban02_Left, currentPosition, Quaternion.Euler(0, 0, 0));
-                    }
-                    nCntInterval = 0;
-                    bCanSet = false;
-                    nChoiceOb = -1;
-                }
-
-                //設置が可能な状態で [右] クリックを押した
-                if ((Input.GetMouseButtonDown(1) || Input.GetMouseButton(1)) && nCntInterval > nInterval)
-                {
-                    Destroy(PreViewObject);
-                    if (bHitGrand == true)
-                    {
-                        Instantiate(Kanban02_Right, currentPosition, Quaternion.Euler(0, 0, 0));
-                    }
-                    nCntInterval = 0;
-                    bCanSet = false;
-                    nChoiceOb = -1;
-                }
-
-            }
-            else if (nChoiceOb == 3)
-            {
-                //設置が可能な状態で [左] クリックを押した
-                if ((Input.GetMouseButtonDown(0) || Input.GetMouseButton(0)) && nCntInterval > nInterval)
-                {
-                    Destroy(PreViewObject);
-                    if (bHitGrand == true)
-                    {
-                        Instantiate(Shatihoko, currentPosition, Quaternion.Euler(0, 0, 0));
-                    }
-                    nCntInterval = 0;
-                    bCanSet = false;
-                    nChoiceOb = -1;
-                }
-
-                //設置が可能な状態で [右] クリックを押した
-                if ((Input.GetMouseButtonDown(1) || Input.GetMouseButton(1)) && nCntInterval > nInterval)
-                {
-                    Destroy(PreViewObject);
-                    if (bHitGrand == true)
-                    {
-                        Instantiate(Shatihoko, currentPosition, Quaternion.Euler(0, 0, 0));
-                    }
-                    nCntInterval = 0;
-                    bCanSet = false;
-                    nChoiceOb = -1;
-                }
-
-            }
-
-
-
-            //設置前か後かで当たり判定と半透明のif
-
         }
     }
     public void ClickKanban00()
