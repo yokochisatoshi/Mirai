@@ -32,7 +32,7 @@ public class PlayerData : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);  
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -72,11 +72,10 @@ public class PlayerData : MonoBehaviour
             bNextLevel = true;
         }
         //時間が来てResultの表示
-        if(nTime >= 180) 
+        if(nTime >= 20) 
         {
             bShowResult = true;
         }
-        Debug.Log(nCurrentStage);
     }
 
 
@@ -91,5 +90,22 @@ public class PlayerData : MonoBehaviour
     public void AddScore(int amount)
     {
         nScore += amount;
+    }
+
+    public void Reset()
+    {
+        nMoney = 777;  // 初期のお金
+        nScore = 0;  // 初期のScore
+        nTime = 0;    //時間管理  時計とか表示する時用
+        nCurrentStage = 0;
+        nMaxStage = 3;
+        nSumMoney = 0;
+        nCountFade = 0;    //透明度   
+        nFadeSpeed = 0.006f;
+        bAppear = false;
+        bShowResult = false;
+        bNextLevel = false;
+        bUseEneULT = false;
+        bUseMyULT = false;
     }
 }
