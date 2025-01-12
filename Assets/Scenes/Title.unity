@@ -16033,7 +16033,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfab159bc3b43c14ba59e2b7c54ffd16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetSceneName: Toku_0105
+  targetSceneName: 10saisin
 --- !u!1 &1436782483
 GameObject:
   m_ObjectHideFlags: 0

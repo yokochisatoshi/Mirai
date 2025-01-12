@@ -78,6 +78,7 @@ public class ManageGUI : MonoBehaviour
                     nCntInterval = 0;
                     bCanSet = false;
                     nChoiceOb = -1;
+                    SoundManager.Instance.PlaySound("InstallationLv1");     // 川添　サウンド追加した
                 }
 
                 //設置が可能な状態で [右] クリックを押した
@@ -91,8 +92,8 @@ public class ManageGUI : MonoBehaviour
                     nCntInterval = 0;
                     bCanSet = false;
                     nChoiceOb = -1;
+                    SoundManager.Instance.PlaySound("InstallationLv1");     // 川添　サウンド追加した
                 }
-
             }
             else if(nChoiceOb==1)
             {
@@ -107,6 +108,7 @@ public class ManageGUI : MonoBehaviour
                     nCntInterval = 0;
                     bCanSet = false;
                     nChoiceOb = -1;
+                    SoundManager.Instance.PlaySound("InstallationLv2");     // 川添　サウンド追加した
                 }
 
                 //設置が可能な状態で [右] クリックを押した
@@ -120,8 +122,8 @@ public class ManageGUI : MonoBehaviour
                     nCntInterval = 0;
                     bCanSet = false;
                     nChoiceOb = -1;
+                    SoundManager.Instance.PlaySound("InstallationLv2");     // 川添　サウンド追加した
                 }
-
             }
             else if (nChoiceOb == 2)
             {
@@ -136,6 +138,7 @@ public class ManageGUI : MonoBehaviour
                     nCntInterval = 0;
                     bCanSet = false;
                     nChoiceOb = -1;
+                    SoundManager.Instance.PlaySound("InstallationLv3");     // 川添　サウンド追加した
                 }
 
                 //設置が可能な状態で [右] クリックを押した
@@ -149,6 +152,7 @@ public class ManageGUI : MonoBehaviour
                     nCntInterval = 0;
                     bCanSet = false;
                     nChoiceOb = -1;
+                    SoundManager.Instance.PlaySound("InstallationLv3");     // 川添　サウンド追加した
                 }
 
             }
@@ -165,6 +169,7 @@ public class ManageGUI : MonoBehaviour
                     nCntInterval = 0;
                     bCanSet = false;
                     nChoiceOb = -1;
+                    SoundManager.Instance.PlaySound("Shatihoko");     // 川添　サウンド追加した
                 }
 
                 //設置が可能な状態で [右] クリックを押した
@@ -178,6 +183,7 @@ public class ManageGUI : MonoBehaviour
                     nCntInterval = 0;
                     bCanSet = false;
                     nChoiceOb = -1;
+                    SoundManager.Instance.PlaySound("Shatihoko");     // 川添　サウンド追加した
                 }
 
             }
@@ -195,7 +201,6 @@ public class ManageGUI : MonoBehaviour
         bCanSet = true;
         //プレビューたちに代入
         PreViewObject = Instantiate(Kanban00_Preview, new Vector3(-10, 0, 0), Quaternion.Euler(0, 0, 0));
-      
     }
 
     public void ClickKanban01()

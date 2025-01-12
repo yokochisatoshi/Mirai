@@ -19,6 +19,9 @@ public class EnemyShop : MonoBehaviour
     public int skillTimeCount = 0;           // クールタイムのカウンタ
     public EnemyStorState state = EnemyStorState.nomal;
 
+    // 川添追加
+    bool RivalSpecial2 = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -74,6 +77,8 @@ public class EnemyShop : MonoBehaviour
 
     void BrainwashingSkill()
     {
+        SoundManager.Instance.PlaySound("RivalSpecial");     // 川添　サウンド追加した
+
         GameObject[] humanObjects = GameObject.FindGameObjectsWithTag("Human");     // 存在するHumanタグを持っているオブジェクトを配列に格納
         for (int i = 0; i < humanObjects.Length; i++)
         { // humanObjectsの要素分ループ
@@ -86,10 +91,17 @@ public class EnemyShop : MonoBehaviour
         }
 
         state = EnemyStorState.nomal;
+        
     }
 
     void SpeedDownSkill()
     {
+        if (!RivalSpecial2)
+        { 
+            SoundManager.Instance.PlaySound("RivalSpecial");     // 川添　サウンド追加した
+            RivalSpecial2 = true;
+        }
+
         GameObject[] humanObjects = GameObject.FindGameObjectsWithTag("Human");     // 存在するHumanタグを持っているオブジェクトを配列に格納
         human humanScript = null;
         for (int i = 0; i < humanObjects.Length; i++)
@@ -104,7 +116,8 @@ public class EnemyShop : MonoBehaviour
             if(humanScript != null) humanScript.speedDown = false;
             skillTimeCount = 0;
             state = EnemyStorState.nomal;
+            RivalSpecial2 = false;          // 川添追加
         }
-
+       
     }
 }

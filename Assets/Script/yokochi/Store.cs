@@ -145,6 +145,7 @@ public class Store : MonoBehaviour
             {
                 state = StorState.addMoney;
             }
+            SoundManager.Instance.PlaySound("Special");     // 川添　サウンド追加した
         }
         else
         {

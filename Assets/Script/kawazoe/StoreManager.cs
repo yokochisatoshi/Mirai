@@ -18,6 +18,9 @@ public class StoreManager : MonoBehaviour
 
         Vector3 newScale = MisokatuModel.transform.localScale + scaleIncrease;
         MisokatuModel.transform.localScale = newScale;
+
+        SoundManager.Instance.PlaySound("Applause"); 
+        SoundManager.Instance.PlaySound("IncreaseOfCapital");
     }
 
     // –¡‘XƒJƒc“X•KE‹Z
@@ -34,6 +37,9 @@ public class StoreManager : MonoBehaviour
 
         Vector3 newScale = UirouModel.transform.localScale + scaleIncrease;
         UirouModel.transform.localScale = newScale;
+
+        SoundManager.Instance.PlaySound("Applause");
+        SoundManager.Instance.PlaySound("IncreaseOfCapital");
     }
 
     // ‚¤‚¢‚ë‚¤“X•KE‹Z
@@ -50,6 +56,9 @@ public class StoreManager : MonoBehaviour
 
         Vector3 newScale = HitsumabushiModel.transform.localScale + scaleIncrease;
         HitsumabushiModel.transform.localScale = newScale;
+
+        SoundManager.Instance.PlaySound("Applause");
+        SoundManager.Instance.PlaySound("IncreaseOfCapital");
     }
 
     // ‚Ğ‚Â‚Ü‚Ô‚µ“X•KE‹Z
@@ -66,6 +75,9 @@ public class StoreManager : MonoBehaviour
 
         Vector3 newScale = TebasakiModel.transform.localScale + scaleIncrease;
         TebasakiModel.transform.localScale = newScale;
+
+        SoundManager.Instance.PlaySound("Applause");
+        SoundManager.Instance.PlaySound("IncreaseOfCapital");
     }
 
     // è‰Hæ“X•KE‹Z
@@ -82,6 +94,9 @@ public class StoreManager : MonoBehaviour
 
         Vector3 newScale = TaiwanRamenModel.transform.localScale + scaleIncrease;
         TaiwanRamenModel.transform.localScale = newScale;
+
+        SoundManager.Instance.PlaySound("Applause");
+        SoundManager.Instance.PlaySound("IncreaseOfCapital");
     }
 
     // ‘ä˜pƒ‰[ƒƒ““X•KE‹Z
@@ -98,6 +113,9 @@ public class StoreManager : MonoBehaviour
 
         Vector3 newScale = KishimenModel.transform.localScale + scaleIncrease;
         KishimenModel.transform.localScale = newScale;
+
+        SoundManager.Instance.PlaySound("Applause");
+        SoundManager.Instance.PlaySound("IncreaseOfCapital");
     }
 
     // ‚«‚µ‚ß‚ñ“X•KE‹Z
