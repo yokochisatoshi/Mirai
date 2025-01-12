@@ -29,6 +29,9 @@ public class HoverEffect : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     private Vector3 LevelUiOriginalScale; // 初期スケール
     private Vector2 LevelUiOriginalPosition; // 初期位置
 
+    // 横地追加
+    public GameObject GugeUi;   // 必殺技ゲージ
+
     void Start()
     {
         // 初期値を記録
@@ -55,6 +58,9 @@ public class HoverEffect : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
         ScaleIncreaseButton.SetActive(true);
         SpecialButton.SetActive(true);
+
+        // 横地追加
+        GugeUi.SetActive(false);    // 必殺技ゲージ消す
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -65,6 +71,9 @@ public class HoverEffect : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
         ScaleIncreaseButton.SetActive(false);
         SpecialButton.SetActive(false);
+
+        // 横地追加
+        GugeUi.SetActive(true);    // 必殺技ゲージ出す
     }
 
     private System.Collections.IEnumerator AnimateToState(Vector3 targetScale, Vector2 targetPosition, Sprite targetSprite, bool showButtons)

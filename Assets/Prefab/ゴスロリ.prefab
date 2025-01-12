@@ -2295,8 +2295,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.1
-  eatTime: 10
-  DestroyTime: 3
+  eatTime: 100
+  DestroyTime: 2
   speedUpBuf: 1.2
   speedDownDeBuf: 0.5
   addMoneyVal: 200

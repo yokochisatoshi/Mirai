@@ -19,9 +19,12 @@ public class EnemyShop : MonoBehaviour
     public int skillTimeCount = 0;           // クールタイムのカウンタ
     public EnemyStorState state = EnemyStorState.nomal;
 
+    SkillLogManager SkillLogSc;
+
     // Start is called before the first frame update
     void Start()
     {
+        SkillLogSc = GameObject.Find("ManageSkillLog").GetComponent<SkillLogManager>();
     }
 
     // Update is called once per frame
@@ -47,10 +50,12 @@ public class EnemyShop : MonoBehaviour
                     if(num >= 0 && num < 50)
                     {
                         state = EnemyStorState.BrainwashingSkill;
+                        SkillLogSc.CreateSkillLog(SkillLogManager.StoreName.rival1, SkillLogManager.SkillType.rivalSpecial1);
                     }
                     else if (num >= 50 && num <100)
                     {
                         state = EnemyStorState.SpeedDownSkill;
+                        SkillLogSc.CreateSkillLog(SkillLogManager.StoreName.rival1, SkillLogManager.SkillType.rivalSpecial2);
                     }
                 }
                 break;

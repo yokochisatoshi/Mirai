@@ -19,7 +19,8 @@ public class Store : MonoBehaviour
         BrainwashingSkill,
         SmallBrainwashingSkill,
         SpeedUpSkill,
-        addMoney
+        addMoney,
+        EnemySkillDownTimeSkill,
     }
 
     public GameObject SkillColli;            // 範囲型洗脳スキルの当たり判定用オブジェ
@@ -29,14 +30,18 @@ public class Store : MonoBehaviour
     public int SmallBrainwashingSkillTime = 100;       // スピードダウンの効果時間
     public int skillTimeCount = 0;           // クールタイムのカウンタ
     public StorState state = StorState.nomal;
-    public int addMoneyVal = 500;            // スキルで増やすお金
+    int addMoneyVal = 3000;            // スキルで増やすお金
+    public int EneTimeDownVal = 100;
 
     PlayerData PLDataSc;
+
+    SkillLogManager SkillLogSc;
 
     // Start is called before the first frame update
     void Start()
     {
         PLDataSc = GameObject.Find("ManageData").GetComponent<PlayerData>();
+        SkillLogSc = GameObject.Find("ManageSkillLog").GetComponent<SkillLogManager>();
     }
 
     // Update is called once per frame
@@ -72,6 +77,10 @@ public class Store : MonoBehaviour
                 break;
             case StorState.addMoney:
                 PLDataSc.AddMoney(addMoneyVal);
+                state = StorState.nomal;
+                break;
+            case StorState.EnemySkillDownTimeSkill:
+                EnemySkillDownTimeSkill();
                 state = StorState.nomal;
                 break;
         }
@@ -125,27 +134,52 @@ public class Store : MonoBehaviour
         { // cooltime分時間が経ったら
             cooltimeCount = 0;
             int num = Random.Range(0, 100);
-            if (num >= 0 && num < 25)
+            if (num >= 0 && num < 20)
             {
                 state = StorState.BrainwashingSkill;
+                SkillLogSc.CreateSkillLog(SkillLogManager.StoreName.Hitumabushi, SkillLogManager.SkillType.Special1);
             }
-            else if (num >= 20 && num < 50)
+            else if (num >= 20 && num < 40)
             {
+                SkillLogSc.CreateSkillLog(SkillLogManager.StoreName.Hitumabushi, SkillLogManager.SkillType.Special4);
                 state = StorState.SmallBrainwashingSkill;
                 SkillColli.SetActive(true);
             }
-            else if (num >= 50 && num < 80)
+            else if (num >= 40 && num < 60)
             {
+                SkillLogSc.CreateSkillLog(SkillLogManager.StoreName.Hitumabushi, SkillLogManager.SkillType.Special3);
                 state = StorState.SpeedUpSkill;
+            }
+            else if (num >= 60 && num < 80)
+            {
+                SkillLogSc.CreateSkillLog(SkillLogManager.StoreName.Hitumabushi, SkillLogManager.SkillType.Special5);
+                state = StorState.addMoney;
             }
             else if (num >= 80 && num < 100)
             {
-                state = StorState.addMoney;
+                SkillLogSc.CreateSkillLog(SkillLogManager.StoreName.Hitumabushi, SkillLogManager.SkillType.Special2);
+                state = StorState.EnemySkillDownTimeSkill;
             }
         }
         else
         {
             Debug.Log("まだコスト溜まってないが？");
+        }
+    }
+
+    void EnemySkillDownTimeSkill()
+    {
+        GameObject[] humanObjects = GameObject.FindGameObjectsWithTag("EnemyStore");     // 存在するHumanタグを持っているオブジェクトを配列に格納
+        EnemyShop EnemyScript = null;
+        for (int i = 0; i < humanObjects.Length; i++)
+        { // humanObjectsの要素分ループ
+            EnemyScript = humanObjects[i].GetComponent<EnemyShop>();              // humanスクリプト取得
+            EnemyScript.cooltimeCount -= EneTimeDownVal;
+
+            if(EnemyScript.cooltimeCount < 0)
+            {
+                EnemyScript.cooltimeCount = 0;
+            }
         }
     }
 }
