@@ -16,6 +16,7 @@ public class ScoreUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ScoreText.text = "Score: " + PlayerData.Instance.nScore;
+        // ì“Y@‘å•¶š‚É•Ï‚¦‚½
+        ScoreText.text = " SCORE: " + PlayerData.Instance.nScore;
     }
 }
