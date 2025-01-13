@@ -42,7 +42,12 @@ public class human : MonoBehaviour
     public bool speedDown = false;
     float speedBuf = 1.0f;
 
-    bool eat = false;       // 川添追加（退店用）
+    // 川添追加
+    bool eat = false;
+    // Humanオブジェクトに子として持たせるエフェクト
+    [SerializeField] private GameObject rivalSpecialEffect;     // 洗脳時のエフェクト
+    private EffectManager effectManager;        // 看板交差時のエフェクト
+
 
     //徳山
     private Vector3 HozonVec;
@@ -69,6 +74,9 @@ public class human : MonoBehaviour
         child = transform.Find("favorite").gameObject;
 
         GetAllChildMr();        // 全ての子オブジェクトのマテリアルを取得して格納
+
+        // 川添追加
+        effectManager = FindObjectOfType<EffectManager>();
     }
 
     // Update is called once per frame
@@ -141,11 +149,16 @@ public class human : MonoBehaviour
                 this.transform.LookAt(EnemyTarget.transform);   // 目的の店の方向を向く
                 // 正面に移動
                 Moveforward();
+
+                // 川添追加
+                rivalSpecialEffect.SetActive(true);
+
                 break;
             case (int)human_state.allyBrainwashing: // 洗脳状態
                 this.transform.LookAt(AllyTarget.transform);   // 目的の店の方向を向く
                 // 正面に移動
                 Moveforward();
+
                 break;
         }
     }
@@ -183,7 +196,9 @@ public class human : MonoBehaviour
 
                 this.gameObject.transform.eulerAngles = new Vector3(0, 0, 0);
                 bCanStore = true;
+
                 SoundManager.Instance.PlaySound("Attack");     // 川添　サウンド追加した
+                GameObject Effect = effectManager.SpawnSignBoardEffect(transform.position);
 
             }
             if (other.gameObject.tag == "rightMarker")
@@ -195,6 +210,7 @@ public class human : MonoBehaviour
                 this.gameObject.transform.eulerAngles = new Vector3(0, 180, 0);
                 bCanStore = true;
                 SoundManager.Instance.PlaySound("Attack");     // 川添　サウンド追加した
+                GameObject Effect = effectManager.SpawnSignBoardEffect(transform.position);
             }
             if (other.gameObject.tag == "frontMarker")
             {
@@ -223,6 +239,9 @@ public class human : MonoBehaviour
             //Debug.Log("e store");
             state = (int)human_state.eat;       // 食事状態に遷移
             Destroy(child);
+
+            // 川添追加
+            rivalSpecialEffect.SetActive(false);
         }
 
         if (state == (int)human_state.allyBrainwashing && other.gameObject.name == AllyTarget.name)

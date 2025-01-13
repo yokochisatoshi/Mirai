@@ -40,58 +40,80 @@ public class Store : MonoBehaviour
 
     SkillLogManager SkillLogSc;
 
+    // êÏìYí«â¡
+    private EffectManager SpecialEffectManager;        // ä≈î¬åç∑éûÇÃÉGÉtÉFÉNÉg
+
     // Start is called before the first frame update
     void Start()
     {
         PLDataSc = GameObject.Find("ManageData").GetComponent<PlayerData>();
         SkillLogSc = GameObject.Find("ManageSkillLog").GetComponent<SkillLogManager>();
+
+        // êÏìYí«â¡
+        SpecialEffectManager = FindObjectOfType<EffectManager>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (PlayerData.Instance.bGameStart)
+
+        switch (state)
         {
+            case StorState.nomal:
+                cooltimeCount++;
+                if (cooltimeCount >= cooltime)
+                {
+                    cooltimeCount = cooltime;
+                }
 
+                break;
+            case StorState.BrainwashingSkill:
+                BrainwashingSkill();
+                state = StorState.nomal;
 
+                // êÏìYí«â¡
+                GameObject Effect = SpecialEffectManager.SpawnSpecialEffect(transform.position);
 
-            switch (state)
-            {
-                case StorState.nomal:
-                    cooltimeCount++;
-                    if (cooltimeCount >= cooltime)
-                    {
-                        cooltimeCount = cooltime;
-                    }
+                break;
+            case StorState.SmallBrainwashingSkill:
+                skillTimeCount++;
+                if(skillTimeCount > SmallBrainwashingSkillTime)
+                {
+                    SkillColli.SetActive(false);
+                    skillTimeCount = 0;
+                    state = StorState.nomal;
 
-                    break;
-                case StorState.BrainwashingSkill:
-                    BrainwashingSkill();
-                    state = StorState.nomal;
-                    break;
-                case StorState.SmallBrainwashingSkill:
-                    skillTimeCount++;
-                    if (skillTimeCount > SmallBrainwashingSkillTime)
-                    {
-                        SkillColli.SetActive(false);
-                        skillTimeCount = 0;
-                        state = StorState.nomal;
-                    }
-                    break;
-                case StorState.SpeedUpSkill:
-                    SpeedUpSkill();
-                    state = StorState.nomal;
-                    break;
-                case StorState.addMoney:
-                    PLDataSc.AddMoney(addMoneyVal);
-                    state = StorState.nomal;
-                    break;
-                case StorState.EnemySkillDownTimeSkill:
-                    EnemySkillDownTimeSkill();
-                    state = StorState.nomal;
-                    break;
-            }
+                    // êÏìYí«â¡
+                    Effect = SpecialEffectManager.SpawnSpecialEffect(transform.position);
+                }
+
+                break;
+            case StorState.SpeedUpSkill:
+                SpeedUpSkill();
+                state = StorState.nomal;
+
+                // êÏìYí«â¡
+                Effect = SpecialEffectManager.SpawnSpecialEffect(transform.position);
+
+                break;
+            case StorState.addMoney:
+                PLDataSc.AddMoney(addMoneyVal);
+                state = StorState.nomal;
+
+                // êÏìYí«â¡
+                Effect = SpecialEffectManager.SpawnSpecialEffect(transform.position);
+
+                break;
+            case StorState.EnemySkillDownTimeSkill:
+                EnemySkillDownTimeSkill();
+                state = StorState.nomal;
+
+                // êÏìYí«â¡
+                Effect = SpecialEffectManager.SpawnSpecialEffect(transform.position);
+
+                break;
         }
+
     }
 
     public food_type GetFoodType()
