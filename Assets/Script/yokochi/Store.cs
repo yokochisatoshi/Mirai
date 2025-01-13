@@ -50,44 +50,48 @@ public class Store : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-
-        switch (state)
+        if (PlayerData.Instance.bGameStart)
         {
-            case StorState.nomal:
-                cooltimeCount++;
-                if (cooltimeCount >= cooltime)
-                {
-                    cooltimeCount = cooltime;
-                }
 
-                break;
-            case StorState.BrainwashingSkill:
-                BrainwashingSkill();
-                state = StorState.nomal;
-                break;
-            case StorState.SmallBrainwashingSkill:
-                skillTimeCount++;
-                if(skillTimeCount > SmallBrainwashingSkillTime)
-                {
-                    SkillColli.SetActive(false);
-                    skillTimeCount = 0;
+
+
+            switch (state)
+            {
+                case StorState.nomal:
+                    cooltimeCount++;
+                    if (cooltimeCount >= cooltime)
+                    {
+                        cooltimeCount = cooltime;
+                    }
+
+                    break;
+                case StorState.BrainwashingSkill:
+                    BrainwashingSkill();
                     state = StorState.nomal;
-                }
-                break;
-            case StorState.SpeedUpSkill:
-                SpeedUpSkill();
-                state = StorState.nomal;
-                break;
-            case StorState.addMoney:
-                PLDataSc.AddMoney(addMoneyVal);
-                state = StorState.nomal;
-                break;
-            case StorState.EnemySkillDownTimeSkill:
-                EnemySkillDownTimeSkill();
-                state = StorState.nomal;
-                break;
+                    break;
+                case StorState.SmallBrainwashingSkill:
+                    skillTimeCount++;
+                    if (skillTimeCount > SmallBrainwashingSkillTime)
+                    {
+                        SkillColli.SetActive(false);
+                        skillTimeCount = 0;
+                        state = StorState.nomal;
+                    }
+                    break;
+                case StorState.SpeedUpSkill:
+                    SpeedUpSkill();
+                    state = StorState.nomal;
+                    break;
+                case StorState.addMoney:
+                    PLDataSc.AddMoney(addMoneyVal);
+                    state = StorState.nomal;
+                    break;
+                case StorState.EnemySkillDownTimeSkill:
+                    EnemySkillDownTimeSkill();
+                    state = StorState.nomal;
+                    break;
+            }
         }
-
     }
 
     public food_type GetFoodType()

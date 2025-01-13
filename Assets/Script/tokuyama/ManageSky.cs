@@ -31,7 +31,8 @@ public class ManageSky : MonoBehaviour
     public GameObject PointLight11;
     public GameObject PointLight12;
     public GameObject PointLight13;
-   
+
+    private float ColorSpeed = 0.004f;
 
     // Start is called before the first frame update
     void Start()
@@ -54,38 +55,52 @@ public class ManageSky : MonoBehaviour
      PointLight11.SetActive(false);
      PointLight12.SetActive(false);
      PointLight13.SetActive(false);
+
+        color = Light.GetComponent<Light>().color;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(PlayerData.Instance.nTime>=60 && bUseSky2==false)
+        if(PlayerData.Instance.nTime>=50 && bUseSky2==false)
         {
             RenderSettings.skybox = skybox2;
-            Light.transform.rotation = Quaternion.Euler(VecRotation);
-            bUseSky2 = true;
+            if(Light.transform.localRotation.x<=0.7f)
+            {
+                Light.transform.Rotate(new Vector3(0.4f, 0, 0));
+            }
+            else
+            {
+                bUseSky2 = true;
+            }
         }
 
-        if (PlayerData.Instance.nTime >= 120 && bUseSky3==false)
+
+        if (PlayerData.Instance.nTime >= 110 && bUseSky3 == false)
         {
             RenderSettings.skybox = skybox3;
-
-            Light.GetComponent<Light>().color =color;
-
+            if (color.r>=0.0f)
+            {
+                Light.transform.Rotate(new Vector3(0.4f, 0, 0));
+                color= new Color(color.r - ColorSpeed, color.g - ColorSpeed, color.b - ColorSpeed);
+                Light.GetComponent<Light>().color = color;
+            }
+            else
+            {
+                bUseSky3 = true;
+            }
            
-
-            bUseSky3 = true;
         }
 
-        //if(bUseSky2==true)
+        //if (bUseSky2 == true)
         //{
-        //    Light.transform.rotation= Quaternion.Euler(VecRotation);
+        //    Light.transform.rotation = Quaternion.Euler(VecRotation);
         //    Debug.Log("?");
 
         //}
 
 
-        if (PlayerData.Instance.nTime >= 135 && bUseLight == false)
+        if (PlayerData.Instance.nTime >= 140 && bUseLight == false)
         {
             //‚Ï‚í‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ 
             PointLight0.SetActive(true);

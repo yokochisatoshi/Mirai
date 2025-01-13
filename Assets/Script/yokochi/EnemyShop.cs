@@ -30,52 +30,47 @@ public class EnemyShop : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        // 川添いじった　スペースキーを押したらcountをcooltime以上にする
-
-        if (cooltimeCount > cooltime)
-        { // cooltime分時間が経ったら
-            //BrainwashingSkill();
-            
-            // SpeedDownSkill();
-        }
-
-        switch (state)
+        if (PlayerData.Instance.bGameStart)
         {
-            case EnemyStorState.nomal:
-                cooltimeCount++;
-                if (cooltimeCount > cooltime)
-                { // cooltime分時間が経ったら
-                    cooltimeCount = 0;
-                    int num = Random.Range(0, 100);
-                    if(num >= 0 && num < 50)
-                    {
-                        state = EnemyStorState.BrainwashingSkill;
-                        SkillLogSc.CreateSkillLog(SkillLogManager.StoreName.rival1, SkillLogManager.SkillType.rivalSpecial1);
-                    }
-                    else if (num >= 50 && num <100)
-                    {
-                        state = EnemyStorState.SpeedDownSkill;
-                        SkillLogSc.CreateSkillLog(SkillLogManager.StoreName.rival1, SkillLogManager.SkillType.rivalSpecial2);
-                    }
-                }
-                break;
-            case EnemyStorState.SpeedDownSkill:
-                SpeedDownSkill();
-                break;
-            case EnemyStorState.BrainwashingSkill:
-                BrainwashingSkill();
-                break;
-        }
+            // 川添いじった　スペースキーを押したらcountをcooltime以上にする
 
+            if (cooltimeCount > cooltime)
+            { // cooltime分時間が経ったら
+              //BrainwashingSkill();
+
+                // SpeedDownSkill();
+            }
+
+            switch (state)
+            {
+                case EnemyStorState.nomal:
+                    cooltimeCount++;
+                    if (cooltimeCount > cooltime)
+                    { // cooltime分時間が経ったら
+                        cooltimeCount = 0;
+                        int num = Random.Range(0, 100);
+                        if (num >= 0 && num < 50)
+                        {
+                            state = EnemyStorState.BrainwashingSkill;
+                            SkillLogSc.CreateSkillLog(SkillLogManager.StoreName.rival1, SkillLogManager.SkillType.rivalSpecial1);
+                        }
+                        else if (num >= 50 && num < 100)
+                        {
+                            state = EnemyStorState.SpeedDownSkill;
+                            SkillLogSc.CreateSkillLog(SkillLogManager.StoreName.rival1, SkillLogManager.SkillType.rivalSpecial2);
+                        }
+                    }
+                    break;
+                case EnemyStorState.SpeedDownSkill:
+                    SpeedDownSkill();
+                    break;
+                case EnemyStorState.BrainwashingSkill:
+                    BrainwashingSkill();
+                    break;
+            }
+        }
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            //cooltimeCount = cooltime + 10;
-        }
-    }
 
     void BrainwashingSkill()
     {

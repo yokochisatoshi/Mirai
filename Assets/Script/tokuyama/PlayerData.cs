@@ -23,8 +23,7 @@ public class PlayerData : MonoBehaviour
     //とりあえずで世界のSTOP系のやつ
     public bool bShowResult = false;
     public bool bNextLevel = false;
-    public bool bUseEneULT = false;
-    public bool bUseMyULT = false;
+    public bool bGameStart = false;
 
     void Awake()
     {
@@ -42,39 +41,41 @@ public class PlayerData : MonoBehaviour
 
     void FixedUpdate()
     {
-        nTime+=0.1f;
-
-
-        if (bAppear)
+        if (bGameStart)
         {
-            nCountFade-=nFadeSpeed;
 
-            if (nCountFade <= 0)
+            nTime += 0.1f;
+            if (bAppear)
             {
-                nMoney += nSumMoney;
-                nSumMoney = 0;
-                bAppear = false;
-                nCountFade = 0; //いらんけど一応
+                nCountFade -= nFadeSpeed;
+
+                if (nCountFade <= 0)
+                {
+                    nMoney += nSumMoney;
+                    nSumMoney = 0;
+                    bAppear = false;
+                    nCountFade = 0; //いらんけど一応
+                }
             }
-        }
 
-       //Scoreに応じてステージレベルが変化する処理
+            //Scoreに応じてステージレベルが変化する処理
 
-        if(nCurrentStage == 0 && nScore>=300) 
-        {
-            nCurrentStage = 1;
-            bNextLevel = true;
-        }
+            if (nCurrentStage == 0 && nScore >= 300)
+            {
+                nCurrentStage = 1;
+                bNextLevel = true;
+            }
 
-        if (nCurrentStage == 1 && nScore >= 600)
-        {
-            nCurrentStage = 2;
-            bNextLevel = true;
-        }
-        //時間が来てResultの表示
-        if(nTime >= 180) 
-        {
-            bShowResult = true;
+            if (nCurrentStage == 1 && nScore >= 600)
+            {
+                nCurrentStage = 2;
+                bNextLevel = true;
+            }
+            //時間が来てResultの表示
+            if (nTime >= 900)
+            {
+                bShowResult = true;
+            }
         }
     }
 
@@ -105,7 +106,7 @@ public class PlayerData : MonoBehaviour
         bAppear = false;
         bShowResult = false;
         bNextLevel = false;
-        bUseEneULT = false;
-        bUseMyULT = false;
+        bGameStart = false;
+       
     }
 }
