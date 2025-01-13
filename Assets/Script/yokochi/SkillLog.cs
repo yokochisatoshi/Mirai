@@ -35,6 +35,7 @@ public class SkillLog : MonoBehaviour
     [SerializeField] Sprite Tebasaki;
     [SerializeField] Sprite Uirou;
     [SerializeField] Sprite rival;
+    [SerializeField] Sprite Increase;
 
     // Start is called before the first frame update
     void Start()
@@ -110,6 +111,9 @@ public class SkillLog : MonoBehaviour
                 break;
             case SkillLogManager.SkillType.rivalSpecial2:
                 myImage.sprite = rivalSpecial2;
+                break;
+            case SkillLogManager.SkillType.Increase:
+                myImage.sprite = Increase;
                 break;
             case SkillLogManager.SkillType.NoData:
 
