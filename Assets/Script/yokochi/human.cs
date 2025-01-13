@@ -21,7 +21,7 @@ public class human : MonoBehaviour
     public float speed;
     GameObject ManageData;
     PlayerData script;
-    GameObject child;
+    GameObject child;                               // favoriteƒIƒuƒWƒF
 
     bool bCanStore = false;
 
@@ -90,8 +90,17 @@ public class human : MonoBehaviour
                 break;
             case (int)human_state.eat:          // H–’†
                 eatCunt++;
+                for (int i = 0; i < childMr.Count; i++)
+                {
+                    childMr[i].color = mr.material.color - new Color32(0, 0, 0, (byte)(255));
+                }
                 if (eatCunt > eatTime)
                 { // ˆê’èŠÔH–‚µ‚½‚ç
+                    for (int i = 0; i < childMr.Count; i++)
+                    {
+                        childMr[i].color = mr.material.color - new Color32(0, 0, 0, (byte)(0));
+                    }
+
                     //Debug.Log("unnti");
                     eatCunt = 0;
                     state = (int)human_state.Destroy;                               // ‘Ş“Xó‘Ô‚É‘JˆÚ
@@ -198,12 +207,14 @@ public class human : MonoBehaviour
             if (other.gameObject.tag == "Store" && bCanStore == true)
             { // “X‚É“–‚½‚Á‚½‚ç
                 state = (int)human_state.eat;       // H–ó‘Ô‚É‘JˆÚ
+                Destroy(child);
                 script.AddMoney(addMoneyVal);       // ‚¨‹à‰ÁZ
                 script.AddScore(150);               // ƒXƒRƒA‰ÁZ
             }
             else if (other.gameObject.tag == "EnemyStore" && bCanStore == true)
             { // “G‚Ì“X“–‚½‚Á‚½‚ç
                 state = (int)human_state.eat;       // H–ó‘Ô‚É‘JˆÚ
+                Destroy(child);
             }
         }
 
@@ -211,6 +222,7 @@ public class human : MonoBehaviour
         { // ô”]ó‘Ô‚©‚Â–Ú“I‚Ì“G‚Ì“X‚É“–‚½‚Á‚½‚ç
             //Debug.Log("e store");
             state = (int)human_state.eat;       // H–ó‘Ô‚É‘JˆÚ
+            Destroy(child);
         }
 
         if (state == (int)human_state.allyBrainwashing && other.gameObject.name == AllyTarget.name)
@@ -219,6 +231,7 @@ public class human : MonoBehaviour
             script.AddMoney(addMoneyVal);       // ‚¨‹à‰ÁZ
             script.AddScore(150);               // ƒXƒRƒA‰ÁZ
             state = (int)human_state.eat;       // H–ó‘Ô‚É‘JˆÚ
+            Destroy(child);
         }
     }
 
