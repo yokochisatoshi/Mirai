@@ -24,6 +24,7 @@ public class ManageGUI : MonoBehaviour
     public GameObject Kanban02_Left;
     public GameObject Kanban02_Right;
     public GameObject Shatihoko;
+    public GameObject Shatihoko_Preview;
 
     //代入されるプレビューの入れ物
     private GameObject PreViewObject;
@@ -254,7 +255,7 @@ public class ManageGUI : MonoBehaviour
         nChoiceOb = 3;
         bCanSet = true;
         //プレビューたちに代入
-        PreViewObject = Instantiate(Kanban00_Preview, new Vector3(-10, 0, 0), Quaternion.Euler(0, 0, 0));
+        PreViewObject = Instantiate(Shatihoko_Preview, new Vector3(-10, 0, 0), Quaternion.Euler(0, 0, 0));
     }
 
 

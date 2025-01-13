@@ -9430,6 +9430,7 @@ MonoBehaviour:
   TebasakiModel: {fileID: 283680598}
   TaiwanRamenModel: {fileID: 719827090}
   KishimenModel: {fileID: 1311108506}
+  skillLogManager: {fileID: 314267763}
 --- !u!4 &628695582
 Transform:
   m_ObjectHideFlags: 0
@@ -15150,8 +15151,7 @@ MonoBehaviour:
   Kanban02_Left: {fileID: 395995224278770100, guid: c47f0c678433e694f979b2b924d23078, type: 3}
   Kanban02_Right: {fileID: 8391379246136083815, guid: b20c8504cd523bc45915c39150de5a0a, type: 3}
   Shatihoko: {fileID: 1071476113967362465, guid: ca003ac6065c07d46903d209bafdc947, type: 3}
-  ShatihokoPreView: {fileID: 3956746625223333730, guid: 5373c06d1ac3dc848b0859c8c9daccf3, type: 3}
-  PeekUI: {fileID: 946518249}
+  Shatihoko_Preview: {fileID: 3956746625223333730, guid: 5373c06d1ac3dc848b0859c8c9daccf3, type: 3}
 --- !u!1001 &1017966271
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19453,7 +19453,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1311108506 stripped
 GameObject:
@@ -31423,7 +31423,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2076036170
 GameObject:
