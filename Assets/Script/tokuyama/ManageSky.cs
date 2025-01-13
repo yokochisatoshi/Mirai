@@ -62,7 +62,7 @@ public class ManageSky : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(PlayerData.Instance.nTime>=50 && bUseSky2==false)
+        if(PlayerData.Instance.nTime>=110 && bUseSky2==false)
         {
             RenderSettings.skybox = skybox2;
             if(Light.transform.localRotation.x<=0.7f)
@@ -76,7 +76,7 @@ public class ManageSky : MonoBehaviour
         }
 
 
-        if (PlayerData.Instance.nTime >= 110 && bUseSky3 == false)
+        if (PlayerData.Instance.nTime >= 230 && bUseSky3 == false)
         {
             RenderSettings.skybox = skybox3;
             if (color.r>=0.0f)

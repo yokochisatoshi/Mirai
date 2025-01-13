@@ -208,7 +208,7 @@ public class ResultSceneManage : MonoBehaviour
                 if (bShowCurrentScore == true && Input.GetKey(KeyCode.Return))
                 {
                     PlayerData.Instance.Reset();
-                    SceneManager.LoadScene("T01_10");
+                    SceneManager.LoadScene("Title");
                 }
 
             }

@@ -7059,8 +7059,7 @@ MonoBehaviour:
   bAppear: 0
   bShowResult: 0
   bNextLevel: 0
-  bUseEneULT: 0
-  bUseMyULT: 0
+  bGameStart: 0
 --- !u!4 &512545927
 Transform:
   m_ObjectHideFlags: 0
@@ -7572,7 +7571,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &573942410
 PrefabInstance:
@@ -7847,6 +7846,7 @@ MonoBehaviour:
   levelUI: {fileID: 1867479761}
   LevelUiScaleFactor: 0.5
   LevelUiMoveOffset: {x: -50, y: -80}
+  GugeUi: {fileID: 0}
 --- !u!4 &596196608 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4973367759857820, guid: ef0db6475b65e3f4caf48f2481a05f13, type: 3}
@@ -8384,6 +8384,7 @@ MonoBehaviour:
   TebasakiModel: {fileID: 283680598}
   TaiwanRamenModel: {fileID: 719827090}
   KishimenModel: {fileID: 1311108506}
+  skillLogManager: {fileID: 0}
 --- !u!4 &628695582
 Transform:
   m_ObjectHideFlags: 0
@@ -10940,6 +10941,7 @@ MonoBehaviour:
   levelUI: {fileID: 743129914}
   LevelUiScaleFactor: 0.5
   LevelUiMoveOffset: {x: -50, y: -80}
+  GugeUi: {fileID: 0}
 --- !u!114 &772438829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12879,6 +12881,7 @@ MonoBehaviour:
   levelUI: {fileID: 1589098921}
   LevelUiScaleFactor: 0.5
   LevelUiMoveOffset: {x: -50, y: -80}
+  GugeUi: {fileID: 0}
 --- !u!114 &953731658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13101,6 +13104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panel: {fileID: 1934475050}
+  uiTrigger: {fileID: 0}
   slideSpeed: 10000
 --- !u!1001 &956713721
 PrefabInstance:
@@ -14042,6 +14046,8 @@ MonoBehaviour:
   Kanban02_Left: {fileID: 3011398516368898580, guid: dd1cb05e9d0c61f40b95e887214eb314, type: 3}
   Kanban02_Right: {fileID: 7456580884199573715, guid: 79a18edbea42ead43a4c37fe616e76e7, type: 3}
   Shatihoko: {fileID: 47510483518965582, guid: cf223347485d6fd4a993ffcb21b781fe, type: 3}
+  Shatihoko_Preview: {fileID: 0}
+  PeekUI: {fileID: 0}
 --- !u!1001 &1017966271
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15554,7 +15560,7 @@ Transform:
   - {fileID: 699298480}
   - {fileID: 1715933400}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1135615719 stripped
 Transform:
@@ -16077,6 +16083,7 @@ MonoBehaviour:
   levelUI: {fileID: 426487888}
   LevelUiScaleFactor: 0.5
   LevelUiMoveOffset: {x: -50, y: -80}
+  GugeUi: {fileID: 0}
 --- !u!114 &1163749158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18085,6 +18092,7 @@ MonoBehaviour:
   levelUI: {fileID: 2099999399}
   LevelUiScaleFactor: 0.5
   LevelUiMoveOffset: {x: -50, y: -80}
+  GugeUi: {fileID: 0}
 --- !u!114 &1317552434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20133,6 +20141,7 @@ MonoBehaviour:
   levelUI: {fileID: 1894954225}
   LevelUiScaleFactor: 0.5
   LevelUiMoveOffset: {x: -50, y: -80}
+  GugeUi: {fileID: 0}
 --- !u!114 &1452725359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21722,7 +21731,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1582257923
 AudioSource:
@@ -25321,7 +25330,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dec02a0ba9d8544588aa1d816126092, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NPC_00: {fileID: 1485781535459037459, guid: 7133eca9249570b408a72a85f754d6a1, type: 3}
+  GosuloliNPC: {fileID: 0}
+  KaigaiNPC: {fileID: 0}
+  SalaryNPC: {fileID: 0}
+  DancerNPC: {fileID: 0}
+  GodNPC: {fileID: 0}
   Wall: {fileID: 288992195}
 --- !u!4 &1865328942
 Transform:
@@ -26383,9 +26396,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aa2caa8dafa2174fbe49969cdd04b23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundEffects:
-  - {fileID: 8300000, guid: 20c6ecc24e8850747ba203457981f02f, type: 3}
-  - {fileID: 8300000, guid: 55f45caa45ff43a4db501b7432b9f013, type: 3}
+  audioSource: {fileID: 0}
+  soundClips: []
 --- !u!4 &1905876973
 Transform:
   m_ObjectHideFlags: 0

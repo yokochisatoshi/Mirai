@@ -15,7 +15,10 @@ public class ManageResult : MonoBehaviour
     public GameObject UI02;
     public GameObject UI03;
     public GameObject UI04;
-   
+    public GameObject UI05;
+    public GameObject UI06;
+    public GameObject UI07;
+
 
     private Vector3 txtpos;
     private float FadeAlfa;
@@ -47,8 +50,12 @@ public class ManageResult : MonoBehaviour
             UI02.SetActive(false);
             UI03.SetActive(false);
             UI04.SetActive(false);
+            UI05.SetActive(false);
+            UI06.SetActive(false);
+            UI07.SetActive(false);
 
-            
+
+
 
             if (txtpos.y >= 400)
             {
