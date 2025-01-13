@@ -7,11 +7,15 @@ public class EffectManager : MonoBehaviour
     [SerializeField] private ObjectPool specialEffectPool;
     [SerializeField] private ObjectPool rivalSpecialEffectPool;
     [SerializeField] private ObjectPool establishmentEffectPool;
+    [SerializeField] private ObjectPool shatihokoEffectPool;
+    [SerializeField] private ObjectPool increaseOfCapitalEffectPool;
 
     public ObjectPool SignBoardEffectPool => signBoardEffectPool;
     public ObjectPool SpecialEffectPool => specialEffectPool;
     public ObjectPool RivalSpecialEffectPool => rivalSpecialEffectPool;
     public ObjectPool EstablishEffectPool => establishmentEffectPool;
+    public ObjectPool ShatihokoEffectPool => shatihokoEffectPool;
+    public ObjectPool IncreaseOfCapitalEffectPool => increaseOfCapitalEffectPool;
 
     // エフェクトを呼び出し、その後戻す
     public GameObject SpawnSignBoardEffect(Vector3 position)
@@ -71,5 +75,35 @@ public class EffectManager : MonoBehaviour
     {
         yield return new WaitForSeconds(time);  // 例えば1秒後にエフェクトを戻す
         establishmentEffectPool.ReturnEffect(effect);
+    }
+
+    // エフェクトを呼び出し、その後戻す
+    public GameObject SpawnShatihokoEffect(Vector3 position)
+    {
+        GameObject fireEffect = shatihokoEffectPool.GetEffect(position, Quaternion.identity);
+        StartCoroutine(ReturnShatihokoEffectAfterTime(fireEffect, 3f)); // 例: 3秒後にエフェクトをプールに戻す
+        return fireEffect;
+    }
+
+    // エフェクトをプールに戻す
+    private IEnumerator ReturnShatihokoEffectAfterTime(GameObject effect, float time)
+    {
+        yield return new WaitForSeconds(time);  // 例えば3秒後にエフェクトを戻す
+        shatihokoEffectPool.ReturnEffect(effect);
+    }
+
+    // エフェクトを呼び出し、その後戻す
+    public GameObject SpawnIncreaseOfCapitalEffect(Vector3 position)
+    {
+        GameObject fireEffect = increaseOfCapitalEffectPool.GetEffect(position, Quaternion.identity);
+        StartCoroutine(ReturnIncreaseOfCapitalEffectAfterTime(fireEffect, 2.5f)); // 例: 2.5秒後にエフェクトをプールに戻す
+        return fireEffect;
+    }
+
+    // エフェクトをプールに戻す
+    private IEnumerator ReturnIncreaseOfCapitalEffectAfterTime(GameObject effect, float time)
+    {
+        yield return new WaitForSeconds(time);  // 例えば2.5秒後にエフェクトを戻す
+        increaseOfCapitalEffectPool.ReturnEffect(effect);
     }
 }

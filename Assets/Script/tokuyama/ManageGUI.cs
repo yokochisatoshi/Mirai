@@ -34,7 +34,8 @@ public class ManageGUI : MonoBehaviour
 
 
     // 川添追加
-    private EffectManager effectManager;        // 看板設置時のエフェクト
+    private EffectManager signBoardEffectManager;        // 看板設置時のエフェクト
+    private EffectManager shatihokoEffectManager;        // しゃちほこ設置時のエフェクト
 
 
 
@@ -44,7 +45,8 @@ public class ManageGUI : MonoBehaviour
         mainCamera = Camera.main;
 
         // 川添追加
-        effectManager = FindObjectOfType<EffectManager>();
+        signBoardEffectManager = FindObjectOfType<EffectManager>();
+        shatihokoEffectManager = FindObjectOfType<EffectManager>();
         //
         PeekUI.SetActive(false);
     }
@@ -112,7 +114,8 @@ public class ManageGUI : MonoBehaviour
                             nChoiceOb = -1;
 
                             // 川添追加
-                            GameObject effect = effectManager.SpawnEstablishEffect(currentPosition);
+                            GameObject effect = signBoardEffectManager.SpawnEstablishEffect(currentPosition);
+                            SoundManager.Instance.PlaySound("InstallationLv1");
                         }
 
                         //設置が可能な状態で [右] クリックを押した
@@ -128,7 +131,8 @@ public class ManageGUI : MonoBehaviour
                             nChoiceOb = -1;
 
                             // 川添追加
-                            GameObject effect = effectManager.SpawnEstablishEffect(currentPosition);
+                            GameObject effect = signBoardEffectManager.SpawnEstablishEffect(currentPosition);
+                            SoundManager.Instance.PlaySound("InstallationLv1");
                         }
 
                     }
@@ -147,7 +151,8 @@ public class ManageGUI : MonoBehaviour
                             nChoiceOb = -1;
 
                             // 川添追加
-                            GameObject effect = effectManager.SpawnEstablishEffect(transform.position);
+                            GameObject effect = signBoardEffectManager.SpawnEstablishEffect(currentPosition);
+                            SoundManager.Instance.PlaySound("InstallationLv2");
                         }
 
                         //設置が可能な状態で [右] クリックを押した
@@ -163,7 +168,8 @@ public class ManageGUI : MonoBehaviour
                             nChoiceOb = -1;
 
                             // 川添追加
-                            GameObject effect = effectManager.SpawnEstablishEffect(transform.position);
+                            GameObject effect = signBoardEffectManager.SpawnEstablishEffect(currentPosition);
+                            SoundManager.Instance.PlaySound("InstallationLv2");
                         }
 
                     }
@@ -182,7 +188,8 @@ public class ManageGUI : MonoBehaviour
                             nChoiceOb = -1;
 
                             // 川添追加
-                            GameObject effect = effectManager.SpawnEstablishEffect(transform.position);
+                            GameObject effect = signBoardEffectManager.SpawnEstablishEffect(currentPosition);
+                            SoundManager.Instance.PlaySound("InstallationLv3");
                         }
 
                         //設置が可能な状態で [右] クリックを押した
@@ -198,7 +205,8 @@ public class ManageGUI : MonoBehaviour
                             nChoiceOb = -1;
 
                             // 川添追加
-                            GameObject effect = effectManager.SpawnEstablishEffect(transform.position);
+                            GameObject effect = signBoardEffectManager.SpawnEstablishEffect(currentPosition);
+                            SoundManager.Instance.PlaySound("InstallationLv3");
                         }
 
                     }
@@ -217,7 +225,10 @@ public class ManageGUI : MonoBehaviour
                             nChoiceOb = -1;
 
                             // 川添追加
-                            GameObject effect = effectManager.SpawnEstablishEffect(transform.position);
+                            //GameObject effect = shatihokoEffectManager.SpawnShatihokoEffect(currentPosition);
+                            GameObject effect = shatihokoEffectManager.SpawnShatihokoEffect(
+                                new Vector3(currentPosition.x, currentPosition.y - 2.0f, currentPosition.z));
+                            SoundManager.Instance.PlaySound("Shatihoko");
                         }
 
                         //設置が可能な状態で [右] クリックを押した
@@ -233,7 +244,10 @@ public class ManageGUI : MonoBehaviour
                             nChoiceOb = -1;
 
                             // 川添追加
-                            GameObject effect = effectManager.SpawnEstablishEffect(transform.position);
+                            //GameObject effect = shatihokoEffectManager.SpawnShatihokoEffect(currentPosition);
+                            GameObject effect = shatihokoEffectManager.SpawnShatihokoEffect(
+                                new Vector3(currentPosition.x, currentPosition.y - 2.0f, currentPosition.z));
+                            SoundManager.Instance.PlaySound("Shatihoko");
                         }
 
                     }

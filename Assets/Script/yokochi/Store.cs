@@ -41,17 +41,11 @@ public class Store : MonoBehaviour
     SkillLogManager SkillLogSc;
     SkillLogManager.StoreName storeName;
 
-    // 川添追加
-    private EffectManager SpecialEffectManager;        // 看板交差時のエフェクト
-
     // Start is called before the first frame update
     void Start()
     {
         PLDataSc = GameObject.Find("ManageData").GetComponent<PlayerData>();
         SkillLogSc = GameObject.Find("ManageSkillLog").GetComponent<SkillLogManager>();
-
-        // 川添追加
-        SpecialEffectManager = FindObjectOfType<EffectManager>();
 
         // 面倒くさいのでここでスキルログのなまえセット
         switch (food)
@@ -98,9 +92,6 @@ public class Store : MonoBehaviour
                     BrainwashingSkill();
                     state = StorState.nomal;
 
-                    // 川添追加
-                    GameObject Effect = SpecialEffectManager.SpawnSpecialEffect(transform.position);
-
                     break;
                 case StorState.SmallBrainwashingSkill:
                     skillTimeCount++;
@@ -109,9 +100,6 @@ public class Store : MonoBehaviour
                         SkillColli.SetActive(false);
                         skillTimeCount = 0;
                         state = StorState.nomal;
-
-                        // 川添追加
-                        Effect = SpecialEffectManager.SpawnSpecialEffect(transform.position);
                     }
 
                     break;
@@ -119,24 +107,15 @@ public class Store : MonoBehaviour
                     SpeedUpSkill();
                     state = StorState.nomal;
 
-                    // 川添追加
-                    Effect = SpecialEffectManager.SpawnSpecialEffect(transform.position);
-
                     break;
                 case StorState.addMoney:
                     PLDataSc.AddMoney(addMoneyVal);
                     state = StorState.nomal;
 
-                    // 川添追加
-                    Effect = SpecialEffectManager.SpawnSpecialEffect(transform.position);
-
                     break;
                 case StorState.EnemySkillDownTimeSkill:
                     EnemySkillDownTimeSkill();
                     state = StorState.nomal;
-
-                    // 川添追加
-                    Effect = SpecialEffectManager.SpawnSpecialEffect(transform.position);
 
                     break;
             }
@@ -216,7 +195,7 @@ public class Store : MonoBehaviour
                 SkillLogSc.CreateSkillLog(storeName, SkillLogManager.SkillType.Special2);
                 state = StorState.EnemySkillDownTimeSkill;
             }
-            SoundManager.Instance.PlaySound("Special");     // 川添　サウンド追加した
+            
         }
         else
         {

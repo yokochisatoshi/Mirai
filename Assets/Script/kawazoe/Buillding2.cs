@@ -17,13 +17,11 @@ public class Buillding2 : MonoBehaviour
     void Update()
     {
         // score‚ªˆê’è‚É’B‚µ‚½ê‡
-        if (PlayerData.Instance.nMoney >= 1200)
+        if (PlayerData.Instance.nScore >= 2000)
         {
             TaiwanRamen.SetActive(true);
             Kishimen.SetActive(true);
             Raival2.SetActive(true);
-
-            Debug.Log("Œš’z‚µ‚Ü‚·I");
         }
 
     }

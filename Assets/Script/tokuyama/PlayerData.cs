@@ -60,13 +60,13 @@ public class PlayerData : MonoBehaviour
 
             //Scoreに応じてステージレベルが変化する処理
 
-            if (nCurrentStage == 0 && nScore >= 300)
+            if (nCurrentStage == 0 && nScore >= 1000)
             {
                 nCurrentStage = 1;
                 bNextLevel = true;
             }
 
-            if (nCurrentStage == 1 && nScore >= 600)
+            if (nCurrentStage == 1 && nScore >= 2000)
             {
                 nCurrentStage = 2;
                 bNextLevel = true;

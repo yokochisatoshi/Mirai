@@ -21,8 +21,8 @@ public class NPCManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Lv2WallPos = new Vector3(Wall.transform.position.x+75, Wall.transform.position.y, Wall.transform.position.z);
-        Lv3WallPos = new Vector3(Wall.transform.position.x+170, Wall.transform.position.y, Wall.transform.position.z);
+        Lv2WallPos = new Vector3(Wall.transform.position.x+30, Wall.transform.position.y, Wall.transform.position.z);
+        Lv3WallPos = new Vector3(Wall.transform.position.x+70, Wall.transform.position.y, Wall.transform.position.z);
     }
 
     // Update is called once per frame
@@ -41,11 +41,17 @@ public class NPCManager : MonoBehaviour
                      (PlayerData.Instance.nTime >= 360.0f && PlayerData.Instance.nTime <= 420.0f) ||        //’‹
                      (PlayerData.Instance.nTime >= 720.0f && PlayerData.Instance.nTime <= 780.0f))          //–é
                 {
-                    nInterval = 30;
+                    //nInterval = 30;
+
+                    // ì“Y’²®
+                    nInterval = 70;
                 }
                 else
                 {
-                    nInterval = 60;
+                    //nInterval = 60;
+
+                    // ì“Y’²®
+                    nInterval = 135;
                 }
 
 

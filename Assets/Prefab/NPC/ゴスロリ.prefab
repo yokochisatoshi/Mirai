@@ -646,7 +646,7 @@ Transform:
   m_GameObject: {fileID: 646915996777483737}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 2.2, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4252216920147636997}
@@ -714,13 +714,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fffb6367a77b82b4eb4b43183b5ef968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MisokatuTex: {fileID: 2800000, guid: a2c4fd27dc593254cb6ac95f3a4b060c, type: 3}
-  UirouTex: {fileID: 2800000, guid: 62e9ac9cb4ec50541b774d89721b19d8, type: 3}
-  HitsumabushiTex: {fileID: 0}
-  TebasakiTex: {fileID: 0}
-  TaiwanRamenTex: {fileID: 0}
-  KishimenTex: {fileID: 0}
-  BrainwashingTex: {fileID: 2800000, guid: cdb88fdb0cf46b244a667edaff21c7df, type: 3}
+  MisokatuTex: {fileID: 2800000, guid: 2a2ca22ef9b19264a99214e49537f4cb, type: 3}
+  UirouTex: {fileID: 2800000, guid: d18c49347e14c014b9d8b08136fa7afe, type: 3}
+  HitsumabushiTex: {fileID: 2800000, guid: b43ddfafcfa58834b94065190f1b0a06, type: 3}
+  TebasakiTex: {fileID: 2800000, guid: 78fcb0ea1fc002342b2d65caafaca130, type: 3}
+  TaiwanRamenTex: {fileID: 2800000, guid: eebcd919215f4c24fa4b9f4a5a02e5cb, type: 3}
+  KishimenTex: {fileID: 2800000, guid: 177cfdda404d87d46bc205e3193e20be, type: 3}
+  BrainwashingTex: {fileID: 2800000, guid: 4eee2ed1c5b289b4cb022eb6f7ab2673, type: 3}
 --- !u!1 &692192449222827517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1637,7 +1637,7 @@ Transform:
   m_GameObject: {fileID: 1485781535459037459}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -6.162529, y: -0.063, z: 5.5450687}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1167791122337513122}
@@ -2299,7 +2299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4fc9cd6c8c6c0a4fb41eb0e01015072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.1
+  speed: 0.09
   eatTime: 100
   DestroyTime: 2
   speedUpBuf: 1.2

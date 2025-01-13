@@ -17,7 +17,7 @@ public class Buillding1 : MonoBehaviour
     void Update()
     {
         // score‚ªˆê’è‚É’B‚µ‚½ê‡
-        if (PlayerData.Instance.nMoney >= 1000)
+        if (PlayerData.Instance.nScore >= 1000)
         {
             Hitsumabushi.SetActive(true);
             Tebasaki.SetActive(true);
