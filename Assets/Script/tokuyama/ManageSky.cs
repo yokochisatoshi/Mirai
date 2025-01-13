@@ -100,7 +100,7 @@ public class ManageSky : MonoBehaviour
         //}
 
 
-        if (PlayerData.Instance.nTime >= 140 && bUseLight == false)
+        if (PlayerData.Instance.nTime >= 245 && bUseLight == false)
         {
             //‚Ï‚í‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ ‚ 
             PointLight0.SetActive(true);
