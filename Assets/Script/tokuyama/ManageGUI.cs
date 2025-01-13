@@ -31,10 +31,18 @@ public class ManageGUI : MonoBehaviour
     int nChoiceOb=-1;  //0=kanban00 , 1=kanban01,  2=kanban02,  3=シャチホコ
 
 
+    // 川添追加
+    private EffectManager effectManager;        // 看板設置時のエフェクト
+
+
+
     // Start is called before the first frame update
     void Start()
     {
         mainCamera = Camera.main;
+
+        // 川添追加
+        effectManager = FindObjectOfType<EffectManager>();
     }
 
     // Update is called once per frame
@@ -80,6 +88,9 @@ public class ManageGUI : MonoBehaviour
                         nCntInterval = 0;
                         bCanSet = false;
                         nChoiceOb = -1;
+
+                        // 川添追加
+                        GameObject effect = effectManager.SpawnEstablishEffect(currentPosition);
                     }
 
                     //設置が可能な状態で [右] クリックを押した
@@ -93,6 +104,9 @@ public class ManageGUI : MonoBehaviour
                         nCntInterval = 0;
                         bCanSet = false;
                         nChoiceOb = -1;
+
+                        // 川添追加
+                        GameObject effect = effectManager.SpawnEstablishEffect(currentPosition);
                     }
 
                 }
@@ -109,6 +123,9 @@ public class ManageGUI : MonoBehaviour
                         nCntInterval = 0;
                         bCanSet = false;
                         nChoiceOb = -1;
+
+                        // 川添追加
+                        GameObject effect = effectManager.SpawnEstablishEffect(transform.position);
                     }
 
                     //設置が可能な状態で [右] クリックを押した
@@ -122,6 +139,9 @@ public class ManageGUI : MonoBehaviour
                         nCntInterval = 0;
                         bCanSet = false;
                         nChoiceOb = -1;
+
+                        // 川添追加
+                        GameObject effect = effectManager.SpawnEstablishEffect(transform.position);
                     }
 
                 }
@@ -138,6 +158,9 @@ public class ManageGUI : MonoBehaviour
                         nCntInterval = 0;
                         bCanSet = false;
                         nChoiceOb = -1;
+
+                        // 川添追加
+                        GameObject effect = effectManager.SpawnEstablishEffect(transform.position);
                     }
 
                     //設置が可能な状態で [右] クリックを押した
@@ -151,6 +174,9 @@ public class ManageGUI : MonoBehaviour
                         nCntInterval = 0;
                         bCanSet = false;
                         nChoiceOb = -1;
+
+                        // 川添追加
+                        GameObject effect = effectManager.SpawnEstablishEffect(transform.position);
                     }
 
                 }
@@ -167,6 +193,9 @@ public class ManageGUI : MonoBehaviour
                         nCntInterval = 0;
                         bCanSet = false;
                         nChoiceOb = -1;
+
+                        // 川添追加
+                        GameObject effect = effectManager.SpawnEstablishEffect(transform.position);
                     }
 
                     //設置が可能な状態で [右] クリックを押した
@@ -180,6 +209,9 @@ public class ManageGUI : MonoBehaviour
                         nCntInterval = 0;
                         bCanSet = false;
                         nChoiceOb = -1;
+
+                        // 川添追加
+                        GameObject effect = effectManager.SpawnEstablishEffect(transform.position);
                     }
 
                 }

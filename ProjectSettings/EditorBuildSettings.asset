@@ -5,10 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/T01_10.unity
     guid: 412a1f3277fd88b4a8c9ebae8f95c04b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Result_Toku.unity
     guid: d9a3bd743afd9a54f8a5a50ab11c0e30
+  - enabled: 1
+    path: Assets/Scenes/10saisin.unity
+    guid: 128e5c3976266644e8b349ceb0e9277e
   m_configObjects: {}

@@ -21,10 +21,16 @@ public class EnemyShop : MonoBehaviour
 
     SkillLogManager SkillLogSc;
 
+    // êÏìYí«â¡
+    private EffectManager RivalSpecialEffectManager;        // ïKéEãZéûÇÃÉGÉtÉFÉNÉg
+
     // Start is called before the first frame update
     void Start()
     {
         SkillLogSc = GameObject.Find("ManageSkillLog").GetComponent<SkillLogManager>();
+
+        // êÏìYí«â¡
+        RivalSpecialEffectManager = FindObjectOfType<EffectManager>();
     }
 
     // Update is called once per frame
@@ -91,6 +97,10 @@ public class EnemyShop : MonoBehaviour
         }
 
         state = EnemyStorState.nomal;
+
+        // êÏìYí«â¡
+        GameObject effect = RivalSpecialEffectManager.SpawnRivalSpecialEffect(
+                        new Vector3(transform.position.x, transform.position.y - 2.0f, transform.position.z));
     }
 
     void SpeedDownSkill()
@@ -109,6 +119,10 @@ public class EnemyShop : MonoBehaviour
             if(humanScript != null) humanScript.speedDown = false;
             skillTimeCount = 0;
             state = EnemyStorState.nomal;
+
+            // êÏìYí«â¡
+            GameObject effect = RivalSpecialEffectManager.SpawnRivalSpecialEffect(
+                        new Vector3(transform.position.x, transform.position.y - 2.0f, transform.position.z));
         }
 
     }

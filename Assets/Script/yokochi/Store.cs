@@ -40,11 +40,17 @@ public class Store : MonoBehaviour
 
     SkillLogManager SkillLogSc;
 
+    // êÏìYí«â¡
+    private EffectManager SpecialEffectManager;        // ä≈î¬åç∑éûÇÃÉGÉtÉFÉNÉg
+
     // Start is called before the first frame update
     void Start()
     {
         PLDataSc = GameObject.Find("ManageData").GetComponent<PlayerData>();
         SkillLogSc = GameObject.Find("ManageSkillLog").GetComponent<SkillLogManager>();
+
+        // êÏìYí«â¡
+        SpecialEffectManager = FindObjectOfType<EffectManager>();
     }
 
     // Update is called once per frame
@@ -64,6 +70,10 @@ public class Store : MonoBehaviour
             case StorState.BrainwashingSkill:
                 BrainwashingSkill();
                 state = StorState.nomal;
+
+                // êÏìYí«â¡
+                GameObject Effect = SpecialEffectManager.SpawnSpecialEffect(transform.position);
+
                 break;
             case StorState.SmallBrainwashingSkill:
                 skillTimeCount++;
@@ -72,19 +82,35 @@ public class Store : MonoBehaviour
                     SkillColli.SetActive(false);
                     skillTimeCount = 0;
                     state = StorState.nomal;
+
+                    // êÏìYí«â¡
+                    Effect = SpecialEffectManager.SpawnSpecialEffect(transform.position);
                 }
+
                 break;
             case StorState.SpeedUpSkill:
                 SpeedUpSkill();
                 state = StorState.nomal;
+
+                // êÏìYí«â¡
+                Effect = SpecialEffectManager.SpawnSpecialEffect(transform.position);
+
                 break;
             case StorState.addMoney:
                 PLDataSc.AddMoney(addMoneyVal);
                 state = StorState.nomal;
+
+                // êÏìYí«â¡
+                Effect = SpecialEffectManager.SpawnSpecialEffect(transform.position);
+
                 break;
             case StorState.EnemySkillDownTimeSkill:
                 EnemySkillDownTimeSkill();
                 state = StorState.nomal;
+
+                // êÏìYí«â¡
+                Effect = SpecialEffectManager.SpawnSpecialEffect(transform.position);
+
                 break;
         }
 
