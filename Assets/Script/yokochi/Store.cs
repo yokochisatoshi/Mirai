@@ -39,12 +39,35 @@ public class Store : MonoBehaviour
     PlayerData PLDataSc;
 
     SkillLogManager SkillLogSc;
-
+    SkillLogManager.StoreName storeName;
     // Start is called before the first frame update
     void Start()
     {
         PLDataSc = GameObject.Find("ManageData").GetComponent<PlayerData>();
         SkillLogSc = GameObject.Find("ManageSkillLog").GetComponent<SkillLogManager>();
+
+        // 面倒くさいのでここでスキルログのなまえセット
+        switch (food)
+        {
+            case food_type.Misokatu:
+                storeName = SkillLogManager.StoreName.misokatu;
+                break;
+            case food_type.Uirou:
+                storeName = SkillLogManager.StoreName.uirou;
+                break;
+            case food_type.Hitsumabushi:
+                storeName = SkillLogManager.StoreName.Hitumabushi;
+                break;
+            case food_type.Tebasaki:
+                storeName = SkillLogManager.StoreName.Tebasaki;
+                break;
+            case food_type.TaiwanRamen:
+                storeName = SkillLogManager.StoreName.TaiwanRamen;
+                break;
+            case food_type.Kishimen:
+                storeName = SkillLogManager.StoreName.kisimen;
+                break;
+        }
     }
 
     // Update is called once per frame
@@ -140,27 +163,27 @@ public class Store : MonoBehaviour
             if (num >= 0 && num < 20)
             {
                 state = StorState.BrainwashingSkill;
-                SkillLogSc.CreateSkillLog(SkillLogManager.StoreName.Hitumabushi, SkillLogManager.SkillType.Special1);
+                SkillLogSc.CreateSkillLog(storeName, SkillLogManager.SkillType.Special1);
             }
             else if (num >= 20 && num < 40)
             {
-                SkillLogSc.CreateSkillLog(SkillLogManager.StoreName.Hitumabushi, SkillLogManager.SkillType.Special4);
+                SkillLogSc.CreateSkillLog(storeName, SkillLogManager.SkillType.Special4);
                 state = StorState.SmallBrainwashingSkill;
                 SkillColli.SetActive(true);
             }
             else if (num >= 40 && num < 60)
             {
-                SkillLogSc.CreateSkillLog(SkillLogManager.StoreName.Hitumabushi, SkillLogManager.SkillType.Special3);
+                SkillLogSc.CreateSkillLog(storeName, SkillLogManager.SkillType.Special3);
                 state = StorState.SpeedUpSkill;
             }
             else if (num >= 60 && num < 80)
             {
-                SkillLogSc.CreateSkillLog(SkillLogManager.StoreName.Hitumabushi, SkillLogManager.SkillType.Special5);
+                SkillLogSc.CreateSkillLog(storeName, SkillLogManager.SkillType.Special5);
                 state = StorState.addMoney;
             }
             else if (num >= 80 && num < 100)
             {
-                SkillLogSc.CreateSkillLog(SkillLogManager.StoreName.Hitumabushi, SkillLogManager.SkillType.Special2);
+                SkillLogSc.CreateSkillLog(storeName, SkillLogManager.SkillType.Special2);
                 state = StorState.EnemySkillDownTimeSkill;
             }
             SoundManager.Instance.PlaySound("Special");     // 川添　サウンド追加した

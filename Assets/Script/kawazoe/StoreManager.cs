@@ -11,6 +11,18 @@ public class StoreManager : MonoBehaviour
     public GameObject TaiwanRamenModel;
     public GameObject KishimenModel;
 
+
+    // ‰¡’n’Ç‰Á-----------------------------------------------------------------------
+    public GameObject skillLogManager;
+    SkillLogManager SkillLogCs;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        SkillLogCs = skillLogManager.GetComponent<SkillLogManager>();
+    }
+    //-----------------------------------------------------------------------------------
+
     // –¡‘XƒJƒc“X‘‘
     public void OperateMisokatuScaleIncrease()
     {
@@ -21,6 +33,8 @@ public class StoreManager : MonoBehaviour
 
         SoundManager.Instance.PlaySound("Applause"); 
         SoundManager.Instance.PlaySound("IncreaseOfCapital");
+
+        SkillLogCs.CreateSkillLog(SkillLogManager.StoreName.misokatu, SkillLogManager.SkillType.Increase);  // ‘‘ƒƒO¶¬(‰¡’n’Ç‰Á)
     }
 
     // –¡‘XƒJƒc“X•KE‹Z
@@ -40,6 +54,8 @@ public class StoreManager : MonoBehaviour
 
         SoundManager.Instance.PlaySound("Applause");
         SoundManager.Instance.PlaySound("IncreaseOfCapital");
+
+        SkillLogCs.CreateSkillLog(SkillLogManager.StoreName.uirou, SkillLogManager.SkillType.Increase);  // ‘‘ƒƒO¶¬(‰¡’n’Ç‰Á)
     }
 
     // ‚¤‚¢‚ë‚¤“X•KE‹Z
@@ -59,6 +75,8 @@ public class StoreManager : MonoBehaviour
 
         SoundManager.Instance.PlaySound("Applause");
         SoundManager.Instance.PlaySound("IncreaseOfCapital");
+
+        SkillLogCs.CreateSkillLog(SkillLogManager.StoreName.Hitumabushi, SkillLogManager.SkillType.Increase);  // ‘‘ƒƒO¶¬(‰¡’n’Ç‰Á)
     }
 
     // ‚Ğ‚Â‚Ü‚Ô‚µ“X•KE‹Z
@@ -78,6 +96,8 @@ public class StoreManager : MonoBehaviour
 
         SoundManager.Instance.PlaySound("Applause");
         SoundManager.Instance.PlaySound("IncreaseOfCapital");
+
+        SkillLogCs.CreateSkillLog(SkillLogManager.StoreName.Tebasaki, SkillLogManager.SkillType.Increase);  // ‘‘ƒƒO¶¬(‰¡’n’Ç‰Á)
     }
 
     // è‰Hæ“X•KE‹Z
@@ -97,6 +117,8 @@ public class StoreManager : MonoBehaviour
 
         SoundManager.Instance.PlaySound("Applause");
         SoundManager.Instance.PlaySound("IncreaseOfCapital");
+
+        SkillLogCs.CreateSkillLog(SkillLogManager.StoreName.TaiwanRamen, SkillLogManager.SkillType.Increase);  // ‘‘ƒƒO¶¬(‰¡’n’Ç‰Á)
     }
 
     // ‘ä˜pƒ‰[ƒƒ““X•KE‹Z
@@ -116,6 +138,8 @@ public class StoreManager : MonoBehaviour
 
         SoundManager.Instance.PlaySound("Applause");
         SoundManager.Instance.PlaySound("IncreaseOfCapital");
+
+        SkillLogCs.CreateSkillLog(SkillLogManager.StoreName.kisimen, SkillLogManager.SkillType.Increase);  // ‘‘ƒƒO¶¬(‰¡’n’Ç‰Á)
     }
 
     // ‚«‚µ‚ß‚ñ“X•KE‹Z

@@ -231,6 +231,7 @@ MonoBehaviour:
   Tebasaki: {fileID: 21300000, guid: 9169f6762bdb49549aacb2d1a5279c50, type: 3}
   Uirou: {fileID: 21300000, guid: c21597bba610aad43818b246c54be467, type: 3}
   rival: {fileID: 21300000, guid: 767ec620a750bfd4cb3a4fdf38e49860, type: 3}
+  Increase: {fileID: 21300000, guid: 098da423c2614964c9ea5b68a732abcd, type: 3}
 --- !u!1 &8274711885616285347
 GameObject:
   m_ObjectHideFlags: 0

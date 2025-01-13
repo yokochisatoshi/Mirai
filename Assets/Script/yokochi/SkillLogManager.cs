@@ -27,6 +27,7 @@ public class SkillLogManager : MonoBehaviour
         Special5,
         rivalSpecial1,
         rivalSpecial2,
+        Increase,
         NoData
     }
 
@@ -67,39 +68,39 @@ public class SkillLogManager : MonoBehaviour
             
             if (0 > slideSpeed)
             {
-                if (pos.x < transform.position.x + size.sizeDelta.x / 2 - SkillLogs[i].GetComponent<RectTransform>().sizeDelta.x / 2)
+                if (pos.x < transform.position.x + size.sizeDelta.x / 2 - SkillLogs[i].GetComponent<RectTransform>().sizeDelta.x * SkillLogParent.GetComponent<RectTransform>().localScale.x / 2)
                 { // ‰¡ˆÚ“®
                     pos.x -= slideSpeed;
                 }
-                else
+                if (pos.x >= transform.position.x + size.sizeDelta.x / 2 - SkillLogs[i].GetComponent<RectTransform>().sizeDelta.x * SkillLogParent.GetComponent<RectTransform>().localScale.x / 2)
                 { // cˆÚ“®
-                    pos.x = transform.position.x + size.sizeDelta.x / 2 - SkillLogs[i].GetComponent<RectTransform>().sizeDelta.x / 2;
-                    if (pos.y < transform.position.y + size.sizeDelta.y / 2 - SkillLogs[i].GetComponent<RectTransform>().sizeDelta.y / 2 - i * ((size.sizeDelta.y - SkillLogs[i].GetComponent<RectTransform>().sizeDelta.y) / SkillLogs.Count))
+                    pos.x = transform.position.x + size.sizeDelta.x / 2 - SkillLogs[i].GetComponent<RectTransform>().sizeDelta.x * SkillLogParent.GetComponent<RectTransform>().localScale.x / 2;
+                    if (pos.y < transform.position.y + size.sizeDelta.y / 2 - SkillLogs[i].GetComponent<RectTransform>().sizeDelta.y * SkillLogParent.GetComponent<RectTransform>().localScale.y / 2 - i * ((size.sizeDelta.y - SkillLogs[i].GetComponent<RectTransform>().sizeDelta.y * SkillLogParent.GetComponent<RectTransform>().localScale.y) / SkillLogs.Count))
                     { // ‰¡ˆÚ“®
                         pos.y += Mathf.Abs(slideSpeed);
                     }
-                    if (pos.y >= transform.position.y + size.sizeDelta.y / 2 - SkillLogs[i].GetComponent<RectTransform>().sizeDelta.y / 2 - i * ((size.sizeDelta.y - SkillLogs[i].GetComponent<RectTransform>().sizeDelta.y) / SkillLogs.Count))
+                    if (pos.y >= transform.position.y + size.sizeDelta.y / 2 - SkillLogs[i].GetComponent<RectTransform>().sizeDelta.y * SkillLogParent.GetComponent<RectTransform>().localScale.y / 2 - i * ((size.sizeDelta.y - SkillLogs[i].GetComponent<RectTransform>().sizeDelta.y * SkillLogParent.GetComponent<RectTransform>().localScale.y) / SkillLogs.Count))
                     {
-                        pos.y = transform.position.y + size.sizeDelta.y / 2 - SkillLogs[i].GetComponent<RectTransform>().sizeDelta.y / 2 - i * ((size.sizeDelta.y - SkillLogs[i].GetComponent<RectTransform>().sizeDelta.y) / SkillLogs.Count);
+                        pos.y = transform.position.y + size.sizeDelta.y / 2 - SkillLogs[i].GetComponent<RectTransform>().sizeDelta.y * SkillLogParent.GetComponent<RectTransform>().localScale.y / 2 - i * ((size.sizeDelta.y - SkillLogs[i].GetComponent<RectTransform>().sizeDelta.y * SkillLogParent.GetComponent<RectTransform>().localScale.y) / SkillLogs.Count);
                     }
                 }
             }
             else
             {
-                if (pos.x > transform.position.x - size.sizeDelta.x / 2 + SkillLogs[i].GetComponent<RectTransform>().sizeDelta.x / 2)
+                if (pos.x > transform.position.x - size.sizeDelta.x / 2 + SkillLogs[i].GetComponent<RectTransform>().sizeDelta.x * SkillLogParent.GetComponent<RectTransform>().localScale.x / 2)
                 { // ‰¡ˆÚ“®
                     pos.x -= slideSpeed;
                 }
-                else
+                if (pos.x <= transform.position.x - size.sizeDelta.x / 2 + SkillLogs[i].GetComponent<RectTransform>().sizeDelta.x * SkillLogParent.GetComponent<RectTransform>().localScale.x / 2)
                 { // cˆÚ“®
-                    pos.x = transform.position.x - size.sizeDelta.x / 2 + SkillLogs[i].GetComponent<RectTransform>().sizeDelta.x / 2;
-                    if (pos.y < transform.position.y + size.sizeDelta.y / 2 - SkillLogs[i].GetComponent<RectTransform>().sizeDelta.y / 2 - i * ((size.sizeDelta.y - SkillLogs[i].GetComponent<RectTransform>().sizeDelta.y) / SkillLogs.Count))
+                    pos.x = transform.position.x - size.sizeDelta.x / 2 + SkillLogs[i].GetComponent<RectTransform>().sizeDelta.x * SkillLogParent.GetComponent<RectTransform>().localScale.x / 2;
+                    if (pos.y < transform.position.y + size.sizeDelta.y / 2 - SkillLogs[i].GetComponent<RectTransform>().sizeDelta.y * SkillLogParent.GetComponent<RectTransform>().localScale.y / 2 - i * ((size.sizeDelta.y - SkillLogs[i].GetComponent<RectTransform>().sizeDelta.y * SkillLogParent.GetComponent<RectTransform>().localScale.y) / SkillLogs.Count))
                     { // ‰¡ˆÚ“®
                         pos.y += Mathf.Abs(slideSpeed);
                     }
-                    if (pos.y >= transform.position.y + size.sizeDelta.y / 2 - SkillLogs[i].GetComponent<RectTransform>().sizeDelta.y / 2 - i * ((size.sizeDelta.y - SkillLogs[i].GetComponent<RectTransform>().sizeDelta.y) / SkillLogs.Count))
+                    if (pos.y >= transform.position.y + size.sizeDelta.y / 2 - SkillLogs[i].GetComponent<RectTransform>().sizeDelta.y * SkillLogParent.GetComponent<RectTransform>().localScale.y / 2 - i * ((size.sizeDelta.y - SkillLogs[i].GetComponent<RectTransform>().sizeDelta.y * SkillLogParent.GetComponent<RectTransform>().localScale.y) / SkillLogs.Count))
                     {
-                        pos.y = transform.position.y + size.sizeDelta.y / 2 - SkillLogs[i].GetComponent<RectTransform>().sizeDelta.y / 2 - i * ((size.sizeDelta.y - SkillLogs[i].GetComponent<RectTransform>().sizeDelta.y) / SkillLogs.Count);
+                        pos.y = transform.position.y + size.sizeDelta.y / 2 - SkillLogs[i].GetComponent<RectTransform>().sizeDelta.y * SkillLogParent.GetComponent<RectTransform>().localScale.y / 2 - i * ((size.sizeDelta.y - SkillLogs[i].GetComponent<RectTransform>().sizeDelta.y * SkillLogParent.GetComponent<RectTransform>().localScale.y) / SkillLogs.Count);
                     }
                 }
             }
