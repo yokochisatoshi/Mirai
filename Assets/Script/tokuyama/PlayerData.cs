@@ -72,7 +72,7 @@ public class PlayerData : MonoBehaviour
             bNextLevel = true;
         }
         //ŽžŠÔ‚ª—ˆ‚ÄResult‚Ì•\Ž¦
-        if(nTime >= 20) 
+        if(nTime >= 180) 
         {
             bShowResult = true;
         }
