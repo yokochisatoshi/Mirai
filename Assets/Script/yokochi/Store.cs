@@ -6,9 +6,12 @@ public class Store : MonoBehaviour
 { 
     public enum food_type
     {
-        misokatu,
-        uirou,
-        BigEye,
+        Misokatu,
+        Uirou,
+        Hitsumabushi,
+        Tebasaki,
+        TaiwanRamen,
+        Kishimen,
     }
 
     public food_type food;
@@ -142,6 +145,7 @@ public class Store : MonoBehaviour
             {
                 state = StorState.addMoney;
             }
+            SoundManager.Instance.PlaySound("Special");     // 川添　サウンド追加した
         }
         else
         {

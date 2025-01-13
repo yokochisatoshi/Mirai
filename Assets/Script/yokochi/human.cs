@@ -42,6 +42,8 @@ public class human : MonoBehaviour
     public bool speedDown = false;
     float speedBuf = 1.0f;
 
+    bool eat = false;       // 川添追加（退店用）
+
     //徳山
     private Vector3 HozonVec;
     // Start is called before the first frame update
@@ -115,6 +117,16 @@ public class human : MonoBehaviour
 
                 mr.material.color = mr.material.color - new Color32(0, 0, 0, (byte)(mr.material.color.a + 5));  // 透明にしていく
                 Destroy(this.gameObject, DestroyTime);                                                           // 一定時間経ったら殺す
+
+                // 川添追加ここから
+                if (!eat)
+                {
+                    SoundManager.Instance.PlaySound("GetMoney");     // 川添　サウンド追加した
+                    SoundManager.Instance.PlaySound("gratitude");     // 川添　サウンド追加した
+                    eat = true;
+                }
+                // ここまで
+
                 break;
             case (int)human_state.brainwashing: // 洗脳状態
                 this.transform.LookAt(EnemyTarget.transform);   // 目的の店の方向を向く
@@ -152,6 +164,7 @@ public class human : MonoBehaviour
             {
                 this.gameObject.transform.eulerAngles = new Vector3(0, 270, 0);
                 bCanStore = true;
+                SoundManager.Instance.PlaySound("Attack");     // 川添　サウンド追加した
             }
             if (other.gameObject.tag == "leftMarker")
             {
@@ -161,7 +174,8 @@ public class human : MonoBehaviour
 
                 this.gameObject.transform.eulerAngles = new Vector3(0, 0, 0);
                 bCanStore = true;
-                
+                SoundManager.Instance.PlaySound("Attack");     // 川添　サウンド追加した
+
             }
             if (other.gameObject.tag == "rightMarker")
             {
@@ -171,12 +185,14 @@ public class human : MonoBehaviour
 
                 this.gameObject.transform.eulerAngles = new Vector3(0, 180, 0);
                 bCanStore = true;
+                SoundManager.Instance.PlaySound("Attack");     // 川添　サウンド追加した
             }
             if (other.gameObject.tag == "frontMarker")
             {
                 this.gameObject.transform.eulerAngles = new Vector3(0, 90, 0);
                 bCanStore = true;
                 // Debug.Log("hitfront");
+                SoundManager.Instance.PlaySound("Attack");     // 川添　サウンド追加した
             }
 
             if (other.gameObject.tag == "Store" && bCanStore == true)

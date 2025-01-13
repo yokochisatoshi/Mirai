@@ -25,7 +25,8 @@ public class MoneyUI : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        moneyText.text = "Money: " + PlayerData.Instance.nMoney;
+        // 川添　大文字に変えた
+        moneyText.text = "MONEY: " + PlayerData.Instance.nMoney;
 
         //消えてく方のテキストMoney
         moneyText2.text =   "+"    + PlayerData.Instance.nSumMoney;
