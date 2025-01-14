@@ -22,7 +22,7 @@ public class PlayerData : MonoBehaviour
 
     //とりあえずで世界のSTOP系のやつ
     public bool bShowResult = false;
-    public bool bNextLevel = false;
+  //  public bool bNextLevel = false;
     public bool bGameStart = false;
 
     void Awake()
@@ -58,19 +58,7 @@ public class PlayerData : MonoBehaviour
                 }
             }
 
-            //Scoreに応じてステージレベルが変化する処理
-
-            if (nCurrentStage == 0 && nScore >= 1000)
-            {
-                nCurrentStage = 1;
-                bNextLevel = true;
-            }
-
-            if (nCurrentStage == 1 && nScore >= 2000)
-            {
-                nCurrentStage = 2;
-                bNextLevel = true;
-            }
+            
             //時間が来てResultの表示
             if (nTime >= 360)               //6時間後
             {
@@ -105,7 +93,7 @@ public class PlayerData : MonoBehaviour
         nFadeSpeed = 0.006f;
         bAppear = false;
         bShowResult = false;
-        bNextLevel = false;
+        //bNextLevel = false;
         bGameStart = false;
        
     }

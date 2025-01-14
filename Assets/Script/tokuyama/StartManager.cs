@@ -21,6 +21,8 @@ public class StartManager : MonoBehaviour
     public GameObject StartImage;
     private bool bFinish = false;
     private int nTimeCount = 0;
+    private bool bGameStart = false;
+    bool bOnce = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -71,12 +73,15 @@ public class StartManager : MonoBehaviour
                                 bFinish = true;
                             }
                             //ÉQÅ[ÉÄäJén
-                            if(PlayerData.Instance.bGameStart==false)
+                            if(bGameStart==false && bOnce==false)
                             {
                                 //audioSource.PlayOneShot(SEStart);
+                                bGameStart = true;
+                                bOnce = true;
+                                PlayerData.Instance.bGameStart = true;
                             }
                            
-                            PlayerData.Instance.bGameStart = true;
+                           
                         }
                         
                         

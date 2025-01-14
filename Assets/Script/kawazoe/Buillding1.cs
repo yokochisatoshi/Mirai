@@ -23,7 +23,7 @@ public class Buillding1 : MonoBehaviour
             Tebasaki.SetActive(true);
             Raival1.SetActive(true);
 
-            Debug.Log("Œš’z‚µ‚Ü‚·I");
+            //Debug.Log("Œš’z‚µ‚Ü‚·I");
         }
 
     }

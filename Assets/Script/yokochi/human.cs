@@ -82,84 +82,88 @@ public class human : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        pos = transform.position;
-
-        // とりあえずY座標が一定以下なら消す
-        if (this.transform.position.y < -1.0f)
+        //徳山追加If分
+        if (PlayerData.Instance.bGameStart == true)
         {
-            Destroy(this.gameObject);
-        }
+            pos = transform.position;
 
-        switch (state)
-        {
-            case (int)human_state.normal:
-                // 移動処理(正面に移動)
-                Moveforward();
-                break;
-            case (int)human_state.eat:          // 食事中
-                eatCunt++;
-                for (int i = 0; i < childMr.Count; i++)
-                {
-                    childMr[i].color = mr.material.color - new Color32(0, 0, 0, (byte)(255));
-                }
-                if (eatCunt > eatTime)
-                { // 一定時間食事したら
+            // とりあえずY座標が一定以下なら消す
+            if (this.transform.position.y < -1.0f)
+            {
+                Destroy(this.gameObject);
+            }
+
+            switch (state)
+            {
+                case (int)human_state.normal:
+                    // 移動処理(正面に移動)
+                    Moveforward();
+                    break;
+                case (int)human_state.eat:          // 食事中
+                    eatCunt++;
                     for (int i = 0; i < childMr.Count; i++)
                     {
-                        childMr[i].color = mr.material.color - new Color32(0, 0, 0, (byte)(0));
+                        childMr[i].color = mr.material.color - new Color32(0, 0, 0, (byte)(255));
                     }
+                    if (eatCunt > eatTime)
+                    { // 一定時間食事したら
+                        for (int i = 0; i < childMr.Count; i++)
+                        {
+                            childMr[i].color = mr.material.color - new Color32(0, 0, 0, (byte)(0));
+                        }
 
-                    //Debug.Log("unnti");
-                    eatCunt = 0;
-                    state = (int)human_state.Destroy;                               // 退店状態に遷移
-                    if(this.gameObject.transform.position.z > 0)
+                        //Debug.Log("unnti");
+                        eatCunt = 0;
+                        state = (int)human_state.Destroy;                               // 退店状態に遷移
+                        if (this.gameObject.transform.position.z > 0)
+                        {
+                            this.gameObject.transform.eulerAngles = new Vector3(0, 180, 0); // プレイヤーを出口に向ける
+                        }
+                        else
+                        {
+                            this.gameObject.transform.eulerAngles = new Vector3(0, 0, 0); // プレイヤーを出口に向ける
+                        }
+
+                    }
+                    break;
+                case (int)human_state.Destroy:      // 退店状態
+                                                    // 移動処理(正面に移動)
+                    Moveforward();
+
+                    for (int i = 0; i < childMr.Count; i++)
                     {
-                        this.gameObject.transform.eulerAngles = new Vector3(0, 180, 0); // プレイヤーを出口に向ける
+                        childMr[i].color = mr.material.color - new Color32(0, 0, 0, (byte)(mr.material.color.a + 5));
                     }
-                    else
+
+                    mr.material.color = mr.material.color - new Color32(0, 0, 0, (byte)(mr.material.color.a + 5));  // 透明にしていく
+                    Destroy(this.gameObject, DestroyTime);                                                           // 一定時間経ったら殺す
+
+                    // 川添追加ここから
+                    if (!eat)
                     {
-                        this.gameObject.transform.eulerAngles = new Vector3(0, 0, 0); // プレイヤーを出口に向ける
+                        SoundManager.Instance.PlaySound("GetMoney");     // 川添　サウンド追加した
+                        SoundManager.Instance.PlaySound("gratitude");     // 川添　サウンド追加した
+                        eat = true;
                     }
-                    
-                }
-                break;
-            case (int)human_state.Destroy:      // 退店状態
-                // 移動処理(正面に移動)
-                Moveforward();
+                    // ここまで
 
-                for (int i = 0; i < childMr.Count; i++)
-                {
-                    childMr[i].color = mr.material.color - new Color32(0, 0, 0, (byte)(mr.material.color.a + 5));
-                }
+                    break;
+                case (int)human_state.brainwashing: // 洗脳状態
+                    this.transform.LookAt(EnemyTarget.transform);   // 目的の店の方向を向く
+                                                                    // 正面に移動
+                    Moveforward();
 
-                mr.material.color = mr.material.color - new Color32(0, 0, 0, (byte)(mr.material.color.a + 5));  // 透明にしていく
-                Destroy(this.gameObject, DestroyTime);                                                           // 一定時間経ったら殺す
+                    // 川添追加
+                    rivalSpecialEffect.SetActive(true);
 
-                // 川添追加ここから
-                if (!eat)
-                {
-                    SoundManager.Instance.PlaySound("GetMoney");     // 川添　サウンド追加した
-                    SoundManager.Instance.PlaySound("gratitude");     // 川添　サウンド追加した
-                    eat = true;
-                }
-                // ここまで
+                    break;
+                case (int)human_state.allyBrainwashing: // 洗脳状態
+                    this.transform.LookAt(AllyTarget.transform);   // 目的の店の方向を向く
+                                                                   // 正面に移動
+                    Moveforward();
 
-                break;
-            case (int)human_state.brainwashing: // 洗脳状態
-                this.transform.LookAt(EnemyTarget.transform);   // 目的の店の方向を向く
-                // 正面に移動
-                Moveforward();
-
-                // 川添追加
-                rivalSpecialEffect.SetActive(true);
-
-                break;
-            case (int)human_state.allyBrainwashing: // 洗脳状態
-                this.transform.LookAt(AllyTarget.transform);   // 目的の店の方向を向く
-                // 正面に移動
-                Moveforward();
-
-                break;
+                    break;
+            }
         }
     }
 

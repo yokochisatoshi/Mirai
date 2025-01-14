@@ -16,28 +16,32 @@ public class CameraMove : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (PlayerData.Instance.bShowResult == false)
+        if (PlayerData.Instance.bGameStart == true)
         {
-            if (ableMove == true)
+
+            if (PlayerData.Instance.bShowResult == false)
             {
-                Vector3 pos = transform.position;
-                float val = Input.GetAxis("Mouse ScrollWheel");
-                pos.x += val * moveVal;
-
-                // x座標が-5未満にならないように制限
-                if (pos.x < -5)
+                if (ableMove == true)
                 {
-                    pos.x = -5;
+                    Vector3 pos = transform.position;
+                    float val = Input.GetAxis("Mouse ScrollWheel");
+                    pos.x += val * moveVal;
+
+                    // x座標が-5未満にならないように制限
+                    if (pos.x < -20)
+                    {
+                        pos.x = -20;
+                    }
+
+                    // x座標が130以上にならないように制限
+                    if (pos.x > 130)
+                    {
+                        pos.x = 130;
+                    }
+
+
+                    transform.position = pos;
                 }
-
-                // x座標が130以上にならないように制限
-                if (pos.x > 130)
-                {
-                    pos.x = 130;
-                }
-
-
-                transform.position = pos;
             }
         }
     }

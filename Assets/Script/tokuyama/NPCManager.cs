@@ -106,7 +106,6 @@ public class NPCManager : MonoBehaviour
                     else
                     {
                         Instantiate(Chara, new Vector3(EndPos, -1, Random.Range(-3.0f, 13.0f)), Quaternion.Euler(0, -90, 0));
-                        Debug.Log("kokokokokokokok");
                     }
 
 
