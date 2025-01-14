@@ -3668,6 +3668,10 @@ PrefabInstance:
       value: UirouStore
       objectReference: {fileID: 0}
     - target: {fileID: 6942027044320476640, guid: 391368fa9a7413443b79dd27ba5c5a6b, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6942027044320476640, guid: 391368fa9a7413443b79dd27ba5c5a6b, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -9672,6 +9676,10 @@ PrefabInstance:
       value: TebasakiStore
       objectReference: {fileID: 0}
     - target: {fileID: 6942027044320476640, guid: 391368fa9a7413443b79dd27ba5c5a6b, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6942027044320476640, guid: 391368fa9a7413443b79dd27ba5c5a6b, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -15516,8 +15524,8 @@ MonoBehaviour:
   Kanban00_Preview: {fileID: 2677576472184638294, guid: 70508b16f9563034f825a3fdc63eafe0, type: 3}
   Kanban01_Left: {fileID: 786211885149423852, guid: deb0ae3579cf983498512e2381fa39d7, type: 3}
   Kanban01_Right: {fileID: 6684640754611997331, guid: 5b461e262e5c66a458fcae15a6b88192, type: 3}
-  Kanban02_Left: {fileID: 395995224278770100, guid: c47f0c678433e694f979b2b924d23078, type: 3}
-  Kanban02_Right: {fileID: 8391379246136083815, guid: b20c8504cd523bc45915c39150de5a0a, type: 3}
+  Kanban02_Left: {fileID: 5592234695900154560, guid: c71159c45161dcb49a8f738de531e982, type: 3}
+  Kanban02_Right: {fileID: 6735578885197500072, guid: cae0d10eab4fb9f4cbb00509851cd650, type: 3}
   Shatihoko: {fileID: 1071476113967362465, guid: ca003ac6065c07d46903d209bafdc947, type: 3}
   Shatihoko_Preview: {fileID: 3956746625223333730, guid: 5373c06d1ac3dc848b0859c8c9daccf3, type: 3}
   PeekUI: {fileID: 946518249}
@@ -21915,6 +21923,10 @@ PrefabInstance:
       value: KishimenStore
       objectReference: {fileID: 0}
     - target: {fileID: 6942027044320476640, guid: 391368fa9a7413443b79dd27ba5c5a6b, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6942027044320476640, guid: 391368fa9a7413443b79dd27ba5c5a6b, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -23396,6 +23408,10 @@ PrefabInstance:
     - target: {fileID: 6942027044320476640, guid: 391368fa9a7413443b79dd27ba5c5a6b, type: 3}
       propertyPath: m_Name
       value: TaiwanRamenStore
+      objectReference: {fileID: 0}
+    - target: {fileID: 6942027044320476640, guid: 391368fa9a7413443b79dd27ba5c5a6b, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6942027044320476640, guid: 391368fa9a7413443b79dd27ba5c5a6b, type: 3}
       propertyPath: m_IsActive
@@ -26675,6 +26691,10 @@ PrefabInstance:
     - target: {fileID: 6942027044320476640, guid: 391368fa9a7413443b79dd27ba5c5a6b, type: 3}
       propertyPath: m_Name
       value: HitsumabushiStore
+      objectReference: {fileID: 0}
+    - target: {fileID: 6942027044320476640, guid: 391368fa9a7413443b79dd27ba5c5a6b, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6942027044320476640, guid: 391368fa9a7413443b79dd27ba5c5a6b, type: 3}
       propertyPath: m_IsActive
@@ -33179,6 +33199,10 @@ PrefabInstance:
     - target: {fileID: 6942027044320476640, guid: 391368fa9a7413443b79dd27ba5c5a6b, type: 3}
       propertyPath: m_Name
       value: MisokatuStore
+      objectReference: {fileID: 0}
+    - target: {fileID: 6942027044320476640, guid: 391368fa9a7413443b79dd27ba5c5a6b, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6942027044320476640, guid: 391368fa9a7413443b79dd27ba5c5a6b, type: 3}
       propertyPath: m_IsActive
