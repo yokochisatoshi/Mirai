@@ -191,7 +191,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 85eafa9fd179d9e48b42237c462987ce, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 251a118a4827074498e412a4b3e7c7f0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -217,21 +217,21 @@ MonoBehaviour:
   nameImage: {fileID: 8274711885616285373}
   alievTime: 0
   Select: 0
-  Special1: {fileID: 21300000, guid: 63953d11e18fd414e892f20aeab5551b, type: 3}
-  Special2: {fileID: 21300000, guid: aa8c2a02c2107d64aa7ef05914c552e9, type: 3}
-  Special3: {fileID: 21300000, guid: 85eafa9fd179d9e48b42237c462987ce, type: 3}
-  Special4: {fileID: 21300000, guid: c4b24937094756347b8c5afa819cb88c, type: 3}
-  Special5: {fileID: 21300000, guid: cfbf1ed517990674c944b983228f5b52, type: 3}
-  rivalSpecial1: {fileID: 21300000, guid: adcb347bc1c70d841bd97d5a16ed40d5, type: 3}
-  rivalSpecial2: {fileID: 21300000, guid: 3101226d08426cc4e8f76549140771fe, type: 3}
-  Hitsumabushi: {fileID: 21300000, guid: 893893615e4b78641b4c54f36840980e, type: 3}
-  Kishimen: {fileID: 21300000, guid: eb9344a36aad79d46a8403b73a3d9cdf, type: 3}
-  Misokatsu: {fileID: 21300000, guid: 1963246603230b3479d4126581a71e56, type: 3}
-  TaiwanRamen: {fileID: 21300000, guid: 5dda12a28994a77438d0d8eb713e9611, type: 3}
-  Tebasaki: {fileID: 21300000, guid: 9169f6762bdb49549aacb2d1a5279c50, type: 3}
-  Uirou: {fileID: 21300000, guid: c21597bba610aad43818b246c54be467, type: 3}
+  Special1: {fileID: 21300000, guid: 0f4e2ecef3c399a47865db85defbfbb0, type: 3}
+  Special2: {fileID: 21300000, guid: 42a8a79ec80c5d645a40e618577dfb9e, type: 3}
+  Special3: {fileID: 21300000, guid: 6260de4f9dc03484b8a3e0280c8cd98f, type: 3}
+  Special4: {fileID: 21300000, guid: 1527663a323a0a14ba527769b4b50c22, type: 3}
+  Special5: {fileID: 21300000, guid: 6a0ee3db4e696b6489cee0e3fd95c24b, type: 3}
+  rivalSpecial1: {fileID: 21300000, guid: 04de301ee3bf4504aa9a5ab2b441ce24, type: 3}
+  rivalSpecial2: {fileID: 21300000, guid: 8c6ee40e4bc903c42b3149111234167e, type: 3}
+  Hitsumabushi: {fileID: 21300000, guid: 959ba477ee903cd4cb90c5991f5aec05, type: 3}
+  Kishimen: {fileID: 21300000, guid: 25a99ef0e6ced5b4a941e447d08a98b1, type: 3}
+  Misokatsu: {fileID: 21300000, guid: 51da1462e1f44674696d995a21623fb1, type: 3}
+  TaiwanRamen: {fileID: 21300000, guid: 463667128bab9194b8954f0101cc22c1, type: 3}
+  Tebasaki: {fileID: 21300000, guid: 1b3f953ae48698e4cbd5fa447fa3b4e1, type: 3}
+  Uirou: {fileID: 21300000, guid: 6066ab7082ee977409b9182320ac9b6f, type: 3}
   rival: {fileID: 21300000, guid: 767ec620a750bfd4cb3a4fdf38e49860, type: 3}
-  Increase: {fileID: 21300000, guid: 098da423c2614964c9ea5b68a732abcd, type: 3}
+  Increase: {fileID: 21300000, guid: 251a118a4827074498e412a4b3e7c7f0, type: 3}
 --- !u!1 &8274711885616285347
 GameObject:
   m_ObjectHideFlags: 0
