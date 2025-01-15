@@ -21,7 +21,10 @@ public class Kanban01 : MonoBehaviour
     {
         if (collider.gameObject.tag == "Human")
         {
-            nCounter--;
+            if (collider.gameObject.GetComponent<human>().GetState() == (int)human.human_state.normal)
+            {
+                nCounter--;
+            }
             if(nCounter <= 0)
             {
                 Destroy(this.gameObject);

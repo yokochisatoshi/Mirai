@@ -52,7 +52,10 @@ public class Kanban02 : MonoBehaviour
     {
         if (collider.gameObject.tag == "Human")
         {
-            nCounter--;
+            if (collider.gameObject.GetComponent<human>().GetState() == (int)human.human_state.normal)
+            {
+                nCounter--;
+            }
             if (nCounter <= 0)
             {
                 Destroy(this.gameObject);
@@ -60,7 +63,10 @@ public class Kanban02 : MonoBehaviour
             //D‚Ý‚ÌH‚×•¨‚ð•ÏX‚·‚éˆ—
             if (bHit)
             {
-                collider.gameObject.GetComponent<human>().HitLv3(sidefood);
+                if (collider.gameObject.GetComponent<human>().GetState() == (int)human.human_state.normal)
+                {
+                    collider.gameObject.GetComponent<human>().HitLv3(sidefood);
+                }
             }
         }
     }

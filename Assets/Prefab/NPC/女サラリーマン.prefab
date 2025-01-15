@@ -7041,7 +7041,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!65 &7436783689025581465
 BoxCollider:
@@ -7073,9 +7073,11 @@ MonoBehaviour:
   DestroyTime: 2
   speedUpBuf: 1.2
   speedDownDeBuf: 0.5
+  speedUpDeBuf: 0
   addMoneyVal: 210
   speedUp: 0
   speedDown: 0
+  speedUpDe: 0
   rivalSpecialEffect: {fileID: 1211217132562063465}
 --- !u!23 &1982748160128802082
 MeshRenderer:

@@ -20,7 +20,10 @@ public class Kanban00 : MonoBehaviour
     {
         if(collider.gameObject.tag=="Human")
         {
-            Destroy(this.gameObject);
+            if (collider.gameObject.GetComponent<human>().GetState() == (int)human.human_state.normal)
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 }

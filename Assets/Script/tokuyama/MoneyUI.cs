@@ -29,7 +29,14 @@ public class MoneyUI : MonoBehaviour
         moneyText.text = "MONEY: " + PlayerData.Instance.nMoney;
 
         //消えてく方のテキストMoney
-        moneyText2.text =   "+"    + PlayerData.Instance.nSumMoney;
+        if (PlayerData.Instance.nSumMoney > 0)
+        {
+            moneyText2.text = "+" + PlayerData.Instance.nSumMoney;
+        }
+        else
+        {
+            moneyText2.text = "-" + Mathf.Abs(PlayerData.Instance.nSumMoney);
+        }
 
         //Fade--;
         moneyText2.color = new Color(0.0f, 0.0f, 0.0f,PlayerData.Instance.nCountFade);

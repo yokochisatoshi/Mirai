@@ -23,14 +23,16 @@ public class human : MonoBehaviour
     PlayerData script;
     GameObject child;                               // favoriteオブジェ
 
+    Vector3 popPos;                         // y座標固定
     bool bCanStore = false;
 
     int state = (int)human_state.normal;        // 人の状態(仮で初期はnormal)
     int eatCunt = 0;                            // 食事時間カウンタ
     public int eatTime;                         // 食事にかかる時間
     public int DestroyTime;                     // 消滅するまでの時間         
-    public float speedUpBuf;                         // 食事にかかる時間
-    public float speedDownDeBuf;                     // 消滅するまでの時間     
+    public float speedUpBuf;                         // スピードアップバフ
+    public float speedDownDeBuf;                     // スピードダウンデバフ  
+    public float speedUpDeBuf;                       // スピードアップデバフ
     public int addMoneyVal = 200;
 
     MeshRenderer mr;          // 透明化用
@@ -40,6 +42,7 @@ public class human : MonoBehaviour
 
     public bool speedUp = false;
     public bool speedDown = false;
+    public bool speedUpDe = false;
     float speedBuf = 1.0f;
 
     // 川添追加
@@ -77,6 +80,8 @@ public class human : MonoBehaviour
 
         // 川添追加
         effectManager = FindObjectOfType<EffectManager>();
+
+        popPos = this.gameObject.transform.position;
     }
 
     // Update is called once per frame
@@ -161,6 +166,9 @@ public class human : MonoBehaviour
 
                 break;
         }
+
+        this.gameObject.transform.eulerAngles = new Vector3(0, this.gameObject.transform.eulerAngles.y, 0);
+
     }
 
 
@@ -353,17 +361,33 @@ public class human : MonoBehaviour
 
     void Moveforward()
     {
-        if(speedUp == true && speedDown == false)
+        if(speedUp == true && speedDown == false　&& speedUpDe == false)
         {
             speedBuf = speedUpBuf;
         }
-        else if(speedUp == false && speedDown == true)
+        else if(speedUp == false && speedDown == true && speedUpDe == false)
         {
             speedBuf = speedDownDeBuf;
         }
-        else if (speedUp == true && speedDown == true)
+        else if (speedUp == false && speedDown == false && speedUpDe == true)
         {
-            speedBuf = speedDownDeBuf + speedUpBuf;
+            speedBuf = speedUpDeBuf;
+        }
+        else if (speedUp == true && speedDown == false && speedUpDe == true)
+        {
+            speedBuf = speedUpDeBuf + speedUpBuf;
+        }
+        else if (speedUp == false && speedDown == true && speedUpDe == true)
+        {
+            speedBuf = speedUpDeBuf - speedDownDeBuf;
+        }
+        else if (speedUp == true && speedDown == true && speedUpDe == false)
+        {
+            speedBuf = -speedDownDeBuf + speedUpBuf;
+        }
+        else if (speedUp == true && speedDown == true && speedUpDe == true)
+        {
+            speedBuf = -speedDownDeBuf + speedUpBuf + speedUpDeBuf;
         }
         else
         {
@@ -372,5 +396,6 @@ public class human : MonoBehaviour
 
         pos += transform.forward * speed * speedBuf;
         transform.position = pos;
+        transform.position = new Vector3(transform.position.x,popPos.y,transform.position.z);
     }
 }

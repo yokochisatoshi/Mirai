@@ -109,4 +109,11 @@ public class PlayerData : MonoBehaviour
         bGameStart = false;
        
     }
+
+    public void SubtractMoney(int amount)
+    {
+        nSumMoney -= amount;
+        bAppear = true;
+        nCountFade = 1;   //“§–¾“x   
+    }
 }

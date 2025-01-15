@@ -9,7 +9,9 @@ public class EnemyShop : MonoBehaviour
     {
         nomal,
         BrainwashingSkill,
-        SpeedDownSkill
+        SpeedDownSkill,
+        subtractMoney,
+        speedUpSkill,
     }
 
     public int cooltime = 100;      // 必殺技のクールタイム
@@ -17,9 +19,15 @@ public class EnemyShop : MonoBehaviour
 
     public int speedDownSkillTime = 100;      // スピードダウンの効果時間
     public int skillTimeCount = 0;           // クールタイムのカウンタ
+    public int speedUpSkillTime = 100;      // スピードアップの効果時間
+    public int skillTimeCount1 = 0;           // クールタイムのカウンタ
     public EnemyStorState state = EnemyStorState.nomal;
 
     SkillLogManager SkillLogSc;
+
+    GameObject ManageData;
+    PlayerData script;
+    int money = 300;
 
     // 川添追加
     private EffectManager RivalSpecialEffectManager;        // 必殺技時のエフェクト
@@ -27,6 +35,9 @@ public class EnemyShop : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        ManageData = GameObject.Find("ManageData");
+        script = ManageData.GetComponent<PlayerData>();
+
         SkillLogSc = GameObject.Find("ManageSkillLog").GetComponent<SkillLogManager>();
 
         // 川添追加
@@ -60,10 +71,20 @@ public class EnemyShop : MonoBehaviour
                             state = EnemyStorState.BrainwashingSkill;
                             SkillLogSc.CreateSkillLog(SkillLogManager.StoreName.rival1, SkillLogManager.SkillType.rivalSpecial1);
                         }
-                        else if (num >= 50 && num < 100)
+                        else if (num >= 50 && num < 70)
                         {
                             state = EnemyStorState.SpeedDownSkill;
                             SkillLogSc.CreateSkillLog(SkillLogManager.StoreName.rival1, SkillLogManager.SkillType.rivalSpecial2);
+                        }
+                        else if (num >= 70 && num < 70)
+                        {
+                            state = EnemyStorState.subtractMoney;
+                            SkillLogSc.CreateSkillLog(SkillLogManager.StoreName.NoData, SkillLogManager.SkillType.Special1);
+                        }
+                        else if (num >= 70 && num < 100)
+                        {
+                            state = EnemyStorState.speedUpSkill;
+                            SkillLogSc.CreateSkillLog(SkillLogManager.StoreName.NoData, SkillLogManager.SkillType.Special1);
                         }
                     }
                     break;
@@ -73,6 +94,17 @@ public class EnemyShop : MonoBehaviour
                 case EnemyStorState.BrainwashingSkill:
                     BrainwashingSkill();
                     break;
+                case EnemyStorState.subtractMoney:
+                    script.SubtractMoney(money);
+                    // 川添追加
+                    GameObject effect = RivalSpecialEffectManager.SpawnRivalSpecialEffect(
+                                    new Vector3(transform.position.x, transform.position.y - 2.0f, transform.position.z));
+                    state = EnemyStorState.nomal;
+                    break;
+                case EnemyStorState.speedUpSkill:
+                    SpeedUpSkill();
+                    break;
+                    
             }
         }
     }
@@ -120,5 +152,28 @@ public class EnemyShop : MonoBehaviour
                         new Vector3(transform.position.x, transform.position.y - 2.0f, transform.position.z));
         }
 
+    }
+
+    void SpeedUpSkill()
+    {
+        GameObject[] humanObjects = GameObject.FindGameObjectsWithTag("Human");     // 存在するHumanタグを持っているオブジェクトを配列に格納
+        human humanScript = null;
+        for (int i = 0; i < humanObjects.Length; i++)
+        { // humanObjectsの要素分ループ
+            humanScript = humanObjects[i].GetComponent<human>();              // humanスクリプト取得
+            humanScript.speedUpDe = true;
+        }
+
+        skillTimeCount1++;
+        if (skillTimeCount1 > speedUpSkillTime)
+        {
+            if (humanScript != null) humanScript.speedUpDe = false;
+            skillTimeCount1 = 0;
+            state = EnemyStorState.nomal;
+
+            // 川添追加
+            GameObject effect = RivalSpecialEffectManager.SpawnRivalSpecialEffect(
+                        new Vector3(transform.position.x, transform.position.y - 2.0f, transform.position.z));
+        }
     }
 }
