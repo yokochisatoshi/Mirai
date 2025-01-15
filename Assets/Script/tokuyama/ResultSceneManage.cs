@@ -159,7 +159,8 @@ public class ResultSceneManage : MonoBehaviour
                                         audioSource.PlayOneShot(CurrentShowSE);
                                         bShowCurrentScore = true;
                                     }
-                                    RandomNum = PlayerData.Instance.nScore;
+                                    RandomNum = 1530;
+                                    //RandomNum = PlayerData.Instance.nScore;
                                    // RandomNum = 7777;
                                 }
 
@@ -187,7 +188,7 @@ public class ResultSceneManage : MonoBehaviour
                             else
                             {
                                 nShowCount++;
-                                if (nShowCount >= 180)
+                                if (nShowCount >= 240)
                                 {
                                     Interval = 0;
                                     displayText = "";//ˆÚ“®

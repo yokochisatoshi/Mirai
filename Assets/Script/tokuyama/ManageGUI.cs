@@ -35,8 +35,10 @@ public class ManageGUI : MonoBehaviour
 
     // 川添追加
     private EffectManager signBoardEffectManager;        // 看板設置時のエフェクト
-    private EffectManager shatihokoEffectManager;        // しゃちほこ設置時のエフェクト
-
+    private EffectManager shatihokoEffect1Manager;        // しゃちほこ設置時のエフェクト1
+    private EffectManager shatihokoEffect2Manager;        // しゃちほこ設置時のエフェクト2
+    private EffectManager shatihokoEffect3Manager;        // しゃちほこ設置時のエフェクト3
+    private EffectManager shatihokoEffect4Manager;        // しゃちほこ設置時のエフェクト4
 
 
     // Start is called before the first frame update
@@ -46,7 +48,10 @@ public class ManageGUI : MonoBehaviour
 
         // 川添追加
         signBoardEffectManager = FindObjectOfType<EffectManager>();
-        shatihokoEffectManager = FindObjectOfType<EffectManager>();
+        shatihokoEffect1Manager = FindObjectOfType<EffectManager>();
+        shatihokoEffect2Manager = FindObjectOfType<EffectManager>();
+        shatihokoEffect3Manager = FindObjectOfType<EffectManager>();
+        shatihokoEffect4Manager = FindObjectOfType<EffectManager>();
         //
         PeekUI.SetActive(false);
     }
@@ -225,9 +230,40 @@ public class ManageGUI : MonoBehaviour
                             nChoiceOb = -1;
 
                             // 川添追加
-                            //GameObject effect = shatihokoEffectManager.SpawnShatihokoEffect(currentPosition);
-                            GameObject effect = shatihokoEffectManager.SpawnShatihokoEffect(
-                                new Vector3(currentPosition.x, currentPosition.y - 2.0f, currentPosition.z));
+                            GameObject effect = shatihokoEffect1Manager.SpawnShatihokoEffect1(
+                                new Vector3(currentPosition.x, currentPosition.y - 20.0f, currentPosition.z));
+
+                            GameObject effect14 = shatihokoEffect4Manager.SpawnShatihokoEffect4(currentPosition);
+                            GameObject effect15 = shatihokoEffect2Manager.SpawnShatihokoEffect2(Camera.main.transform.position);
+
+                            GameObject effect1 = shatihokoEffect2Manager.SpawnShatihokoEffect2(
+                                new Vector3(currentPosition.x - 10.0f, currentPosition.y + 30.0f, currentPosition.z));
+                            GameObject effect2 = shatihokoEffect2Manager.SpawnShatihokoEffect2(
+                                new Vector3(currentPosition.x - 8.0f, currentPosition.y + 28.0f, currentPosition.z));
+                            GameObject effect3 = shatihokoEffect2Manager.SpawnShatihokoEffect2(
+                                new Vector3(currentPosition.x - 6.0f, currentPosition.y + 26.0f, currentPosition.z));
+                            GameObject effect4 = shatihokoEffect2Manager.SpawnShatihokoEffect2(
+                                new Vector3(currentPosition.x - 11.0f, currentPosition.y + 33.0f, currentPosition.z));
+                            GameObject effect5 = shatihokoEffect2Manager.SpawnShatihokoEffect2(
+                                new Vector3(currentPosition.x - 15.0f, currentPosition.y + 20.0f, currentPosition.z));
+                            GameObject effect6 = shatihokoEffect2Manager.SpawnShatihokoEffect2(
+                                new Vector3(currentPosition.x - 1.0f, currentPosition.y + 15.0f, currentPosition.z));
+                            GameObject effect7 = shatihokoEffect2Manager.SpawnShatihokoEffect2(
+                                new Vector3(currentPosition.x - 2.0f, currentPosition.y + 18.0f, currentPosition.z));
+
+                            GameObject effect8 = shatihokoEffect3Manager.SpawnShatihokoEffect3(
+                                new Vector3(currentPosition.x - 10.0f, currentPosition.y + 30.0f, currentPosition.z));
+                            GameObject effect9 = shatihokoEffect3Manager.SpawnShatihokoEffect2(
+                                new Vector3(currentPosition.x - 8.0f, currentPosition.y + 28.0f, currentPosition.z));
+                            GameObject effect10 = shatihokoEffect3Manager.SpawnShatihokoEffect2(
+                                new Vector3(currentPosition.x - 12.0f, currentPosition.y + 32.0f, currentPosition.z));
+                            GameObject effect11 = shatihokoEffect3Manager.SpawnShatihokoEffect2(
+                                new Vector3(currentPosition.x - 15.0f, currentPosition.y + 35.0f, currentPosition.z));
+                            GameObject effect12 = shatihokoEffect2Manager.SpawnShatihokoEffect2(
+                                new Vector3(currentPosition.x - 1.0f, currentPosition.y + 15.0f, currentPosition.z));
+                            GameObject effect13 = shatihokoEffect2Manager.SpawnShatihokoEffect2(
+                                new Vector3(currentPosition.x - 2.0f, currentPosition.y + 18.0f, currentPosition.z));
+
                             SoundManager.Instance.PlaySound("Shatihoko");
                         }
 
@@ -244,9 +280,41 @@ public class ManageGUI : MonoBehaviour
                             nChoiceOb = -1;
 
                             // 川添追加
-                            //GameObject effect = shatihokoEffectManager.SpawnShatihokoEffect(currentPosition);
-                            GameObject effect = shatihokoEffectManager.SpawnShatihokoEffect(
-                                new Vector3(currentPosition.x, currentPosition.y - 2.0f, currentPosition.z));
+                            GameObject effect = shatihokoEffect1Manager.SpawnShatihokoEffect1(
+                                new Vector3(currentPosition.x, currentPosition.y - 20.0f, currentPosition.z));
+
+                            GameObject effect14 = shatihokoEffect4Manager.SpawnShatihokoEffect4(currentPosition);
+                            GameObject effect15 = shatihokoEffect2Manager.SpawnShatihokoEffect2(Camera.main.transform.position);
+
+                            GameObject effect1 = shatihokoEffect2Manager.SpawnShatihokoEffect2(
+                                new Vector3(currentPosition.x - 10.0f, currentPosition.y + 30.0f, currentPosition.z));
+                            GameObject effect2 = shatihokoEffect2Manager.SpawnShatihokoEffect2(
+                                new Vector3(currentPosition.x - 8.0f, currentPosition.y + 28.0f, currentPosition.z));
+                            GameObject effect3 = shatihokoEffect2Manager.SpawnShatihokoEffect2(
+                                new Vector3(currentPosition.x - 6.0f, currentPosition.y + 26.0f, currentPosition.z));
+                            GameObject effect4 = shatihokoEffect2Manager.SpawnShatihokoEffect2(
+                                new Vector3(currentPosition.x - 11.0f, currentPosition.y + 33.0f, currentPosition.z));
+                            GameObject effect5 = shatihokoEffect2Manager.SpawnShatihokoEffect2(
+                                new Vector3(currentPosition.x - 15.0f, currentPosition.y + 20.0f, currentPosition.z));
+                            GameObject effect6 = shatihokoEffect2Manager.SpawnShatihokoEffect2(
+                                new Vector3(currentPosition.x - 1.0f, currentPosition.y + 15.0f, currentPosition.z));
+                            GameObject effect7 = shatihokoEffect2Manager.SpawnShatihokoEffect2(
+                                new Vector3(currentPosition.x - 2.0f, currentPosition.y + 18.0f, currentPosition.z));
+
+                            GameObject effect8 = shatihokoEffect3Manager.SpawnShatihokoEffect3(
+                                new Vector3(currentPosition.x - 10.0f, currentPosition.y + 30.0f, currentPosition.z));
+                            GameObject effect9 = shatihokoEffect3Manager.SpawnShatihokoEffect2(
+                                new Vector3(currentPosition.x - 8.0f, currentPosition.y + 28.0f, currentPosition.z));
+                            GameObject effect10 = shatihokoEffect3Manager.SpawnShatihokoEffect2(
+                                new Vector3(currentPosition.x - 12.0f, currentPosition.y + 32.0f, currentPosition.z));
+                            GameObject effect11 = shatihokoEffect3Manager.SpawnShatihokoEffect2(
+                                new Vector3(currentPosition.x - 15.0f, currentPosition.y + 35.0f, currentPosition.z));
+                            GameObject effect12 = shatihokoEffect2Manager.SpawnShatihokoEffect2(
+                                new Vector3(currentPosition.x - 1.0f, currentPosition.y + 15.0f, currentPosition.z));
+                            GameObject effect13 = shatihokoEffect2Manager.SpawnShatihokoEffect2(
+                                new Vector3(currentPosition.x - 2.0f, currentPosition.y + 18.0f, currentPosition.z));
+
+
                             SoundManager.Instance.PlaySound("Shatihoko");
                         }
 

@@ -44,14 +44,14 @@ public class NPCManager : MonoBehaviour
                     //nInterval = 30;
 
                     // ì“Y’²®
-                    nInterval = 70;
+                    nInterval = 80;
                 }
                 else
                 {
                     //nInterval = 60;
 
                     // ì“Y’²®
-                    nInterval = 135;
+                    nInterval = 140;
                 }
 
 

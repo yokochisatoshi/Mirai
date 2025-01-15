@@ -28,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1071476113491584725}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
-  m_LocalScale: {x: 10, y: 3, z: 10}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalScale: {x: 30, y: 5, z: 30}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1071476113967362493}
@@ -224,7 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33f783ff1e974184584de690bebfcc06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyCount: 3
+  destroyCount: 8
 --- !u!1 &4422125005293731394
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,8 +252,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4422125005293731394}
   m_LocalRotation: {x: -0.06162845, y: -0.70441604, z: -0.06162845, w: 0.70441604}
-  m_LocalPosition: {x: 0.6, y: 8.08, z: 0}
-  m_LocalScale: {x: 300, y: 400, z: 400}
+  m_LocalPosition: {x: 0.6, y: 17, z: 0}
+  m_LocalScale: {x: 800, y: 900, z: 900}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1071476113967362493}

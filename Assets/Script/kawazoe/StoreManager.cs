@@ -11,8 +11,18 @@ public class StoreManager : MonoBehaviour
     public GameObject TaiwanRamenModel;
     public GameObject KishimenModel;
 
+    public int MisokatsuLevel = 1;  // 現在のレベル
+    public int UirouLevel = 1;  // 現在のレベル
+    public int HitsumabushiLevel = 1;  // 現在のレベル
+    public int TebasakiLevel = 1;  // 現在のレベル
+    public int TaiwanRamenLevel = 1;  // 現在のレベル
+    public int KishimenLevel = 1;  // 現在のレベル
+
+    private int maxLevel = 3; // 最大レベル
+
     private EffectManager IncreaseOfCapitalEffectManager;        // 増資時のエフェクト
-    private EffectManager SpecialEffectManager;                  // 必殺技時のエフェクト
+    private EffectManager Special1EffectManager;                  // 必殺技時のエフェクト1
+    private EffectManager Special2EffectManager;                  // 必殺技時のエフェクト2
 
     // 横地追加-----------------------------------------------------------------------
     public GameObject skillLogManager;
@@ -24,24 +34,29 @@ public class StoreManager : MonoBehaviour
         SkillLogCs = skillLogManager.GetComponent<SkillLogManager>();
 
         IncreaseOfCapitalEffectManager = FindObjectOfType<EffectManager>();
-        SpecialEffectManager = FindObjectOfType<EffectManager>();
+        Special1EffectManager = FindObjectOfType<EffectManager>();
+        Special2EffectManager = FindObjectOfType<EffectManager>();
     }
     //-----------------------------------------------------------------------------------
 
     // 味噌カツ店増資
     public void OperateMisokatuScaleIncrease()
     {
-        Debug.Log("Misokatuを増資します");
+        if (MisokatsuLevel < maxLevel)
+        {
+            MisokatsuLevel++;
+            Debug.Log("Misokatuを増資します");
 
-        Vector3 newScale = MisokatuModel.transform.localScale + scaleIncrease;
-        MisokatuModel.transform.localScale = newScale;
+            Vector3 newScale = MisokatuModel.transform.localScale + scaleIncrease;
+            MisokatuModel.transform.localScale = newScale;
 
-        SoundManager.Instance.PlaySound("Applause"); 
-        SoundManager.Instance.PlaySound("IncreaseOfCapital");
+            SoundManager.Instance.PlaySound("Applause");
+            SoundManager.Instance.PlaySound("IncreaseOfCapital");
 
-        GameObject Effect = IncreaseOfCapitalEffectManager.SpawnIncreaseOfCapitalEffect(MisokatuModel.transform.position);
+            GameObject Effect = IncreaseOfCapitalEffectManager.SpawnIncreaseOfCapitalEffect(MisokatuModel.transform.position);
 
-        SkillLogCs.CreateSkillLog(SkillLogManager.StoreName.misokatu, SkillLogManager.SkillType.Increase);  // 増資ログ生成(横地追加)
+            SkillLogCs.CreateSkillLog(SkillLogManager.StoreName.misokatu, SkillLogManager.SkillType.Increase);  // 増資ログ生成(横地追加)
+        }
     }
 
     // 味噌カツ店必殺技
@@ -52,23 +67,28 @@ public class StoreManager : MonoBehaviour
 
         SoundManager.Instance.PlaySound("Special");
 
-        GameObject Effect = SpecialEffectManager.SpawnSpecialEffect(MisokatuModel.transform.position);
+        GameObject Effect1 = Special1EffectManager.SpawnSpecial1Effect(MisokatuModel.transform.position);
+        GameObject Effect2 = Special2EffectManager.SpawnSpecial2Effect(MisokatuModel.transform.position);
     }
 
     // ういろう店増資
     public void OperateUirouScaleIncrease()
     {
-        Debug.Log("Uirouを増資します");
+        if (UirouLevel < maxLevel)
+        {
+            UirouLevel++;
+            Debug.Log("Uirouを増資します");
 
-        Vector3 newScale = UirouModel.transform.localScale + scaleIncrease;
-        UirouModel.transform.localScale = newScale;
+            Vector3 newScale = UirouModel.transform.localScale + scaleIncrease;
+            UirouModel.transform.localScale = newScale;
 
-        SoundManager.Instance.PlaySound("Applause");
-        SoundManager.Instance.PlaySound("IncreaseOfCapital");
+            SoundManager.Instance.PlaySound("Applause");
+            SoundManager.Instance.PlaySound("IncreaseOfCapital");
 
-        GameObject Effect = IncreaseOfCapitalEffectManager.SpawnIncreaseOfCapitalEffect(UirouModel.transform.position);
+            GameObject Effect = IncreaseOfCapitalEffectManager.SpawnIncreaseOfCapitalEffect(UirouModel.transform.position);
 
-        SkillLogCs.CreateSkillLog(SkillLogManager.StoreName.uirou, SkillLogManager.SkillType.Increase);  // 増資ログ生成(横地追加)
+            SkillLogCs.CreateSkillLog(SkillLogManager.StoreName.uirou, SkillLogManager.SkillType.Increase);  // 増資ログ生成(横地追加)
+        }
     }
 
     // ういろう店必殺技
@@ -79,23 +99,28 @@ public class StoreManager : MonoBehaviour
 
         SoundManager.Instance.PlaySound("Special");
 
-        GameObject Effect = SpecialEffectManager.SpawnSpecialEffect(UirouModel.transform.position);
+        GameObject Effect1 = Special1EffectManager.SpawnSpecial1Effect(UirouModel.transform.position);
+        GameObject Effect2 = Special2EffectManager.SpawnSpecial2Effect(UirouModel.transform.position);
     }
 
     // ひつまぶし店増資
-    public void OperateHitshmabushiScaleIncrease()
+    public void OperateHitsumabushiScaleIncrease()
     {
-        Debug.Log("Hitsumabushiを増資します");
+        if (HitsumabushiLevel < maxLevel)
+        {
+            HitsumabushiLevel++;
+            Debug.Log("Hitsumabushiを増資します");
 
-        Vector3 newScale = HitsumabushiModel.transform.localScale + scaleIncrease;
-        HitsumabushiModel.transform.localScale = newScale;
+            Vector3 newScale = HitsumabushiModel.transform.localScale + scaleIncrease;
+            HitsumabushiModel.transform.localScale = newScale;
 
-        SoundManager.Instance.PlaySound("Applause");
-        SoundManager.Instance.PlaySound("IncreaseOfCapital");
+            SoundManager.Instance.PlaySound("Applause");
+            SoundManager.Instance.PlaySound("IncreaseOfCapital");
 
-        GameObject Effect = IncreaseOfCapitalEffectManager.SpawnIncreaseOfCapitalEffect(HitsumabushiModel.transform.position);
+            GameObject Effect = IncreaseOfCapitalEffectManager.SpawnIncreaseOfCapitalEffect(HitsumabushiModel.transform.position);
 
-        SkillLogCs.CreateSkillLog(SkillLogManager.StoreName.Hitumabushi, SkillLogManager.SkillType.Increase);  // 増資ログ生成(横地追加)
+            SkillLogCs.CreateSkillLog(SkillLogManager.StoreName.Hitumabushi, SkillLogManager.SkillType.Increase);  // 増資ログ生成(横地追加)
+        }
     }
 
     // ひつまぶし店必殺技
@@ -106,25 +131,29 @@ public class StoreManager : MonoBehaviour
 
         SoundManager.Instance.PlaySound("Special");
 
-        GameObject Effect = SpecialEffectManager.SpawnSpecialEffect(HitsumabushiModel.transform.position);
+        GameObject Effect1 = Special1EffectManager.SpawnSpecial1Effect(HitsumabushiModel.transform.position);
+        GameObject Effect2 = Special2EffectManager.SpawnSpecial2Effect(HitsumabushiModel.transform.position);
     }
 
     // 手羽先店増資
     public void OperateTebasakiScaleIncrease()
     {
-        Debug.Log("TebasakiModelを増資します");
+        if (TebasakiLevel < maxLevel)
+        {
+            TebasakiLevel++;
+            Debug.Log("TebasakiModelを増資します");
 
-        Vector3 newScale = TebasakiModel.transform.localScale + scaleIncrease;
-        TebasakiModel.transform.localScale = newScale;
+            Vector3 newScale = TebasakiModel.transform.localScale + scaleIncrease;
+            TebasakiModel.transform.localScale = newScale;
 
-        SoundManager.Instance.PlaySound("Applause");
-        SoundManager.Instance.PlaySound("IncreaseOfCapital");
+            SoundManager.Instance.PlaySound("Applause");
+            SoundManager.Instance.PlaySound("IncreaseOfCapital");
 
-        GameObject Effect = IncreaseOfCapitalEffectManager.SpawnIncreaseOfCapitalEffect(TebasakiModel.transform.position);
+            GameObject Effect = IncreaseOfCapitalEffectManager.SpawnIncreaseOfCapitalEffect(TebasakiModel.transform.position);
 
-        SkillLogCs.CreateSkillLog(SkillLogManager.StoreName.Tebasaki, SkillLogManager.SkillType.Increase);  // 増資ログ生成(横地追加)
+            SkillLogCs.CreateSkillLog(SkillLogManager.StoreName.Tebasaki, SkillLogManager.SkillType.Increase);  // 増資ログ生成(横地追加)
+        }
     }
-
     // 手羽先店必殺技
     public void OperateTebasakiSpecial()
     {
@@ -133,23 +162,28 @@ public class StoreManager : MonoBehaviour
 
         SoundManager.Instance.PlaySound("Special");
 
-        GameObject Effect = SpecialEffectManager.SpawnSpecialEffect(TebasakiModel.transform.position);
+        GameObject Effect1 = Special1EffectManager.SpawnSpecial1Effect(TebasakiModel.transform.position);
+        GameObject Effect2 = Special2EffectManager.SpawnSpecial2Effect(TebasakiModel.transform.position);
     }
 
     // 台湾ラーメン店増資
     public void OperateTaiwanRamenScaleIncrease()
     {
-        Debug.Log("TaiwanRamenを増資します");
+        if (TaiwanRamenLevel < maxLevel)
+        {
+            TaiwanRamenLevel++;
+            Debug.Log("TaiwanRamenを増資します");
 
-        Vector3 newScale = TaiwanRamenModel.transform.localScale + scaleIncrease;
-        TaiwanRamenModel.transform.localScale = newScale;
+            Vector3 newScale = TaiwanRamenModel.transform.localScale + scaleIncrease;
+            TaiwanRamenModel.transform.localScale = newScale;
 
-        SoundManager.Instance.PlaySound("Applause");
-        SoundManager.Instance.PlaySound("IncreaseOfCapital");
+            SoundManager.Instance.PlaySound("Applause");
+            SoundManager.Instance.PlaySound("IncreaseOfCapital");
 
-        GameObject Effect = IncreaseOfCapitalEffectManager.SpawnIncreaseOfCapitalEffect(TaiwanRamenModel.transform.position);
+            GameObject Effect = IncreaseOfCapitalEffectManager.SpawnIncreaseOfCapitalEffect(TaiwanRamenModel.transform.position);
 
-        SkillLogCs.CreateSkillLog(SkillLogManager.StoreName.TaiwanRamen, SkillLogManager.SkillType.Increase);  // 増資ログ生成(横地追加)
+            SkillLogCs.CreateSkillLog(SkillLogManager.StoreName.TaiwanRamen, SkillLogManager.SkillType.Increase);  // 増資ログ生成(横地追加)
+        }
     }
 
     // 台湾ラーメン店必殺技
@@ -160,23 +194,28 @@ public class StoreManager : MonoBehaviour
 
         SoundManager.Instance.PlaySound("Special");
 
-        GameObject Effect = SpecialEffectManager.SpawnSpecialEffect(TaiwanRamenModel.transform.position);
+        GameObject Effect1 = Special1EffectManager.SpawnSpecial1Effect(TaiwanRamenModel.transform.position);
+        GameObject Effect2 = Special2EffectManager.SpawnSpecial2Effect(TaiwanRamenModel.transform.position);
     }
 
     // きしめん店増資
     public void OperateKishimenScaleIncrease()
     {
-        Debug.Log("Kishimenを増資します");
+        if (KishimenLevel < maxLevel)
+        {
+            KishimenLevel++;
+            Debug.Log("Kishimenを増資します");
 
-        Vector3 newScale = KishimenModel.transform.localScale + scaleIncrease;
-        KishimenModel.transform.localScale = newScale;
+            Vector3 newScale = KishimenModel.transform.localScale + scaleIncrease;
+            KishimenModel.transform.localScale = newScale;
 
-        SoundManager.Instance.PlaySound("Applause");
-        SoundManager.Instance.PlaySound("IncreaseOfCapital");
+            SoundManager.Instance.PlaySound("Applause");
+            SoundManager.Instance.PlaySound("IncreaseOfCapital");
 
-        GameObject Effect = IncreaseOfCapitalEffectManager.SpawnIncreaseOfCapitalEffect(KishimenModel.transform.position);
+            GameObject Effect = IncreaseOfCapitalEffectManager.SpawnIncreaseOfCapitalEffect(KishimenModel.transform.position);
 
-        SkillLogCs.CreateSkillLog(SkillLogManager.StoreName.kisimen, SkillLogManager.SkillType.Increase);  // 増資ログ生成(横地追加)
+            SkillLogCs.CreateSkillLog(SkillLogManager.StoreName.kisimen, SkillLogManager.SkillType.Increase);  // 増資ログ生成(横地追加)
+        }
     }
 
     // きしめん店必殺技
@@ -187,6 +226,7 @@ public class StoreManager : MonoBehaviour
 
         SoundManager.Instance.PlaySound("Special");
 
-        GameObject Effect = SpecialEffectManager.SpawnSpecialEffect(KishimenModel.transform.position);
+        GameObject Effect1 = Special1EffectManager.SpawnSpecial1Effect(KishimenModel.transform.position);
+        GameObject Effect2 = Special2EffectManager.SpawnSpecial2Effect(KishimenModel.transform.position);
     }
 }

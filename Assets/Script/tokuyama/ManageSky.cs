@@ -31,6 +31,9 @@ public class ManageSky : MonoBehaviour
     public GameObject PointLight11;
     public GameObject PointLight12;
     public GameObject PointLight13;
+    public GameObject PointLight14;
+    public GameObject PointLight15;
+    public GameObject PointLight16;
 
     private float ColorSpeed = 0.004f;
 
@@ -55,6 +58,9 @@ public class ManageSky : MonoBehaviour
      PointLight11.SetActive(false);
      PointLight12.SetActive(false);
      PointLight13.SetActive(false);
+     PointLight14.SetActive(false);
+     PointLight15.SetActive(false);
+     PointLight16.SetActive(false);
 
         color = Light.GetComponent<Light>().color;
     }
@@ -117,6 +123,9 @@ public class ManageSky : MonoBehaviour
             PointLight11.SetActive(true);
             PointLight12.SetActive(true);
             PointLight13.SetActive(true);
+            PointLight14.SetActive(true);
+            PointLight15.SetActive(true);
+            PointLight16.SetActive(true);
 
             bUseLight = true;
         }
