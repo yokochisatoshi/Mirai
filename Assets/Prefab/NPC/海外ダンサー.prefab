@@ -5870,8 +5870,8 @@ MonoBehaviour:
   speed: 0.1
   eatTime: 100
   DestroyTime: 2
-  speedUpBuf: 1.2
-  speedDownDeBuf: 0.5
+  speedUpBuf: 4
+  speedDownDeBuf: 0.2
   addMoneyVal: 220
   speedUp: 0
   speedDown: 0

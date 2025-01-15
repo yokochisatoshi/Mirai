@@ -1091,6 +1091,7 @@ MonoBehaviour:
   UI03: {fileID: 142755162}
   UI04: {fileID: 513532115}
   UI05: {fileID: 314267763}
+  UI06: {fileID: 946518249}
   SE00: {fileID: 8300000, guid: 55dd01bdcf03eb641bd54ba13436510d, type: 3}
 --- !u!4 &49091644
 Transform:
@@ -8965,7 +8966,6 @@ MonoBehaviour:
   nCountFade: 0
   bAppear: 0
   bShowResult: 0
-  bNextLevel: 0
   bGameStart: 0
 --- !u!4 &512545927
 Transform:

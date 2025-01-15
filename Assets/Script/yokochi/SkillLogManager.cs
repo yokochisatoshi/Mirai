@@ -27,6 +27,8 @@ public class SkillLogManager : MonoBehaviour
         Special5,
         rivalSpecial1,
         rivalSpecial2,
+        rivalSpecial3,
+        rivalSpecial4,
         Increase,
         NoData
     }

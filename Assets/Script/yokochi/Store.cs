@@ -21,7 +21,7 @@ public class Store : MonoBehaviour
         nomal,
         BrainwashingSkill,
         SmallBrainwashingSkill,
-        SpeedUpSkill,
+        cancellationSkill,
         addMoney,
         EnemySkillDownTimeSkill,
     }
@@ -29,14 +29,21 @@ public class Store : MonoBehaviour
     public GameObject SkillColli;            // 範囲型洗脳スキルの当たり判定用オブジェ
     public int cooltimeCount = 0;            // クールタイムのカウンタ
     public int cooltime = 100;               // 必殺技のクールタイム
-    public int speedUpSkillTime = 100;       // スピードダウンの効果時間
-    public int SmallBrainwashingSkillTime = 100;       // スピードダウンの効果時間
+    public int SmallBrainwashingSkillTime = 100;       // 効果時間
     public int skillTimeCount = 0;           // クールタイムのカウンタ
     public StorState state = StorState.nomal;
     int addMoneyVal = 3000;            // スキルで増やすお金
     public int EneTimeDownVal = 100;
 
     PlayerData PLDataSc;
+
+    bool cancellationFlag = false;
+    public float cancellationPer = 50;
+    public float brainwashingPer = 20;
+    public float smallBrainwashingPer = 30;
+    public float addMoneyPer = 30;
+
+
 
     SkillLogManager SkillLogSc;
     SkillLogManager.StoreName storeName;
@@ -103,15 +110,13 @@ public class Store : MonoBehaviour
                     }
 
                     break;
-                case StorState.SpeedUpSkill:
-                    SpeedUpSkill();
+                case StorState.cancellationSkill:
+                    CancellationSkill();
                     state = StorState.nomal;
-
                     break;
                 case StorState.addMoney:
                     PLDataSc.AddMoney(addMoneyVal);
                     state = StorState.nomal;
-
                     break;
                 case StorState.EnemySkillDownTimeSkill:
                     EnemySkillDownTimeSkill();
@@ -144,23 +149,16 @@ public class Store : MonoBehaviour
         state = StorState.nomal;
     }
 
-    void SpeedUpSkill()
+    void CancellationSkill()
     {
-        GameObject[] humanObjects = GameObject.FindGameObjectsWithTag("Human");     // 存在するHumanタグを持っているオブジェクトを配列に格納
-        human humanScript = null;
-        for (int i = 0; i < humanObjects.Length; i++)
+        GameObject[] enemyObjects = GameObject.FindGameObjectsWithTag("EnemyStore");
+        EnemyShop enemyScript = null;
+        for (int i = 0; i < enemyObjects.Length; i++)
         { // humanObjectsの要素分ループ
-            humanScript = humanObjects[i].GetComponent<human>();              // humanスクリプト取得
-            humanScript.speedUp = true;
+            enemyScript = enemyObjects[i].GetComponent<EnemyShop>();              // humanスクリプト取得
+            enemyScript.Cancellation();
         }
-
-        skillTimeCount++;
-        if (skillTimeCount > speedUpSkillTime)
-        {
-            if (humanScript != null) humanScript.speedUp = false;
-            skillTimeCount = 0;
-            state = StorState.nomal;
-        }
+        state = StorState.nomal;
     }
 
     public void UseSkill()
@@ -169,28 +167,53 @@ public class Store : MonoBehaviour
         { // cooltime分時間が経ったら
             cooltimeCount = 0;
             int num = Random.Range(0, 100);
-            if (num >= 0 && num < 20)
-            {
-                state = StorState.BrainwashingSkill;
-                SkillLogSc.CreateSkillLog(storeName, SkillLogManager.SkillType.Special1);
+
+            // スピード解除フラグ
+            float Per;
+            float cancellation;
+            GameObject[] EnemyObjects = GameObject.FindGameObjectsWithTag("EnemyStore");     // 存在するenemysoreタグを持っているオブジェクトを配列に格納
+            for (int i = 0; i < EnemyObjects.Length; i++)
+            { // humanObjectsの要素分ループ
+                EnemyShop EnemyScript = EnemyObjects[i].GetComponent<EnemyShop>();              // スクリプト取得
+                if (EnemyScript.state == EnemyShop.EnemyStorState.speedUpSkill || EnemyScript.state == EnemyShop.EnemyStorState.SpeedDownSkill)
+                {
+                    cancellationFlag = true;                
+                }
             }
-            else if (num >= 20 && num < 40)
+            if (cancellationFlag == true)
+            {
+                cancellation = cancellationPer;
+                Per = 100 - cancellation;
+            }
+            else
+            {
+                Per = 100;
+                cancellation = 0;
+            }
+            cancellationFlag = false;
+
+            if (num >= 0 && num < cancellation)
+            {
+                SkillLogSc.CreateSkillLog(storeName, SkillLogManager.SkillType.Special3);
+                state = StorState.cancellationSkill;
+            }
+            else if (num >= cancellation && num < cancellation + (Per * (smallBrainwashingPer / 10)))
             {
                 SkillLogSc.CreateSkillLog(storeName, SkillLogManager.SkillType.Special4);
                 state = StorState.SmallBrainwashingSkill;
                 SkillColli.SetActive(true);
             }
-            else if (num >= 40 && num < 60)
+            else if (num >= cancellation + (Per * (smallBrainwashingPer / 10)) && num < cancellation + (Per * (smallBrainwashingPer / 10)) + (Per * (brainwashingPer / 10)))
             {
-                SkillLogSc.CreateSkillLog(storeName, SkillLogManager.SkillType.Special3);
-                state = StorState.SpeedUpSkill;
+                state = StorState.BrainwashingSkill;
+                SkillLogSc.CreateSkillLog(storeName, SkillLogManager.SkillType.Special1);
             }
-            else if (num >= 60 && num < 80)
+            else if (num >= cancellation + (Per * (smallBrainwashingPer / 10)) + (Per * (brainwashingPer / 10)) && num < cancellation + (Per * (smallBrainwashingPer / 10)) + (Per * (brainwashingPer / 10)) + (Per * (addMoneyPer / 10)))
             {
                 SkillLogSc.CreateSkillLog(storeName, SkillLogManager.SkillType.Special5);
                 state = StorState.addMoney;
             }
-            else if (num >= 80 && num < 100)
+            else if (num >= cancellation + (Per * (smallBrainwashingPer / 10)) + (Per * (brainwashingPer / 10)) + (Per * (addMoneyPer / 10)) && num < 100)
             {
                 SkillLogSc.CreateSkillLog(storeName, SkillLogManager.SkillType.Special2);
                 state = StorState.EnemySkillDownTimeSkill;

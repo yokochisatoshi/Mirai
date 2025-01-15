@@ -706,7 +706,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4643978737631946563, guid: 06079cae3321da34ea2799523a5ba00b, type: 3}
       propertyPath: cooltime
-      value: 1500
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 4643978737631946563, guid: 06079cae3321da34ea2799523a5ba00b, type: 3}
+      propertyPath: speedSkillTime
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 4643978737631946589, guid: 06079cae3321da34ea2799523a5ba00b, type: 3}
       propertyPath: m_Enabled
@@ -1091,6 +1095,7 @@ MonoBehaviour:
   UI03: {fileID: 142755162}
   UI04: {fileID: 513532115}
   UI05: {fileID: 314267763}
+  UI06: {fileID: 946518249}
   SE00: {fileID: 8300000, guid: 55dd01bdcf03eb641bd54ba13436510d, type: 3}
 --- !u!4 &49091644
 Transform:
@@ -2407,7 +2412,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4643978737631946563, guid: 06079cae3321da34ea2799523a5ba00b, type: 3}
       propertyPath: cooltime
-      value: 1500
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 4643978737631946563, guid: 06079cae3321da34ea2799523a5ba00b, type: 3}
+      propertyPath: speedSkillTime
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 4643978737631946591, guid: 06079cae3321da34ea2799523a5ba00b, type: 3}
       propertyPath: m_RootOrder
@@ -8965,7 +8974,6 @@ MonoBehaviour:
   nCountFade: 0
   bAppear: 0
   bShowResult: 0
-  bNextLevel: 0
   bGameStart: 0
 --- !u!4 &512545927
 Transform:
@@ -30038,6 +30046,7 @@ MonoBehaviour:
   DancerNPC: {fileID: 8431325715962734354, guid: d15b1b20382bc2940bd09b0f06360121, type: 3}
   GodNPC: {fileID: 2987699961974171191, guid: 4d47fe8bcd8dae144a4a3f72c35cf40d, type: 3}
   Wall: {fileID: 288992195}
+  humans: []
 --- !u!4 &1865328942
 Transform:
   m_ObjectHideFlags: 0

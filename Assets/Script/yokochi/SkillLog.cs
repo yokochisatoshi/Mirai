@@ -27,6 +27,8 @@ public class SkillLog : MonoBehaviour
 
     [SerializeField] Sprite rivalSpecial1;
     [SerializeField] Sprite rivalSpecial2;
+    [SerializeField] Sprite rivalSpecial3;
+    [SerializeField] Sprite rivalSpecial4;
 
     [SerializeField] Sprite Hitsumabushi;
     [SerializeField] Sprite Kishimen;
@@ -111,6 +113,12 @@ public class SkillLog : MonoBehaviour
                 break;
             case SkillLogManager.SkillType.rivalSpecial2:
                 myImage.sprite = rivalSpecial2;
+                break;
+            case SkillLogManager.SkillType.rivalSpecial3:
+                myImage.sprite = rivalSpecial3;
+                break;
+            case SkillLogManager.SkillType.rivalSpecial4:
+                myImage.sprite = rivalSpecial4;
                 break;
             case SkillLogManager.SkillType.Increase:
                 myImage.sprite = Increase;

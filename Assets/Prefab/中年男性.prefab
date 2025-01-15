@@ -5085,10 +5085,11 @@ MonoBehaviour:
   eatTime: 10
   DestroyTime: 3
   speedUpBuf: 2.2
-  speedDownDeBuf: 0.5
+  speedDownDeBuf: 0.2
   addMoneyVal: 200
   speedUp: 0
   speedDown: 0
+  rivalSpecialEffect: {fileID: 0}
 --- !u!136 &1357404113138899418
 CapsuleCollider:
   m_ObjectHideFlags: 0

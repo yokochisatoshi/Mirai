@@ -28,11 +28,17 @@ public class MoneyUI : MonoBehaviour
         // 川添　大文字に変えた
         moneyText.text = "MONEY: " + PlayerData.Instance.nMoney;
 
-        //消えてく方のテキストMoney
-        moneyText2.text =   "+"    + PlayerData.Instance.nSumMoney;
-
-        //Fade--;
-        moneyText2.color = new Color(0.0f, 0.0f, 0.0f,PlayerData.Instance.nCountFade);
+        //消えてく方のテキストMoney マイナスの表示追加:横地
+        if (PlayerData.Instance.nSumMoney > 0)
+        {
+            moneyText2.text = "+" + PlayerData.Instance.nSumMoney;
+        }
+        else if (PlayerData.Instance.nSumMoney < 0)
+        {
+            moneyText2.text = "-" + Mathf.Abs(PlayerData.Instance.nSumMoney);
+        }
+            //Fade--;
+            moneyText2.color = new Color(0.0f, 0.0f, 0.0f,PlayerData.Instance.nCountFade);
         //Debug.Log(moneyText2.color.a);
     }
 }

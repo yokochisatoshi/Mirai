@@ -18,6 +18,9 @@ public class NPCManager : MonoBehaviour
     private Vector3 Lv2WallPos;
     private Vector3 Lv3WallPos;
 
+    public List<GameObject> humans = new List<GameObject>();
+    GameObject humanObj;                // ƒŠƒXƒg‚É“ü‚ê‚é‚æ‚¤
+
     // Start is called before the first frame update
     void Start()
     {
@@ -101,15 +104,27 @@ public class NPCManager : MonoBehaviour
 
                     if (nRandom == 0)
                     {
-                        Instantiate(Chara, new Vector3(StartPos, -1, Random.Range(-3.0f, 13.0f)), Quaternion.Euler(0, 90, 0));
+                        humanObj = Instantiate(Chara, new Vector3(StartPos, -1, Random.Range(-3.0f, 13.0f)), Quaternion.Euler(0, 90, 0));
+                        humans.Add(humanObj);
                     }
                     else
                     {
-                        Instantiate(Chara, new Vector3(EndPos, -1, Random.Range(-3.0f, 13.0f)), Quaternion.Euler(0, -90, 0));
+                        humanObj = Instantiate(Chara, new Vector3(EndPos, -1, Random.Range(-3.0f, 13.0f)), Quaternion.Euler(0, -90, 0));
+                        humans.Add(humanObj);
                     }
 
-
                 }
+            }
+        }
+    }
+
+    public void DestroyList(GameObject _human)
+    {
+        for(int i= 0; i < humans.Count; i++)
+        {
+            if(_human == humans[i].gameObject)
+            {
+                humans.RemoveAt(i);
             }
         }
     }

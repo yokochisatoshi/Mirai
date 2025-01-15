@@ -19,7 +19,12 @@ public class Kanban01 : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.gameObject.tag == "Human")
+        // プレイヤーの状態による判定処理追加:横地
+        if ((int)human.human_state.allyBrainwashing == collider.gameObject.GetComponent<human>().GetState()|| (int)human.human_state.brainwashing == collider.gameObject.GetComponent<human>().GetState())
+        {
+            Destroy(this.gameObject);
+        }
+        else if (collider.gameObject.tag == "Human"  && (int)human.human_state.Destroy != collider.gameObject.GetComponent<human>().GetState())
         {
             nCounter--;
             if(nCounter <= 0)

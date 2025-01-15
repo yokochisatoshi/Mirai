@@ -9,25 +9,35 @@ public class EnemyShop : MonoBehaviour
     {
         nomal,
         BrainwashingSkill,
-        SpeedDownSkill
+        SpeedDownSkill,
+        SubtractionMoneySkill,
+        speedUpSkill,
     }
 
     public int cooltime = 100;      // 必殺技のクールタイム
     public int cooltimeCount = 0;   // クールタイムのカウンタ
 
-    public int speedDownSkillTime = 100;      // スピードダウンの効果時間
+    public int speedSkillTime = 100;      // スピードダウンの効果時間
     public int skillTimeCount = 0;           // クールタイムのカウンタ
     public EnemyStorState state = EnemyStorState.nomal;
+    int SubtractionMoney = 1000;
 
     SkillLogManager SkillLogSc;
+    NPCManager NPCManagerSc;
 
     // 川添追加
     private EffectManager RivalSpecial1EffectManager;        // 必殺技時のエフェクト1
     private EffectManager RivalSpecial2EffectManager;        // 必殺技時のエフェクト2
 
+    GameObject ManageData;
+    PlayerData script;
+
     // Start is called before the first frame update
     void Start()
     {
+        ManageData = GameObject.Find("ManageData");
+        script = ManageData.GetComponent<PlayerData>();
+        NPCManagerSc = GameObject.Find("ManageNPC").GetComponent<NPCManager>();
         SkillLogSc = GameObject.Find("ManageSkillLog").GetComponent<SkillLogManager>();
 
         // 川添追加
@@ -62,10 +72,20 @@ public class EnemyShop : MonoBehaviour
                             state = EnemyStorState.BrainwashingSkill;
                             SkillLogSc.CreateSkillLog(SkillLogManager.StoreName.rival1, SkillLogManager.SkillType.rivalSpecial1);
                         }
-                        else if (num >= 50 && num < 100)
+                        else if (num >= 50 && num < 70)
                         {
                             state = EnemyStorState.SpeedDownSkill;
                             SkillLogSc.CreateSkillLog(SkillLogManager.StoreName.rival1, SkillLogManager.SkillType.rivalSpecial2);
+                        }
+                        else if (num >= 70 && num < 80)
+                        {
+                            state = EnemyStorState.SubtractionMoneySkill;
+                            SkillLogSc.CreateSkillLog(SkillLogManager.StoreName.rival1, SkillLogManager.SkillType.rivalSpecial3);
+                        }
+                        else if (num >= 80 && num < 100)
+                        {
+                            state = EnemyStorState.speedUpSkill;
+                            SkillLogSc.CreateSkillLog(SkillLogManager.StoreName.rival1, SkillLogManager.SkillType.rivalSpecial4);
                         }
                     }
                     break;
@@ -74,6 +94,12 @@ public class EnemyShop : MonoBehaviour
                     break;
                 case EnemyStorState.BrainwashingSkill:
                     BrainwashingSkill();
+                    break;
+                case EnemyStorState.SubtractionMoneySkill:
+                    SubtractionMoneySkill();
+                    break;
+                case EnemyStorState.speedUpSkill:
+                    SpeedUpSkill();
                     break;
             }
         }
@@ -104,18 +130,18 @@ public class EnemyShop : MonoBehaviour
 
     void SpeedDownSkill()
     {
-        GameObject[] humanObjects = GameObject.FindGameObjectsWithTag("Human");     // 存在するHumanタグを持っているオブジェクトを配列に格納
-        human humanScript = null;
-        for (int i = 0; i < humanObjects.Length; i++)
+        for (int i = 0; i < NPCManagerSc.humans.Count; i++)
         { // humanObjectsの要素分ループ
-            humanScript = humanObjects[i].GetComponent<human>();              // humanスクリプト取得
-            humanScript.speedDown = true;
+            NPCManagerSc.humans[i].GetComponent<human>().speedDown = true;
         }
 
         skillTimeCount++;
-        if (skillTimeCount > speedDownSkillTime)
+        if (skillTimeCount > speedSkillTime)
         {
-            if(humanScript != null) humanScript.speedDown = false;
+            for (int i = 0; i < NPCManagerSc.humans.Count; i++)
+            { // humanObjectsの要素分ループ
+                NPCManagerSc.humans[i].GetComponent<human>().speedDown = false;
+            }
             skillTimeCount = 0;
             state = EnemyStorState.nomal;
 
@@ -126,5 +152,60 @@ public class EnemyShop : MonoBehaviour
                             new Vector3(transform.position.x, transform.position.y - 2.0f, transform.position.z));
         }
 
+    }
+
+    void SubtractionMoneySkill()
+    {
+        script.AddMoney(-SubtractionMoney);
+        state = EnemyStorState.nomal;
+
+        // 川添追加
+        GameObject effect1 = RivalSpecial1EffectManager.SpawnRivalSpecial1Effect(
+                        new Vector3(transform.position.x, transform.position.y - 2.0f, transform.position.z));
+        GameObject effect2 = RivalSpecial2EffectManager.SpawnRivalSpecial2Effect(
+                        new Vector3(transform.position.x, transform.position.y - 2.0f, transform.position.z));
+    }
+
+    void SpeedUpSkill()
+    {
+        for (int i = 0; i < NPCManagerSc.humans.Count; i++)
+        { // humanObjectsの要素分ループ
+            NPCManagerSc.humans[i].GetComponent<human>().speedUp = true;
+        }
+
+        skillTimeCount++;
+        if (skillTimeCount > speedSkillTime)
+        {
+            for (int i = 0; i < NPCManagerSc.humans.Count; i++)
+            { // humanObjectsの要素分ループ
+                NPCManagerSc.humans[i].GetComponent<human>().speedUp = false;
+            }
+            skillTimeCount = 0;
+            state = EnemyStorState.nomal;
+
+            // 川添追加
+            GameObject effect1 = RivalSpecial1EffectManager.SpawnRivalSpecial1Effect(
+                            new Vector3(transform.position.x, transform.position.y - 2.0f, transform.position.z));
+            GameObject effect2 = RivalSpecial2EffectManager.SpawnRivalSpecial2Effect(
+                            new Vector3(transform.position.x, transform.position.y - 2.0f, transform.position.z));
+        }
+
+    }
+
+    // スピード系スキル解除
+    public void Cancellation()
+    {
+        if (EnemyStorState.SpeedDownSkill == state || EnemyStorState.speedUpSkill == state)
+        {
+            for (int i = 0; i < NPCManagerSc.humans.Count; i++)
+            { // humanObjectsの要素分ループ
+                NPCManagerSc.humans[i].GetComponent<human>().speedDown = false;
+                NPCManagerSc.humans[i].GetComponent<human>().speedUp = false;
+            }
+
+            skillTimeCount = 0;
+            state = EnemyStorState.nomal;
+
+        }
     }
 }
