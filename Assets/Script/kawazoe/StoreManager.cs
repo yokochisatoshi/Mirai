@@ -21,7 +21,8 @@ public class StoreManager : MonoBehaviour
     private int maxLevel = 3; // 最大レベル
 
     private EffectManager IncreaseOfCapitalEffectManager;        // 増資時のエフェクト
-    private EffectManager SpecialEffectManager;                  // 必殺技時のエフェクト
+    private EffectManager Special1EffectManager;                  // 必殺技時のエフェクト1
+    private EffectManager Special2EffectManager;                  // 必殺技時のエフェクト2
 
     // 横地追加-----------------------------------------------------------------------
     public GameObject skillLogManager;
@@ -33,7 +34,8 @@ public class StoreManager : MonoBehaviour
         SkillLogCs = skillLogManager.GetComponent<SkillLogManager>();
 
         IncreaseOfCapitalEffectManager = FindObjectOfType<EffectManager>();
-        SpecialEffectManager = FindObjectOfType<EffectManager>();
+        Special1EffectManager = FindObjectOfType<EffectManager>();
+        Special2EffectManager = FindObjectOfType<EffectManager>();
     }
     //-----------------------------------------------------------------------------------
 
@@ -65,7 +67,8 @@ public class StoreManager : MonoBehaviour
 
         SoundManager.Instance.PlaySound("Special");
 
-        GameObject Effect = SpecialEffectManager.SpawnSpecialEffect(MisokatuModel.transform.position);
+        GameObject Effect1 = Special1EffectManager.SpawnSpecial1Effect(MisokatuModel.transform.position);
+        GameObject Effect2 = Special2EffectManager.SpawnSpecial2Effect(MisokatuModel.transform.position);
     }
 
     // ういろう店増資
@@ -96,7 +99,8 @@ public class StoreManager : MonoBehaviour
 
         SoundManager.Instance.PlaySound("Special");
 
-        GameObject Effect = SpecialEffectManager.SpawnSpecialEffect(UirouModel.transform.position);
+        GameObject Effect1 = Special1EffectManager.SpawnSpecial1Effect(UirouModel.transform.position);
+        GameObject Effect2 = Special2EffectManager.SpawnSpecial2Effect(UirouModel.transform.position);
     }
 
     // ひつまぶし店増資
@@ -127,7 +131,8 @@ public class StoreManager : MonoBehaviour
 
         SoundManager.Instance.PlaySound("Special");
 
-        GameObject Effect = SpecialEffectManager.SpawnSpecialEffect(HitsumabushiModel.transform.position);
+        GameObject Effect1 = Special1EffectManager.SpawnSpecial1Effect(HitsumabushiModel.transform.position);
+        GameObject Effect2 = Special2EffectManager.SpawnSpecial2Effect(HitsumabushiModel.transform.position);
     }
 
     // 手羽先店増資
@@ -157,7 +162,8 @@ public class StoreManager : MonoBehaviour
 
         SoundManager.Instance.PlaySound("Special");
 
-        GameObject Effect = SpecialEffectManager.SpawnSpecialEffect(TebasakiModel.transform.position);
+        GameObject Effect1 = Special1EffectManager.SpawnSpecial1Effect(TebasakiModel.transform.position);
+        GameObject Effect2 = Special2EffectManager.SpawnSpecial2Effect(TebasakiModel.transform.position);
     }
 
     // 台湾ラーメン店増資
@@ -188,7 +194,8 @@ public class StoreManager : MonoBehaviour
 
         SoundManager.Instance.PlaySound("Special");
 
-        GameObject Effect = SpecialEffectManager.SpawnSpecialEffect(TaiwanRamenModel.transform.position);
+        GameObject Effect1 = Special1EffectManager.SpawnSpecial1Effect(TaiwanRamenModel.transform.position);
+        GameObject Effect2 = Special2EffectManager.SpawnSpecial2Effect(TaiwanRamenModel.transform.position);
     }
 
     // きしめん店増資
@@ -219,6 +226,7 @@ public class StoreManager : MonoBehaviour
 
         SoundManager.Instance.PlaySound("Special");
 
-        GameObject Effect = SpecialEffectManager.SpawnSpecialEffect(KishimenModel.transform.position);
+        GameObject Effect1 = Special1EffectManager.SpawnSpecial1Effect(KishimenModel.transform.position);
+        GameObject Effect2 = Special2EffectManager.SpawnSpecial2Effect(KishimenModel.transform.position);
     }
 }

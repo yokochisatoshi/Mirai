@@ -22,7 +22,8 @@ public class EnemyShop : MonoBehaviour
     SkillLogManager SkillLogSc;
 
     // 川添追加
-    private EffectManager RivalSpecialEffectManager;        // 必殺技時のエフェクト
+    private EffectManager RivalSpecial1EffectManager;        // 必殺技時のエフェクト1
+    private EffectManager RivalSpecial2EffectManager;        // 必殺技時のエフェクト2
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +31,8 @@ public class EnemyShop : MonoBehaviour
         SkillLogSc = GameObject.Find("ManageSkillLog").GetComponent<SkillLogManager>();
 
         // 川添追加
-        RivalSpecialEffectManager = FindObjectOfType<EffectManager>();
+        RivalSpecial1EffectManager = FindObjectOfType<EffectManager>();
+        RivalSpecial2EffectManager = FindObjectOfType<EffectManager>();
     }
 
     // Update is called once per frame
@@ -94,7 +96,9 @@ public class EnemyShop : MonoBehaviour
         state = EnemyStorState.nomal;
 
         // 川添追加
-        GameObject effect = RivalSpecialEffectManager.SpawnRivalSpecialEffect(
+        GameObject effect1 = RivalSpecial1EffectManager.SpawnRivalSpecial1Effect(
+                        new Vector3(transform.position.x, transform.position.y - 2.0f, transform.position.z));
+        GameObject effect2 = RivalSpecial2EffectManager.SpawnRivalSpecial2Effect(
                         new Vector3(transform.position.x, transform.position.y - 2.0f, transform.position.z));
     }
 
@@ -116,8 +120,10 @@ public class EnemyShop : MonoBehaviour
             state = EnemyStorState.nomal;
 
             // 川添追加
-            GameObject effect = RivalSpecialEffectManager.SpawnRivalSpecialEffect(
+            GameObject effect1 = RivalSpecial1EffectManager.SpawnRivalSpecial1Effect(
                         new Vector3(transform.position.x, transform.position.y - 2.0f, transform.position.z));
+            GameObject effect2 = RivalSpecial2EffectManager.SpawnRivalSpecial2Effect(
+                            new Vector3(transform.position.x, transform.position.y - 2.0f, transform.position.z));
         }
 
     }
